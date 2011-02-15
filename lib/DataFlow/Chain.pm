@@ -1,4 +1,4 @@
-package DataFlow::Node::Chain;
+package DataFlow::Chain;
 
 use Moose;
 extends 'DataFlow::Node';
@@ -12,6 +12,9 @@ has links => (
     required => 1,
 );
 
+sub _first_link { shift->links->[0] }
+sub _last_link  { shift->links->[-1] }
+
 has '+process_item' => (
     default => sub {
         return sub {
@@ -23,14 +26,47 @@ has '+process_item' => (
             $self->confess('Chain has no nodes, cannot process_item()')
               unless scalar @{ $self->links };
 
-            $self->links->[0]->input($item);
-            my $last =
-              reduce { $a->process_input; $b->input( $a->output ); $b }
-            @{ $self->links };
-            return $last->output;
+            $self->_first_link->input($item);
+            return $self->_reduce->output;
         },;
     },
 );
+
+sub _reduce {
+    return reduce {
+        $a->process_input;
+
+        # always flush the output queue
+        $b->input( $a->output );
+        $b;
+    }
+    @{ shift->links };
+}
+
+override 'process_input' => sub {
+    my $self = shift;
+    return unless ( $self->has_input || $self->_chain_has_data );
+
+    # empty existing data in the pipe
+    while ( $self->_chain_has_data ) {
+        my $last = $self->_reduce;
+        $self->_add_output( $last->output );
+    }
+
+    unless ( $self->has_output ) {
+        my $item = $self->_dequeue_input;
+        $self->_add_output( $self->_handle_list($item) );
+    }
+};
+
+sub _chain_has_data {
+    return 0 != scalar( grep { $_->has_input } @{ shift->links } );
+}
+
+before 'flush' => sub {
+    my $self = shift;
+    $self->_first_link->input( $self->_dequeue_input );
+};
 
 1;
 
@@ -40,14 +76,14 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::Chain - A "super-node" that can link a sequence of nodes
+DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 SYNOPSIS
 
     use DataFlow::Node;
-    use DataFlow::Node::Chain;
+    use DataFlow::Chain;
 
-    my $chain = DataFlow::Node::Chain->new(
+    my $chain = DataFlow::Chain->new(
         links => [
             DataFlow::Node->new(
                 process_item => sub {
@@ -72,7 +108,7 @@ a data-flow.
 One might think of it as the actual definition of the data flow, but this is a 
 limited, linear, flow, and there is room for a lot of improvements.
 
-A C<DataFlow::Node::Chain> object accepts input like a regular
+A C<DataFlow::Chain> object accepts input like a regular
 C<DataFlow::Node>, but it injects that input into the first link of the
 chain, and pumps the output of each link into the input of the next one,
 similarly to pipes in a shell command line. The output of the last link of the
@@ -87,7 +123,7 @@ actual "chain" of nodes to process the data.
 
 =head1 METHODS
 
-The interface for C<DataFlow::Node::Chain> is the same of
+The interface for C<DataFlow::Chain> is the same of
 C<DataFlow::Node>, except for the accessor method for C<links>.
 
 =head1 DEPENDENCIES
@@ -103,7 +139,7 @@ None reported.
 =head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests to
-C<bug-opendata@rt.cpan.org>, or through the web interface at
+C<bug-dataflow@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 =head1 AUTHOR

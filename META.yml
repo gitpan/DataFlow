@@ -30,10 +30,11 @@ requires:
   MooseX::OneArgNew: 0
   MooseX::Types::IO: 0
   Queue::Base: 0
+  SQL::Abstract: 0
   Scalar::Util: 0
   WWW::Mechanize: 0
   namespace::autoclean: 0
   version: 0.86
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.090000
+version: 0.091000

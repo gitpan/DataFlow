@@ -1,7 +1,33 @@
-* Módulo para passar html entities para utf8.
-
-- Transform::OCR
+TODO List
 
 Flow
-- Node que executa um comando externo (system ou IPC::Run, ou ...) e usa
-  input,out,err como stdin, stdout e stderr
+* use overload operators to create chains ('=>' or maybe '|' or '+')
+* a JSON iand/or YAML based constructor(s)
+* a threshold parameter that controls how many items can be passed, at most,
+  in a single run
+* do not assume, internally, that nodes want all data available at once (it
+  is doing that now, must fix)
+* start messing with parallel runs, via fork or threads
+* method output() receives a positive integer, and returns at most that much
+  elements
+* require Queue::Base 2.0 and use remove_all()
+
+Chain
+* in a chain, the output from the previous node should be the same object in
+  memory as the input of the next node
+* the chain's input queue must be the same object as the first link's input
+  queue, and conversely, the last link's output queue must be the same object
+  as the chain's output queue
+
+Nodes
+* char encoding node (there is a first attempt there already, needs to work
+  on it and write tests for it)
+* an OCR decoding module (any OCR perl modules out-there?)
+* a node that runs an external command (system(), or IPC::Run, or...) and maps
+  stdin, stdout, stderr respectively to input, output and error queues
+* split and join nodes, to allow flows to follow multiple paths
+
+Other
+* create a DataFlow::Maker class that will read JSON/YAML/something config
+  files and create DataFlows out of them
+
