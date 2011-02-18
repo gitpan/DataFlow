@@ -30,4 +30,4 @@ requires:
   namespace::autoclean: 0
   perl: 5.008
   version: 0.86
-version: 0.91.00_01
+version: 0.91.01

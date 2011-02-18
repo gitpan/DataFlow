@@ -49,7 +49,7 @@
          }
       }
    },
-   "release_status" : "testing",
-   "version" : "0.91.00_01"
+   "release_status" : "stable",
+   "version" : "0.91.01"
 }
 

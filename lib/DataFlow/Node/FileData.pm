@@ -2,7 +2,7 @@
 package DataFlow::Node::FileData;
 
 BEGIN {
-    $DataFlow::Node::FileData::VERSION = '0.91.00_01';
+    $DataFlow::Node::FileData::VERSION = '0.91.01';
 }
 
 use Moose;

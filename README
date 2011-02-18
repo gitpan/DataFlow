@@ -2,7 +2,7 @@ NAME
     DataFlow::Node - A generic processing node in a data flow
 
 VERSION
-    version 0.91.00_01
+    version 0.91.01
 
 SYNOPSIS
         use DataFlow::Node;

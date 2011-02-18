@@ -7,7 +7,7 @@ use inc::Module::Install 1.00;
 name 'DataFlow';
 abstract "A\ generic\ processing\ node\ in\ a\ data\ flow";
 author "Alexei\ Znamensky\ \<russoz\@cpan\.org\>";
-version "0\.91\.00_01";
+version "0\.91\.01";
 license "perl";
 
 # configure requires => configure_requires

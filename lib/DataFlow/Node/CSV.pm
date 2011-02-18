@@ -2,7 +2,7 @@
 package DataFlow::Node::CSV;
 
 BEGIN {
-    $DataFlow::Node::CSV::VERSION = '0.91.00_01';
+    $DataFlow::Node::CSV::VERSION = '0.91.01';
 }
 
 use Moose;

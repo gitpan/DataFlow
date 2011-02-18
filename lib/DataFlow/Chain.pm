@@ -1,7 +1,7 @@
 package DataFlow::Chain;
 
 BEGIN {
-    $DataFlow::Chain::VERSION = '0.91.00_01';
+    $DataFlow::Chain::VERSION = '0.91.01';
 }
 
 use Moose;
@@ -86,7 +86,7 @@ DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 VERSION
 
-version 0.91.00_01
+version 0.91.01
 
 =head1 SYNOPSIS
 

@@ -2,7 +2,7 @@
 package DataFlow::Node::MultiPageURLGenerator;
 
 BEGIN {
-    $DataFlow::Node::MultiPageURLGenerator::VERSION = '0.91.00_01';
+    $DataFlow::Node::MultiPageURLGenerator::VERSION = '0.91.01';
 }
 
 use Moose;
