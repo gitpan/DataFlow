@@ -1,5 +1,9 @@
 package DataFlow::Item;
 
+BEGIN {
+    $DataFlow::Item::VERSION = '0.91.00_01';
+}
+
 use Moose;
 use DataFlow::Meta;
 
@@ -13,6 +17,8 @@ has data => (
     isa => 'Any',
 );
 
+__PACKAGE__->meta->make_immutable;
+
 1;
 
 __END__
@@ -22,6 +28,10 @@ __END__
 =head1 NAME
 
 DataFlow::Item - A DataFlow item with the associated metadata
+
+=head1 VERSION
+
+version 0.91.00_01
 
 =head1 SYNOPSIS
 

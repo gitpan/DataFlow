@@ -1,9 +1,15 @@
 package DataFlow::Node::Null;
 
+BEGIN {
+    $DataFlow::Node::Null::VERSION = '0.91.00_01';
+}
+
 use Moose;
 extends 'DataFlow::Node::NOP';
 
 override 'input' => sub { };
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
@@ -15,12 +21,16 @@ __END__
 
 DataFlow::Node::Null - A null node, will discard any input and return undef in the output
 
+=head1 VERSION
+
+version 0.91.00_01
+
 =head1 SYNOPSIS
 
     use DataFlow::Null;
 
     my $null = DataFlow::Node::Null->new;
-    
+
     my $result = $null->process( 'abc' );
     # $result == undef
 

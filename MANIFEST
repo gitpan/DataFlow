@@ -1,12 +1,17 @@
-DataFlow-0.90.00.tar.gz
+INSTALL
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+TODO
+dist.ini
 examples/filedata.test
-inc/Module/AutoInstall.pm
 inc/Module/Install.pm
-inc/Module/Install/AutoInstall.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
-inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
@@ -30,10 +35,6 @@ lib/DataFlow/Node/URLRetriever.pm
 lib/DataFlow/Node/URLRetriever/Get.pm
 lib/DataFlow/Node/URLRetriever/Get/Curl.pm
 lib/DataFlow/Node/URLRetriever/Get/Mechanize.pm
-Makefile.PL
-MANIFEST			This list of files
-META.yml
-README
 scripts/df-portaltransparencia.pl
 scripts/tidy
 t/00-load.t
@@ -53,6 +54,4 @@ t/62-urlretriever.t
 t/64-htmlfilter.t
 t/release-eol.t
 t/release-notabs.t
-t/release-pod-coverage.t
-t/release-pod-syntax.t
-TODO
+t/release-unused-vars.t

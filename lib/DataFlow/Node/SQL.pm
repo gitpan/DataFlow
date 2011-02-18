@@ -1,6 +1,10 @@
 
 package DataFlow::Node::SQL;
 
+BEGIN {
+    $DataFlow::Node::SQL::VERSION = '0.91.00_01';
+}
+
 use Moose;
 extends 'DataFlow::Node';
 
@@ -27,5 +31,6 @@ has '+process_item' => (
     }
 );
 
-1;
+__PACKAGE__->meta->make_immutable;
 
+1;

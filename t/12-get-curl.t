@@ -6,4 +6,3 @@ use strict;
 use_ok('DataFlow::Node::URLRetriever::Get::Curl');
 
 1;
-

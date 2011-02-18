@@ -37,4 +37,3 @@ ok( $hashy{cc} eq 'dd' );
 ok( $hashy{ee} eq 'ff' );
 ok( $hashy{gg} eq 'hh' );
 ok( $hashy{ii} eq 'jj' );
-

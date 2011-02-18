@@ -21,4 +21,3 @@ ok( !( $data->output ) );
 
 $data = DataFlow::Node::LiteralData->new( data => [qw/oh my goodness/] );
 is_deeply( $data->output, [qw/oh my goodness/] );
-

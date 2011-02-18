@@ -1,5 +1,9 @@
 package DataFlow::Node::Dumper;
 
+BEGIN {
+    $DataFlow::Node::Dumper::VERSION = '0.91.00_01';
+}
+
 use Moose;
 extends 'DataFlow::Node';
 
@@ -16,6 +20,8 @@ has '+process_item' => (
     }
 );
 
+__PACKAGE__->meta->make_immutable;
+
 1;
 
 __END__
@@ -25,6 +31,10 @@ __END__
 =head1 NAME
 
 DataFlow::Node::Dumper - Dumper node, will print every input item to STDERR with Data::Dumper
+
+=head1 VERSION
+
+version 0.91.00_01
 
 =head1 SYNOPSIS
 

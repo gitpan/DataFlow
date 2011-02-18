@@ -2,15 +2,18 @@ TODO List
 
 Flow
 * use overload operators to create chains ('=>' or maybe '|' or '+')
-* a JSON iand/or YAML based constructor(s)
 * a threshold parameter that controls how many items can be passed, at most,
   in a single run
-* do not assume, internally, that nodes want all data available at once (it
-  is doing that now, must fix)
 * start messing with parallel runs, via fork or threads
 * method output() receives a positive integer, and returns at most that much
   elements
-* require Queue::Base 2.0 and use remove_all()
+
+Chain
+* in a chain, the output from the previous node should be the same object in
+  memory as the input of the next node
+* the chain's input queue must be the same object as the first link's input
+  queue, and conversely, the last link's output queue must be the same object
+  as the chain's output queue
 
 Chain
 * in a chain, the output from the previous node should be the same object in

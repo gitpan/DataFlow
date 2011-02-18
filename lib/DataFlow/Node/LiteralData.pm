@@ -1,6 +1,10 @@
 
 package DataFlow::Node::LiteralData;
 
+BEGIN {
+    $DataFlow::Node::LiteralData::VERSION = '0.91.00_01';
+}
+
 use Moose;
 with(
     'MooseX::OneArgNew' => {
@@ -26,5 +30,6 @@ has data => (
     },
 );
 
-1;
+__PACKAGE__->meta->make_immutable;
 
+1;

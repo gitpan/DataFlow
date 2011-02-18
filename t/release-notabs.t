@@ -6,4 +6,3 @@ eval 'use Test::NoTabs';
 plan skip_all => 'Test::NoTabs required' if $@;
 
 all_perl_files_ok( 'lib', 't' );
-

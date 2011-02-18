@@ -1,6 +1,10 @@
 
 package DataFlow::Node::HTMLFilter;
 
+BEGIN {
+    $DataFlow::Node::HTMLFilter::VERSION = '0.91.00_01';
+}
+
 use Moose;
 extends 'DataFlow::Node';
 
@@ -58,6 +62,8 @@ has '+process_item' => (
     },
 );
 
+__PACKAGE__->meta->make_immutable;
+
 1;
 
 __END__
@@ -67,6 +73,10 @@ __END__
 =head1 NAME
 
 DataFlow::Node::HTMLFilter - A filter node for HTML content.
+
+=head1 VERSION
+
+version 0.91.00_01
 
 =head1 SYNOPSIS
 
@@ -204,4 +214,3 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
 =cut
-

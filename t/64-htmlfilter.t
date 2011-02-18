@@ -61,4 +61,3 @@ my $res3 = $filter3->output;
 
 #use Data::Dumper; diag( 'res3 = '. Dumper($res3) );
 ok( $res3->[2] eq 'c1 potatoes' );
-

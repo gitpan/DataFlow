@@ -40,4 +40,3 @@ is_deeply(
 # tests: 1
 my $cref = sub { return 'ggg' };
 ok( $uc->process($cref)->() eq 'GGG' );
-

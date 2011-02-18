@@ -1,5 +1,9 @@
 package DataFlow::Node::NOP;
 
+BEGIN {
+    $DataFlow::Node::NOP::VERSION = '0.91.00_01';
+}
+
 use Moose;
 extends 'DataFlow::Node';
 
@@ -8,6 +12,8 @@ has '+process_item' => (
         return sub { shift; return shift; }
     },
 );
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
@@ -19,12 +25,16 @@ __END__
 
 DataFlow::Node::NOP - A No-Op node, input data is passed unmodified to the output
 
+=head1 VERSION
+
+version 0.91.00_01
+
 =head1 SYNOPSIS
 
     use DataFlow::NOP;
 
     my $nop = DataFlow::Node::NOP->new;
-    
+
     my $result = $nop->process( 'abc' );
     # $result == 'abc'
 

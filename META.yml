@@ -1,26 +1,19 @@
 ---
+abstract: 'A generic processing node in a data flow'
+author:
+  - 'Alexei Znamensky <russoz@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
-  Pod::Coverage::TrustPod: 0
-  Test::More: 0
-  Test::Pod: 1.41
-  Test::Pod::Coverage: 1.08
-  Test::UseAllModules: 0
   aliased: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.00'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: DataFlow
-no_index:
-  directory:
-    - examples
-    - inc
-    - t
 requires:
   HTML::TreeBuilder::XPath: 0
   LWP::Curl: 0
@@ -29,12 +22,12 @@ requires:
   Moose: 0
   MooseX::OneArgNew: 0
   MooseX::Types::IO: 0
-  Queue::Base: 0
+  Queue::Base: 2.0
   SQL::Abstract: 0
   Scalar::Util: 0
+  Text::CSV: 0
   WWW::Mechanize: 0
   namespace::autoclean: 0
+  perl: 5.008
   version: 0.86
-resources:
-  license: http://dev.perl.org/licenses/
-version: 0.091000
+version: 0.91.00_01

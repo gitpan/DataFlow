@@ -1,6 +1,10 @@
 
 package DataFlow::Node::URLRetriever::Get::Mechanize;
 
+BEGIN {
+    $DataFlow::Node::URLRetriever::Get::Mechanize::VERSION = '0.91.00_01';
+}
+
 use Moose::Role;
 
 use WWW::Mechanize;
@@ -22,4 +26,3 @@ sub _content {
 }
 
 1;
-

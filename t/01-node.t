@@ -46,4 +46,3 @@ ok( $uc->output eq 'BASE' );
 
 $uc->flush;
 ok( !$uc->output );
-

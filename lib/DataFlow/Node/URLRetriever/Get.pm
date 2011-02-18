@@ -1,4 +1,8 @@
 package DataFlow::Node::URLRetriever::Get;
+
+BEGIN {
+    $DataFlow::Node::URLRetriever::Get::VERSION = '0.91.00_01';
+}
 use Moose;
 
 with 'MooseX::Traits';
@@ -95,4 +99,3 @@ sub post {
 }
 
 1;
-

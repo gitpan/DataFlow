@@ -1,6 +1,10 @@
 
 package DataFlow::Node::FileData;
 
+BEGIN {
+    $DataFlow::Node::FileData::VERSION = '0.91.00_01';
+}
+
 use Moose;
 use MooseX::Types::IO 'IO';
 
@@ -104,5 +108,6 @@ override 'process_input' => sub {
     $self->_add_output( $self->_handle_list(@item) );
 };
 
-1;
+__PACKAGE__->meta->make_immutable;
 
+1;

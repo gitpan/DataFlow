@@ -1,5 +1,9 @@
 package DataFlow::Meta;
 
+BEGIN {
+    $DataFlow::Meta::VERSION = '0.91.00_01';
+}
+
 use Moose;
 use DateTime;
 
@@ -10,6 +14,8 @@ has author       => ( is => 'rw', isa => 'Str', );
 has original     => ( is => 'rw', isa => 'Str', );
 has restrictions => ( is => 'rw', isa => 'Str', );
 
+__PACKAGE__->meta->make_immutable;
+
 1;
 
 __END__
@@ -19,6 +25,10 @@ __END__
 =head1 NAME
 
 DataFlow::Meta - Meta-data required for DataFlow::Item
+
+=head1 VERSION
+
+version 0.91.00_01
 
 =head1 SYNOPSIS
 
