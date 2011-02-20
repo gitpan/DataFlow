@@ -27,7 +27,8 @@ requires:
   Scalar::Util: 0
   Text::CSV: 0
   WWW::Mechanize: 0
+  common::sense: 0
   namespace::autoclean: 0
   perl: 5.008
   version: 0.86
-version: 0.91.01
+version: 0.91.02

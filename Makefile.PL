@@ -7,7 +7,7 @@ use inc::Module::Install 1.00;
 name 'DataFlow';
 abstract "A\ generic\ processing\ node\ in\ a\ data\ flow";
 author "Alexei\ Znamensky\ \<russoz\@cpan\.org\>";
-version "0\.91\.01";
+version "0\.91\.02";
 license "perl";
 
 # configure requires => configure_requires
@@ -29,6 +29,7 @@ requires  "SQL\:\:Abstract" => "0";
 requires  "Scalar\:\:Util" => "0";
 requires  "Text\:\:CSV" => "0";
 requires  "WWW\:\:Mechanize" => "0";
+requires  "common\:\:sense" => "0";
 requires  "namespace\:\:autoclean" => "0";
 perl_version "5\.008";
 requires  "version" => "0\.86";

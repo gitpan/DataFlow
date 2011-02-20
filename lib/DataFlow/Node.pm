@@ -1,7 +1,7 @@
 package DataFlow::Node;
 
 BEGIN {
-    $DataFlow::Node::VERSION = '0.91.01';
+    $DataFlow::Node::VERSION = '0.91.02';
 }
 
 use Moose;
@@ -278,7 +278,7 @@ DataFlow::Node - A generic processing node in a data flow
 
 =head1 VERSION
 
-version 0.91.01
+version 0.91.02
 
 =head1 SYNOPSIS
 

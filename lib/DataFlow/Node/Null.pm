@@ -1,7 +1,7 @@
 package DataFlow::Node::Null;
 
 BEGIN {
-    $DataFlow::Node::Null::VERSION = '0.91.01';
+    $DataFlow::Node::Null::VERSION = '0.91.02';
 }
 
 use Moose;
@@ -23,7 +23,7 @@ DataFlow::Node::Null - A null node, will discard any input and return undef in t
 
 =head1 VERSION
 
-version 0.91.01
+version 0.91.02
 
 =head1 SYNOPSIS
 

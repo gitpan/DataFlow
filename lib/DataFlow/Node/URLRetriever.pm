@@ -2,7 +2,7 @@
 package DataFlow::Node::URLRetriever;
 
 BEGIN {
-    $DataFlow::Node::URLRetriever::VERSION = '0.91.01';
+    $DataFlow::Node::URLRetriever::VERSION = '0.91.02';
 }
 
 use Moose;

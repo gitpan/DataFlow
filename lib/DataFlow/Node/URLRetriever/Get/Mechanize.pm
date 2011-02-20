@@ -2,7 +2,7 @@
 package DataFlow::Node::URLRetriever::Get::Mechanize;
 
 BEGIN {
-    $DataFlow::Node::URLRetriever::Get::Mechanize::VERSION = '0.91.01';
+    $DataFlow::Node::URLRetriever::Get::Mechanize::VERSION = '0.91.02';
 }
 
 use Moose::Role;

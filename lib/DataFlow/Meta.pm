@@ -1,7 +1,7 @@
 package DataFlow::Meta;
 
 BEGIN {
-    $DataFlow::Meta::VERSION = '0.91.01';
+    $DataFlow::Meta::VERSION = '0.91.02';
 }
 
 use Moose;
@@ -28,7 +28,7 @@ DataFlow::Meta - Meta-data required for DataFlow::Item
 
 =head1 VERSION
 
-version 0.91.01
+version 0.91.02
 
 =head1 SYNOPSIS
 

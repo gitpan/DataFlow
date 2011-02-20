@@ -2,7 +2,7 @@
 package DataFlow::Node::SQL;
 
 BEGIN {
-    $DataFlow::Node::SQL::VERSION = '0.91.01';
+    $DataFlow::Node::SQL::VERSION = '0.91.02';
 }
 
 use Moose;
