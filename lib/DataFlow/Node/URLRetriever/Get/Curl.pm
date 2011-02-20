@@ -2,7 +2,7 @@
 package DataFlow::Node::URLRetriever::Get::Curl;
 
 BEGIN {
-    $DataFlow::Node::URLRetriever::Get::Curl::VERSION = '0.91.02';
+    $DataFlow::Node::URLRetriever::Get::Curl::VERSION = '0.91.03';
 }
 
 use Moose::Role;

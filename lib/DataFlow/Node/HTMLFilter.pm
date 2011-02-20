@@ -2,7 +2,7 @@
 package DataFlow::Node::HTMLFilter;
 
 BEGIN {
-    $DataFlow::Node::HTMLFilter::VERSION = '0.91.02';
+    $DataFlow::Node::HTMLFilter::VERSION = '0.91.03';
 }
 
 use Moose;
@@ -76,7 +76,7 @@ DataFlow::Node::HTMLFilter - A filter node for HTML content.
 
 =head1 VERSION
 
-version 0.91.02
+version 0.91.03
 
 =head1 SYNOPSIS
 

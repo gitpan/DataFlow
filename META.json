@@ -32,6 +32,7 @@
             "List::Util" : 0,
             "Moose" : 0,
             "MooseX::OneArgNew" : 0,
+            "MooseX::Traits" : 0,
             "MooseX::Types::IO" : 0,
             "Queue::Base" : "2.0",
             "SQL::Abstract" : 0,
@@ -46,11 +47,13 @@
       },
       "test" : {
          "requires" : {
+            "Test::More" : 0,
+            "Test::UseAllModules" : 0,
             "aliased" : 0
          }
       }
    },
    "release_status" : "stable",
-   "version" : "0.91.02"
+   "version" : "0.91.03"
 }
 

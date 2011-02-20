@@ -1,7 +1,7 @@
 package DataFlow::Node::Dumper;
 
 BEGIN {
-    $DataFlow::Node::Dumper::VERSION = '0.91.02';
+    $DataFlow::Node::Dumper::VERSION = '0.91.03';
 }
 
 use Moose;
@@ -34,7 +34,7 @@ DataFlow::Node::Dumper - Dumper node, will print every input item to STDERR with
 
 =head1 VERSION
 
-version 0.91.02
+version 0.91.03
 
 =head1 SYNOPSIS
 

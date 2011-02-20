@@ -2,7 +2,7 @@
 package DataFlow::Node::LiteralData;
 
 BEGIN {
-    $DataFlow::Node::LiteralData::VERSION = '0.91.02';
+    $DataFlow::Node::LiteralData::VERSION = '0.91.03';
 }
 
 use Moose;

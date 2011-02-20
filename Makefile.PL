@@ -7,7 +7,7 @@ use inc::Module::Install 1.00;
 name 'DataFlow';
 abstract "A\ generic\ processing\ node\ in\ a\ data\ flow";
 author "Alexei\ Znamensky\ \<russoz\@cpan\.org\>";
-version "0\.91\.02";
+version "0\.91\.03";
 license "perl";
 
 # configure requires => configure_requires
@@ -23,6 +23,7 @@ requires  "List\:\:MoreUtils" => "0";
 requires  "List\:\:Util" => "0";
 requires  "Moose" => "0";
 requires  "MooseX\:\:OneArgNew" => "0";
+requires  "MooseX\:\:Traits" => "0";
 requires  "MooseX\:\:Types\:\:IO" => "0";
 requires  "Queue\:\:Base" => "2\.0";
 requires  "SQL\:\:Abstract" => "0";
@@ -37,6 +38,8 @@ requires  "version" => "0\.86";
 # runtime recommends => recommends
 
 # test requires => test_requires
+test_requires  "Test\:\:More" => "0";
+test_requires  "Test\:\:UseAllModules" => "0";
 test_requires  "aliased" => "0";
 
 # :ExecFiles

@@ -2,7 +2,7 @@
 package DataFlow::Node::Encoding;
 
 BEGIN {
-    $DataFlow::Node::Encoding::VERSION = '0.91.02';
+    $DataFlow::Node::Encoding::VERSION = '0.91.03';
 }
 
 use Moose;

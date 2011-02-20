@@ -2,7 +2,7 @@
 package DataFlow::Node::Debug;
 
 BEGIN {
-    $DataFlow::Node::Debug::VERSION = '0.91.02';
+    $DataFlow::Node::Debug::VERSION = '0.91.03';
 }
 
 use Moose;

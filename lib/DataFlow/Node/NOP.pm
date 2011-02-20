@@ -1,7 +1,7 @@
 package DataFlow::Node::NOP;
 
 BEGIN {
-    $DataFlow::Node::NOP::VERSION = '0.91.02';
+    $DataFlow::Node::NOP::VERSION = '0.91.03';
 }
 
 use Moose;
@@ -27,7 +27,7 @@ DataFlow::Node::NOP - A No-Op node, input data is passed unmodified to the outpu
 
 =head1 VERSION
 
-version 0.91.02
+version 0.91.03
 
 =head1 SYNOPSIS
 
