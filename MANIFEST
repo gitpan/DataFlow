@@ -17,12 +17,12 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
+lib/DataFlow.pm
 lib/DataFlow/Chain.pm
 lib/DataFlow/Item.pm
 lib/DataFlow/Meta.pm
 lib/DataFlow/Node.pm
 lib/DataFlow/Node/CSV.pm
-lib/DataFlow/Node/Debug.pm
 lib/DataFlow/Node/Dumper.pm
 lib/DataFlow/Node/Encoding.pm
 lib/DataFlow/Node/FileData.pm
@@ -38,6 +38,7 @@ lib/DataFlow/Node/URLRetriever/Get/Curl.pm
 lib/DataFlow/Node/URLRetriever/Get/Mechanize.pm
 scripts/df-portaltransparencia.pl
 scripts/tidy
+t/00-compile.t
 t/00-load.t
 t/01-node.t
 t/02-nop.t
@@ -53,6 +54,13 @@ t/21-filedata.t
 t/60-multipageurlgenerator.t
 t/62-urlretriever.t
 t/64-htmlfilter.t
+t/author-critic.t
+t/release-distmeta.t
 t/release-eol.t
+t/release-has-version.t
+t/release-kwalitee.t
 t/release-notabs.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t
 t/release-unused-vars.t
+weaver.ini

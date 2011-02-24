@@ -1,8 +1,12 @@
 package DataFlow::Node::URLRetriever::Get;
 
-BEGIN {
-    $DataFlow::Node::URLRetriever::Get::VERSION = '0.91.03';
-}
+#ABSTRACT: A HTTP Getter
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
+
 use Moose;
 
 with 'MooseX::Traits';
@@ -40,7 +44,7 @@ has obj => (
     default   => sub {
         my $self = shift;
         my $mod  = q{DataFlow::Node::URLRetriever::Get::} . $self->browser;
-        eval "with q($mod)";
+        eval { with $mod };
         $self->confess($@) if $@;
         return $self->_make_obj;
     },
@@ -62,7 +66,7 @@ has content_sub => (
         my $self = shift;
         my $mod  = q{DataFlow::Node::URLRetriever::Get::} . $self->browser;
 
-        eval "with q($mod)";
+        eval { with $mod };
         $self->confess($@) if $@;
 
         return sub { return $self->_content(shift); }
@@ -96,6 +100,40 @@ sub post {
         my $content = $self->obj->post( $url, $form, $self->referer );
         return $self->content_sub->($content) if $content;
     }
+    return;
 }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+DataFlow::Node::URLRetriever::Get - A HTTP Getter
+
+=head1 VERSION
+
+version 0.91.04
+
+=head2 get URL
+
+Issues a HTTP GET request to the URL
+
+=head2 post URL
+
+Issues a HTTP POST request to the URL
+
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

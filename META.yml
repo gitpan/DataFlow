@@ -1,12 +1,16 @@
 ---
-abstract: 'A generic processing node in a data flow'
+abstract: 'A framework for dataflow processing'
 author:
   - 'Alexei Znamensky <russoz@cpan.org>'
 build_requires:
+  English: 0
   ExtUtils::MakeMaker: 6.42
+  File::Find: 0
+  File::Temp: 0
   Test::More: 0
   Test::UseAllModules: 0
   aliased: 0
+  common::sense: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 dynamic_config: 0
@@ -17,21 +21,31 @@ meta-spec:
   version: 1.4
 name: DataFlow
 requires:
+  Carp: 0
+  Data::Dumper: 0
+  DateTime: 0
+  Encode: 0
   HTML::TreeBuilder::XPath: 0
   LWP::Curl: 0
   List::MoreUtils: 0
   List::Util: 0
   Moose: 0
+  Moose::Role: 0
+  Moose::Util::TypeConstraints: 0
   MooseX::OneArgNew: 0
   MooseX::Traits: 0
   MooseX::Types::IO: 0
   Queue::Base: 2.0
+  Readonly: 0
   SQL::Abstract: 0
   Scalar::Util: 0
   Text::CSV: 0
   WWW::Mechanize: 0
   common::sense: 0
   namespace::autoclean: 0
-  perl: 5.008
+  perl: 5.006
   version: 0.86
-version: 0.91.03
+resources:
+  bugtracker: http://github.com/russoz/DataFlow/issues
+  repository: git://github.com/russoz/DataFlow.git
+version: 0.91.04

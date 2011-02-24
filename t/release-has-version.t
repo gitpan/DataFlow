@@ -10,7 +10,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Vars";
-plan skip_all => "Test::Vars required for testing unused vars"
+eval "use Test::HasVersion";
+plan skip_all => "Test::HasVersion required for testing version numbers"
   if $@;
-all_vars_ok();
+all_pm_version_ok();

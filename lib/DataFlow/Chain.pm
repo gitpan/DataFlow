@@ -1,8 +1,11 @@
 package DataFlow::Chain;
 
-BEGIN {
-    $DataFlow::Chain::VERSION = '0.91.03';
-}
+#ABSTRACT: A "super-node" that can link a sequence of nodes
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -16,8 +19,8 @@ has links => (
     required => 1,
 );
 
-sub _first_link { shift->links->[0] }
-sub _last_link  { shift->links->[-1] }
+sub _first_link { return shift->links->[0] }
+sub _last_link  { return shift->links->[-1] }
 
 has '+process_item' => (
     default => sub {
@@ -76,8 +79,6 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
-
 =pod
 
 =head1 NAME
@@ -86,7 +87,7 @@ DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 VERSION
 
-version 0.91.03
+version 0.91.04
 
 =head1 SYNOPSIS
 
@@ -123,6 +124,10 @@ C<DataFlow::Node>, but it injects that input into the first link of the
 chain, and pumps the output of each link into the input of the next one,
 similarly to pipes in a shell command line. The output of the last link of the
 chain will be used as the output of the entire chain.
+
+=head1 NAME
+
+DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 ATTRIBUTES
 
@@ -186,4 +191,17 @@ FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+__END__

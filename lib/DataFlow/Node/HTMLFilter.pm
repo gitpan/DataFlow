@@ -1,9 +1,11 @@
-
 package DataFlow::Node::HTMLFilter;
 
-BEGIN {
-    $DataFlow::Node::HTMLFilter::VERSION = '0.91.03';
-}
+#ABSTRACT: A HTML filtering node
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -66,17 +68,15 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
-
 =pod
 
 =head1 NAME
 
-DataFlow::Node::HTMLFilter - A filter node for HTML content.
+DataFlow::Node::HTMLFilter - A HTML filtering node
 
 =head1 VERSION
 
-version 0.91.03
+version 0.91.04
 
 =head1 SYNOPSIS
 
@@ -112,6 +112,10 @@ version 0.91.03
 This node type provides a filter for HTML content.
 Each item will be considered as a HTML content and will be filtered
 using L<HTML::TreeBuilder::XPath>.
+
+=head1 NAME
+
+DataFlow::Node::HTMLFilter - A filter node for HTML content.
 
 =head1 ATTRIBUTES
 
@@ -213,4 +217,17 @@ FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+__END__

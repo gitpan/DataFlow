@@ -5,9 +5,9 @@ use warnings;
 # Do not modify this file, instead, modify the dist.ini that configures its generation.
 use inc::Module::Install 1.00;
 name 'DataFlow';
-abstract "A\ generic\ processing\ node\ in\ a\ data\ flow";
+abstract "A\ framework\ for\ dataflow\ processing";
 author "Alexei\ Znamensky\ \<russoz\@cpan\.org\>";
-version "0\.91\.03";
+version "0\.91\.04";
 license "perl";
 
 # configure requires => configure_requires
@@ -17,30 +17,41 @@ configure_requires  "ExtUtils\:\:MakeMaker" => "6\.42";
 requires  "ExtUtils\:\:MakeMaker" => "6\.42";
 
 # runtime requires => requires
+requires  "Carp" => "0";
+requires  "Data\:\:Dumper" => "0";
+requires  "DateTime" => "0";
+requires  "Encode" => "0";
 requires  "HTML\:\:TreeBuilder\:\:XPath" => "0";
 requires  "LWP\:\:Curl" => "0";
 requires  "List\:\:MoreUtils" => "0";
 requires  "List\:\:Util" => "0";
 requires  "Moose" => "0";
+requires  "Moose\:\:Role" => "0";
+requires  "Moose\:\:Util\:\:TypeConstraints" => "0";
 requires  "MooseX\:\:OneArgNew" => "0";
 requires  "MooseX\:\:Traits" => "0";
 requires  "MooseX\:\:Types\:\:IO" => "0";
 requires  "Queue\:\:Base" => "2\.0";
+requires  "Readonly" => "0";
 requires  "SQL\:\:Abstract" => "0";
 requires  "Scalar\:\:Util" => "0";
 requires  "Text\:\:CSV" => "0";
 requires  "WWW\:\:Mechanize" => "0";
 requires  "common\:\:sense" => "0";
 requires  "namespace\:\:autoclean" => "0";
-perl_version "5\.008";
+perl_version "5\.006";
 requires  "version" => "0\.86";
 
 # runtime recommends => recommends
 
 # test requires => test_requires
+test_requires  "English" => "0";
+test_requires  "File\:\:Find" => "0";
+test_requires  "File\:\:Temp" => "0";
 test_requires  "Test\:\:More" => "0";
 test_requires  "Test\:\:UseAllModules" => "0";
 test_requires  "aliased" => "0";
+test_requires  "common\:\:sense" => "0";
 
 # :ExecFiles
 WriteAll();

@@ -1,8 +1,11 @@
 package DataFlow::Node::Null;
 
-BEGIN {
-    $DataFlow::Node::Null::VERSION = '0.91.03';
-}
+#ABSTRACT: A null node, will discard any input and return undef in the output
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node::NOP';
@@ -13,8 +16,6 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
-
 =pod
 
 =head1 NAME
@@ -23,7 +24,7 @@ DataFlow::Node::Null - A null node, will discard any input and return undef in t
 
 =head1 VERSION
 
-version 0.91.03
+version 0.91.04
 
 =head1 SYNOPSIS
 
@@ -38,6 +39,10 @@ version 0.91.03
 
 This class represents a null node: it will return undef regardless of any input
 provided to it.
+
+=head1 NAME
+
+DataFlow::Node::Null - A null node, will discard any input and return undef in the output
 
 =head1 METHODS
 
@@ -92,4 +97,17 @@ FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+__END__

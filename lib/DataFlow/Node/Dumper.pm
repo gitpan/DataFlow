@@ -1,8 +1,11 @@
 package DataFlow::Node::Dumper;
 
-BEGIN {
-    $DataFlow::Node::Dumper::VERSION = '0.91.03';
-}
+#ABSTRACT: A debugging node that will dump data to STDERR
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -24,17 +27,15 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
-
 =pod
 
 =head1 NAME
 
-DataFlow::Node::Dumper - Dumper node, will print every input item to STDERR with Data::Dumper
+DataFlow::Node::Dumper - A debugging node that will dump data to STDERR
 
 =head1 VERSION
 
-version 0.91.03
+version 0.91.04
 
 =head1 SYNOPSIS
 
@@ -49,6 +50,10 @@ version 0.91.03
 
 Dumper node. Every item passed to its input will be printed in the C<STDERR>
 file handle, using L<Data::Dumper>.
+
+=head1 NAME
+
+DataFlow::Node::Dumper - Dumper node, will print every input item to STDERR with Data::Dumper
 
 =head1 METHODS
 
@@ -105,4 +110,17 @@ FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+__END__

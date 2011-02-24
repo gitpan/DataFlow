@@ -1,8 +1,11 @@
 package DataFlow::Item;
 
-BEGIN {
-    $DataFlow::Item::VERSION = '0.91.03';
-}
+#ABSTRACT: A piece of information to be processed
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose;
 use DataFlow::Meta;
@@ -21,17 +24,15 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-__END__
-
 =pod
 
 =head1 NAME
 
-DataFlow::Item - A DataFlow item with the associated metadata
+DataFlow::Item - A piece of information to be processed
 
 =head1 VERSION
 
-version 0.91.03
+version 0.91.04
 
 =head1 SYNOPSIS
 
@@ -39,12 +40,9 @@ version 0.91.03
 
 =head1 DESCRIPTION
 
-
 =head1 ATTRIBUTES
 
-
 =head1 METHODS
-
 
 =head1 DEPENDENCIES
 
@@ -86,7 +84,6 @@ Please report any bugs or feature requests to
 C<bug-dataflow@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
-
 =head1 AUTHOR
 
 Alexei Znamensky  C<< <russoz@cpan.org> >>
@@ -121,4 +118,17 @@ FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+__END__

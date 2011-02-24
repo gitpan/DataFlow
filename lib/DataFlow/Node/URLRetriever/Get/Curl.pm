@@ -1,12 +1,13 @@
-
 package DataFlow::Node::URLRetriever::Get::Curl;
 
-BEGIN {
-    $DataFlow::Node::URLRetriever::Get::Curl::VERSION = '0.91.03';
-}
+#ABSTRACT: A HTTP Getter implementation using Curl
+
+use strict;
+use warnings;
+
+our $VERSION = '0.91.04';    # VERSION
 
 use Moose::Role;
-
 use LWP::Curl;
 
 sub _make_obj {
@@ -14,3 +15,28 @@ sub _make_obj {
 }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+DataFlow::Node::URLRetriever::Get::Curl - A HTTP Getter implementation using Curl
+
+=head1 VERSION
+
+version 0.91.04
+
+=head1 AUTHOR
+
+Alexei Znamensky <russoz@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Alexei Znamensky.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
