@@ -5,7 +5,7 @@ package DataFlow::Node::CSV;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.04';    # VERSION
+our $VERSION = '0.91.05';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -79,7 +79,7 @@ DataFlow::Node::CSV - A CSV converting node
 
 =head1 VERSION
 
-version 0.91.04
+version 0.91.05
 
 =head1 AUTHOR
 

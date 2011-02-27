@@ -5,7 +5,7 @@ package DataFlow::Node::LiteralData;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.04';    # VERSION
+our $VERSION = '0.91.05';    # VERSION
 
 use Moose;
 with(
@@ -46,7 +46,7 @@ DataFlow::Node::LiteralData - A node provides its initialization data for flow p
 
 =head1 VERSION
 
-version 0.91.04
+version 0.91.05
 
 =head1 AUTHOR
 

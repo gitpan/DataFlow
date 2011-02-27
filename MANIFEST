@@ -9,14 +9,6 @@ README
 TODO
 dist.ini
 examples/filedata.test
-inc/Module/Install.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/DataFlow.pm
 lib/DataFlow/Chain.pm
 lib/DataFlow/Item.pm
@@ -40,6 +32,7 @@ scripts/df-portaltransparencia.pl
 scripts/tidy
 t/00-compile.t
 t/00-load.t
+t/000-report-versions.t
 t/01-node.t
 t/02-nop.t
 t/03-null.t

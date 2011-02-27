@@ -1,6 +1,24 @@
 Revision History for DataFlow
 =============================
 
+0.91.05
+-------
+
+commit cdba91eeeb889190af44942745d7fd19a98aa731
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed unnecessary POD sections
+
+commit 83a097595cfb223ec7ce0950df46c9f322b9cca1
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    using @Basic, bumped version to 0.91.05
+
+commit 056d50f68affdc3514ae1d187249d4b4459cf084
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed Readonly from the dependencies list
+
 ===================================
 End of changes in the last 365 days
 ===================================
