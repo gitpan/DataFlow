@@ -5,17 +5,14 @@ package DataFlow::Node::LiteralData;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 use Moose;
-with(
-    'MooseX::OneArgNew' => {
-        type     => 'Any',
-        init_arg => 'data',
-    }
-);
-
-extends 'DataFlow::Node::Null';
+extends 'DataFlow::Node::NOP';
+with 'MooseX::OneArgNew' => {
+    type     => 'Any',
+    init_arg => 'data',
+};
 
 has data => (
     is        => 'ro',
@@ -32,6 +29,8 @@ has data => (
     },
 );
 
+override 'input' => sub { };
+
 __PACKAGE__->meta->make_immutable;
 
 1;
@@ -46,7 +45,7 @@ DataFlow::Node::LiteralData - A node provides its initialization data for flow p
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 AUTHOR
 

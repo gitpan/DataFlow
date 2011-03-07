@@ -5,14 +5,14 @@ package DataFlow::Node::NOP;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
 
 has '+process_item' => (
     default => sub {
-        return sub { shift; return shift; }
+        return sub { shift; my $item = shift; return $item; }
     },
 );
 
@@ -28,7 +28,7 @@ DataFlow::Node::NOP - A No-Op node, input data is passed unmodified to the outpu
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 SYNOPSIS
 

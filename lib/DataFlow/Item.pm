@@ -5,7 +5,7 @@ package DataFlow::Item;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 use Moose;
 use DataFlow::Meta;
@@ -32,7 +32,7 @@ DataFlow::Item - A piece of information to be processed
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 SYNOPSIS
 

@@ -1,8 +1,42 @@
 Revision History for DataFlow
 =============================
 
-0.91.05
--------
+0.91.06 2011-03-06
+------------------
+
+commit be289df5d54d926ca0d123d4e4b7c301ab5478aa
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    release 0.91.06
+
+commit a37cf8351185d1d9a3eb16622f810193721b94c7
+Merge: ee61f48 5e9d315
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'feature/internal_dumper' into develop
+
+commit 5e9d315b7dba1f8bad4813e143dea797f58cf98e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added internal dumper feature
+
+commit ee61f48ea853cc9bb98b67d926188f79a6f0cc52
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    process_into is now enabled by default
+
+commit 73a575e65788f881cdf6e653c0ba688382d966e3
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    things to-do update
+
+commit d0c14c0a5917fa0ed770daaa76c283fb8f786d7e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed some debugging comments
+
+v0.91.05 2011-02-27
+-------------------
 
 commit cdba91eeeb889190af44942745d7fd19a98aa731
 Author: Alexei Znamensky <russoz@cpan.org>
@@ -18,6 +52,50 @@ commit 056d50f68affdc3514ae1d187249d4b4459cf084
 Author: Alexei Znamensky <russoz@cpan.org>
 
     removed Readonly from the dependencies list
+
+v0.91.04 2011-02-23
+-------------------
+
+commit dfc6fdf9df5e2046d7a0245cf51d0d6306480453
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added DataFlow.pm, abstract to all modules
+
+commit b613f0028a166d48db10fe9d855a183072cb8961
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added a DataFlow.pm, mostly for documentation
+
+commit 578720e685ce64f3c421d482666852ef5525765b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    multiple changes
+
+commit bc5db7c42566d71dcf01e232932e7b642ec9c857
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added weaver.ini for Pod::Weaver
+
+commit b21c2d54b8cea210244684304d60711c71a138cc
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    small change in section order
+
+v0.91.03 2011-02-20
+-------------------
+
+commit dcee3f88c1c00a4ae516720979cf063e4fc6e155
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    missing dependencies
+
+v0.91.01 2011-02-18
+-------------------
+
+commit 2b765d4c756be1b61a0d1cdf69fd2bf5d4a580c6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    bumped to 0.91.01
 
 ===================================
 End of changes in the last 365 days

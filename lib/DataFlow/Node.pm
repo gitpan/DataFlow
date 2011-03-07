@@ -5,7 +5,7 @@ package DataFlow::Node;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 use Moose;
 
@@ -20,18 +20,21 @@ has name => (
 has deref => (
     is      => 'ro',
     isa     => 'Bool',
+    lazy    => 1,
     default => 0,
 );
 
 has process_into => (
     is      => 'ro',
     isa     => 'Bool',
-    default => 0,
+    lazy    => 1,
+    default => 1,
 );
 
 has auto_process => (
     is      => 'ro',
     isa     => 'Bool',
+    lazy    => 1,
     default => 1,
 );
 
@@ -40,8 +43,50 @@ has initial_data => (
     isa     => 'ArrayRef',
     trigger => sub {
         my ( $self, $new ) = @_;
-        $self->_add_input( @{$new} );
+        $self->input( @{$new} );
     },
+);
+
+has _dumper => (
+    is      => 'ro',
+    isa     => 'CodeRef',
+    lazy    => 1,
+    default => sub {
+        use Data::Dumper;
+        return sub {
+            return Dumper(@_);
+        };
+    },
+    handles => {
+        prefix_dumper => sub {
+            my ( $self, $prefix, @args ) = @_;
+            print STDERR $prefix;
+            if (@args) {
+                print STDERR ' ' . $self->_dumper->(@args);
+            }
+            else {
+                print STDERR "\n";
+            }
+        },
+        raw_dumper => sub {
+            my $self = shift;
+            print STDERR $self->_dumper->(@_);
+        },
+    },
+);
+
+has dump_input => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => 0,
+);
+
+has dump_output => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => 0,
 );
 
 has process_item => (
@@ -58,20 +103,19 @@ has 'inputq' => (
     isa     => 'Queue::Base',
     default => sub { Queue::Base->new },
     handles => {
-        _add_input      => 'add',
-        input           => 'add',
-        _is_input_empty => 'empty',
-        _dequeue_input  => sub {
-            my $self = shift;
-            return
-              wantarray ? $self->inputq->remove_all : $self->inputq->remove;
-        },
-        clear_input => 'clear',
-        has_input   => sub {
-            return !shift->inputq->empty;
-        },
+        _add_input => 'add',
+        input      => sub { my $self = shift; return $self->_add_input(@_); },
+        _dequeue_input => sub { return shift->inputq->remove(1); },
+        clear_input    => 'clear',
+        has_input      => sub { return !shift->inputq->empty; },
     },
 );
+
+before '_add_input' => sub {
+    my $self = shift;
+    return unless @_;
+    $self->prefix_dumper( '>>>', @_ ) if $self->dump_input;
+};
 
 sub process_input {
     my $self = shift;
@@ -92,10 +136,8 @@ has 'outputq' => (
     isa     => 'Queue::Base',
     default => sub { Queue::Base->new },
     handles => {
-        _add_output         => 'add',
-        _is_output_empty    => 'empty',
-        _clear_output_queue => 'clear',
-        _dequeue_output     => sub {
+        _add_output     => 'add',
+        _dequeue_output => sub {
             my $self = shift;
             return
               wantarray ? $self->outputq->remove_all : $self->outputq->remove;
@@ -105,6 +147,12 @@ has 'outputq' => (
         },
     },
 );
+
+before '_add_output' => sub {
+    my $self = shift;
+    return unless @_;
+    $self->prefix_dumper( '<<<', @_ ) if $self->dump_output;
+};
 
 sub output {
     my $self = shift;
@@ -147,6 +195,7 @@ sub process {
 has '_errorq' => (
     is      => 'ro',
     isa     => 'Queue::Base',
+    lazy    => 1,
     default => sub { Queue::Base->new },
     handles => {
         _enqueue_error  => 'add',
@@ -275,7 +324,7 @@ DataFlow::Node - A generic processing node in a data flow
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 SYNOPSIS
 

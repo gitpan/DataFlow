@@ -5,7 +5,7 @@ package DataFlow;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 1;
 
@@ -19,7 +19,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 SYNOPSIS
 

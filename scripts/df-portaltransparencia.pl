@@ -13,7 +13,8 @@ use aliased 'DataFlow::Node::NOP';
 use aliased 'DataFlow::Node::HTMLFilter';
 use aliased 'DataFlow::Node::URLRetriever';
 use aliased 'DataFlow::Node::MultiPageURLGenerator';
-use aliased 'DataFlow::Node::Dumper' => 'DumperNode';
+
+#use aliased 'DataFlow::Node::Dumper' => 'DumperNode';
 use aliased 'DataFlow::Node::SQL';
 
 my $base = join( '/',
@@ -22,9 +23,7 @@ my $base = join( '/',
 
 my $chain = Chain->new(
     links => [
-        LiteralData->new($base),
-
-        #DumperNode->new,
+        LiteralData->new( data => $base, ),
         MultiPageURLGenerator->new(
             name       => 'multipage',
             first_page => -2,
@@ -58,34 +57,18 @@ my $chain = Chain->new(
                 return $u->as_string;
             },
         ),
-        NOP->new( deref => 1, name => 'nop' ),
-
-#Node->new( name => 'snoopy', process_item => sub { no strict; use Data::Dumper; print STDERR 'snoop: '.Dumper(eval '$chain')."\n" } ),
-#DumperNode->new,
+        NOP->new( deref => 1, name => 'nop', ),
         URLRetriever->new( process_into => 1, ),
-
-        #DumperNode->new,
         HTMLFilter->new(
             process_into => 1,
             search_xpath =>
               '//div[@id="listagemEmpresasSancionadas"]/table/tbody/tr',
         ),
-
-        #DumperNode->new,
         HTMLFilter->new(
             search_xpath => '//td',
             result_type  => 'VALUE',
             ref_result   => 1,
         ),
-
-        #DumperNode->new,
-
-        #Node->new(
-        #    process_into => 1,
-        #    process_item => sub {
-        #        shift; print STDERR 'type = ', shift, "\n";
-        #    },
-        #),
         Node->new(
             process_into => 1,
             process_item => sub {
@@ -96,9 +79,7 @@ my $chain = Chain->new(
                 return $_;
             }
         ),
-
-        #SQL->new( table => 'ceis' ),
-        DumperNode->new,
+        NOP->new( dump_output => 1 ),
     ],
 );
 

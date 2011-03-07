@@ -48,7 +48,7 @@ my %WriteMakefileArgs = (
     'Text::CSV' => '0',
     'WWW::Mechanize' => '0'
   },
-  'VERSION' => '0.91.05',
+  'VERSION' => '0.91.06',
   'test' => {
     'TESTS' => 't/*.t'
   }

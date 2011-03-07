@@ -5,7 +5,7 @@ package DataFlow::Chain;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.05';    # VERSION
+our $VERSION = '0.91.06';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -87,7 +87,7 @@ DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 VERSION
 
-version 0.91.05
+version 0.91.06
 
 =head1 SYNOPSIS
 
