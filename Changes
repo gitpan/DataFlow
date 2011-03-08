@@ -1,8 +1,117 @@
 Revision History for DataFlow
 =============================
 
-0.91.07
+0.91.08
 -------
+
+commit 32a8fab5767ce0a6018aec8f9cf1fddb30cd94d4
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit f473585fed4a83dc11ca4cca5d92369a544a628f
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added [Encoding] in weaver.ini
+
+commit 63c267c899da28d98c2c38a2040a21bac5d759e4
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    more ideas TODO
+
+commit 944c153a2fb732791b8bb101f2df10bc6779d7ac
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    improved CSV node
+
+commit 0f514b0e07bbb5bf4cc42a121b9e31e0bb7ee1a4
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    update on things to-do
+
+commit 99511c942dad1b81aaba64f637418d7c4569016d
+Merge: 08f316d 9ad0d4d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'feature/fileoutput' into develop
+
+commit 9ad0d4d4624e69647319df6375a001fa06963f05
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    revamp of file handling
+
+commit 08f316d948c59192b16c0d1df8bf2f0c7f7d3716
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added 'no Moose' to classes
+
+commit bdd06f5f20ae01fc45dae5f6b5509623dab168dd
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    written down some ideas TODO
+
+commit a2cc7c406d167dad9408edea4ebc72bf42121044
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added logic and tests for parameterized output
+
+commit 7b4cdd28e3d5afed4d675ac36300fc33df2886bc
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    version 0.91.07
+
+commit 9229f81b519bb2c76ec6ea2f430675cde8a7fe8a
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    updated the documentation
+
+commit 6f02d5d0ac2535da49a6f027c178764b8b7b89b7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    merged
+
+commit 70113d74c17c563568bb3af8989f9ebbe22e8788
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    replaced SourceGitHub with Availability, some Support options too
+
+commit f3f9c7ab798470ab23d4da403dd4fb2c4c78572b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added [Support], and shuffled sections order in weaver.ini
+
+commit 46ae7630c7d00150b32cbda7ee10e83f7cb164f8
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added [WarrantyDisclaimer] to weaver.ini
+
+commit 6121e97af7aeaf6969b13cc22455fca05e98e2c0
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added SourceGitHub and BugsAndLimitations to weaver.ini
+
+commit 4c1ad11043e51bb9baf3aa7285a7efecedd020d7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    refactored FileData
+
+commit f9c89d6eea97144a86ca71cd6d16d3a74512ca8a
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    release 0.91.06
+
+commit 20d387fcaac081a4616477217d0886f1428801c3
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added internal dumper feature
+
+commit 8564caa09377739628069b265a37167b4380c8de
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fileoutput sketch copied from fileinput
+
+v0.91.07 2011-03-07
+-------------------
 
 commit 5225801083e5be9732cae85180f0c274d43897f5
 Author: Alexei Znamensky <russoz@cpan.org>

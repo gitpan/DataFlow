@@ -1,11 +1,12 @@
 package DataFlow::Node::SQL;
 
-#ABSTRACT: A node that generates SQL clauses
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A node that generates SQL clauses
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -34,6 +35,7 @@ has '+process_item' => (
 );
 
 __PACKAGE__->meta->make_immutable;
+no Moose;
 
 1;
 
@@ -41,13 +43,15 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 DataFlow::Node::SQL - A node that generates SQL clauses
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 AUTHOR
 

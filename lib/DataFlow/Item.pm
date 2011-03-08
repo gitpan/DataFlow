@@ -1,11 +1,12 @@
 package DataFlow::Item;
 
-#ABSTRACT: A piece of information to be processed
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A piece of information to be processed
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose;
 use DataFlow::Meta;
@@ -21,10 +22,13 @@ has 'data' => (
 );
 
 __PACKAGE__->meta->make_immutable;
+no Moose;
 
 1;
 
 =pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -32,7 +36,7 @@ DataFlow::Item - A piece of information to be processed
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 SYNOPSIS
 

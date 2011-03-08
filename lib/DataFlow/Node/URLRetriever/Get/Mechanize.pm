@@ -1,11 +1,12 @@
 package DataFlow::Node::URLRetriever::Get::Mechanize;
 
-#ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose::Role;
 
@@ -33,13 +34,15 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 DataFlow::Node::URLRetriever::Get::Mechanize - A HTTP Getter implementation using WWW::Mechanize
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 AUTHOR
 

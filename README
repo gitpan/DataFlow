@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 0.91.07
+    version 0.91.08
 
 SYNOPSIS
             use DataFlow::Node;
@@ -33,9 +33,9 @@ DESCRIPTION
     DataFlow::Chain, to start with.
 
     An article has been recently written in Brazilian Portuguese about this
-    framework, per the São Paulo Perl Mongers "Equinócio" (Equinox)
-    virtual event. Although an English version of the article in in the
-    plans, you can figure a good deal out of the original one at
+    framework, per the São Paulo Perl Mongers "Equinócio" (Equinox) virtual
+    event. Although an English version of the article in in the plans, you
+    can figure a good deal out of the original one at
 
     <http://sao-paulo.pm.org/equinocio/2011/mar/5>
 

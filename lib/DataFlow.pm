@@ -1,11 +1,12 @@
 package DataFlow;
 
-#ABSTRACT: A framework for dataflow processing
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A framework for dataflow processing
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 1;
 
@@ -13,13 +14,15 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 SYNOPSIS
 

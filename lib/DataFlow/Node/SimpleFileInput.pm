@@ -1,91 +1,86 @@
-package DataFlow::Node::MultiPageURLGenerator;
+package DataFlow::Node::SimpleFileInput;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A node that generates multi-paged URL lists
+# ABSTRACT: A node that reads that from a file
 # ENCODING: utf8
 
 our $VERSION = '0.91.08';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Node::NOP';
+with 'DataFlow::Role::File';
 
-use Carp;
-
-has 'first_page' => (
-    'is'      => 'ro',
-    'isa'     => 'Int',
-    'default' => 1,
-);
-
-has 'last_page' => (
+has '_get_item' => (
     'is'       => 'ro',
-    'isa'      => 'Int',
+    'isa'      => 'CodeRef',
     'required' => 1,
     'lazy'     => 1,
     'default'  => sub {
         my $self = shift;
 
-        #warn 'last_page';
-        carp q{DataFlow::Node::MultiPageURLGenerator: paged_url not set!}
-          unless $self->has_paged_url;
-        return $self->produce_last_page->( $self->_paged_url );
-    },
-);
+        #use Data::Dumper; print STDERR Dumper($self);
 
-# calling convention for the sub:
-#   - $self
-#   - $url (Str)
-has 'produce_last_page' => (
-    'is'      => 'ro',
-    'isa'     => 'CodeRef',
-    'lazy'    => 1,
-    'default' => sub { shift->confess(q{produce_last_page not implemented!}); },
-);
-
-# calling convention for the sub:
-#   - $self
-#   - $paged_url (Str)
-#   - $page      (Int)
-has 'make_page_url' => (
-    'is'       => 'ro',
-    'isa'      => 'CodeRef',
-    'required' => 1,
-);
-
-has '_paged_url' => (
-    'is'        => 'rw',
-    'isa'       => 'Str',
-    'predicate' => 'has_paged_url',
-    'clearer'   => 'clear_paged_url',
-);
-
-has '+process_item' => (
-    'default' => sub {
         return sub {
-            my ( $self, $url ) = @_;
 
-            #warn 'multi page process item, url = '.$url;
-            $self->_paged_url($url);
+            #use Data::Dumper; print STDERR 'slurpy ' .Dumper($self);
+            my $fh    = $self->file;
+            my @slurp = <$fh>;
+            chomp @slurp unless $self->nochomp;
 
-            #use Data::Dumper;
-            #print STDERR Dumper($self);
-
-            my $first = $self->first_page;
-            my $last  = $self->last_page;
-            $first = 1 + $last + $first if $first < 0;
-
-            my @result =
-              map { $self->make_page_url->( $self, $url, $_ ) } $first .. $last;
-
-            #use Data::Dumper;
-            #warn 'url list = ' . Dumper($result);
-            $self->clear_paged_url;
-            return [@result];
+            #use Data::Dumper; print STDERR 'slurpy ' .Dumper([@slurp]);
+            return [@slurp];
           }
+          if $self->do_slurp;
+
+        # not a slurp, rather line by line
+        if ( $self->nochomp ) {
+            return sub {
+
+                #use Data::Dumper; print STDERR 'nochompy ' .Dumper($self);
+                my $fh   = $self->file;
+                my $item = <$fh>;
+                return $item;
+            };
+        }
+        else {
+            return sub {
+
+                #use Data::Dumper; print STDERR 'chompy ' .Dumper($self);
+                my $fh   = $self->file;
+                my $item = <$fh>;
+                chomp $item;
+                return $item;
+            };
+        }
     },
 );
+
+override 'process_input' => sub {
+    my $self = shift;
+
+    until ( $self->has_file ) {
+        return unless $self->has_input;
+        my $nextfile = $self->_dequeue_input;
+
+        eval { $self->file($nextfile) };
+        $self->confess($@) if $@;
+
+        # check for EOF
+        $self->_check_eof;
+    }
+
+    my @item = ( $self->_get_item->() );
+
+    #use Data::Dumper; print STDERR 'items '.Dumper( [ @item ] );
+
+    # check for EOF
+    $self->_check_eof;
+
+    # TODO some device to add multiple items (<infinity) to the output queue
+    $self->_add_output( $self->_handle_list(@item) );
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -100,7 +95,7 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::MultiPageURLGenerator - A node that generates multi-paged URL lists
+DataFlow::Node::SimpleFileInput - A node that reads that from a file
 
 =head1 VERSION
 

@@ -1,11 +1,12 @@
 package DataFlow::Chain;
 
-#ABSTRACT: A "super-node" that can link a sequence of nodes
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A "super-node" that can link a sequence of nodes
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -76,10 +77,13 @@ before 'flush' => sub {
 };
 
 __PACKAGE__->meta->make_immutable;
+no Moose;
 
 1;
 
 =pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -87,7 +91,7 @@ DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 SYNOPSIS
 

@@ -1,87 +1,40 @@
-package DataFlow::Node::FileInput;
-
-#ABSTRACT: A node that reads that from a file
+package DataFlow::Node::SimpleFileOutput;
 
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A node that writes data to a file
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node::NOP';
+extends 'DataFlow::Node';
 with 'DataFlow::Role::File';
 
-has '_get_item' => (
-    'is'       => 'ro',
-    'isa'      => 'CodeRef',
-    'required' => 1,
-    'lazy'     => 1,
-    'default'  => sub {
-        my $self = shift;
+has 'ors' => (
+    'is'            => 'ro',
+    'isa'           => 'Str',
+    'lazy'          => 1,
+    'default'       => "\n",
+    'predicate'     => 'has_ors',
+    'documentation' => 'Output record separator',
+);
 
-        #use Data::Dumper; print STDERR Dumper($self);
-
+has '+process_item' => (
+    'default' => sub {
         return sub {
-
-            #use Data::Dumper; print STDERR 'slurpy ' .Dumper($self);
-            my $fh    = $self->_handle;
-            my @slurp = <$fh>;
-            chomp @slurp unless $self->nochomp;
-
-            #use Data::Dumper; print STDERR 'slurpy ' .Dumper([@slurp]);
-            return [@slurp];
+            my ( $self, $item ) = @_;
+            my $fh = $self->file;
+            local $\ = $self->ors if $self->has_ors;
+            print $fh $item;
+            return $item;
           }
-          if $self->do_slurp;
-
-        # not a slurp, rather line by line
-        if ( $self->nochomp ) {
-            return sub {
-
-                #use Data::Dumper; print STDERR 'nochompy ' .Dumper($self);
-                my $fh   = $self->_handle;
-                my $item = <$fh>;
-                return $item;
-            };
-        }
-        else {
-            return sub {
-
-                #use Data::Dumper; print STDERR 'chompy ' .Dumper($self);
-                my $fh   = $self->_handle;
-                my $item = <$fh>;
-                chomp $item;
-                return $item;
-            };
-        }
     },
 );
 
-override 'process_input' => sub {
-    my $self = shift;
-
-    until ( $self->has_handle ) {
-        return unless $self->has_input;
-        my $nextfile = $self->_dequeue_input;
-
-        eval { $self->_handle($nextfile) };
-        $self->confess($@) if $@;
-
-        # check for EOF
-        $self->_check_eof;
-    }
-
-    my @item = ( $self->_get_item->() );
-
-    #use Data::Dumper; print STDERR 'items '.Dumper( [ @item ] );
-
-    # check for EOF
-    $self->_check_eof;
-
-    # TODO some device to add multiple items (<infinity) to the output queue
-    $self->_add_output( $self->_handle_list(@item) );
-};
-
 __PACKAGE__->meta->make_immutable;
+no Moose;
 
 1;
 
@@ -89,13 +42,15 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
-DataFlow::Node::FileInput - A node that reads that from a file
+DataFlow::Node::SimpleFileOutput - A node that writes data to a file
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 AUTHOR
 

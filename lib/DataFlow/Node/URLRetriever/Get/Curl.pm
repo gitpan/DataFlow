@@ -1,11 +1,12 @@
 package DataFlow::Node::URLRetriever::Get::Curl;
 
-#ABSTRACT: A HTTP Getter implementation using Curl
-
 use strict;
 use warnings;
 
-our $VERSION = '0.91.07';    # VERSION
+# ABSTRACT: A HTTP Getter implementation using Curl
+# ENCODING: utf8
+
+our $VERSION = '0.91.08';    # VERSION
 
 use Moose::Role;
 use LWP::Curl;
@@ -20,13 +21,15 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 DataFlow::Node::URLRetriever::Get::Curl - A HTTP Getter implementation using Curl
 
 =head1 VERSION
 
-version 0.91.07
+version 0.91.08
 
 =head1 AUTHOR
 
