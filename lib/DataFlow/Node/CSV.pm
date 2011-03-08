@@ -5,7 +5,7 @@ package DataFlow::Node::CSV;
 use strict;
 use warnings;
 
-our $VERSION = '0.91.06';    # VERSION
+our $VERSION = '0.91.07';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -14,28 +14,28 @@ use Carp;
 use Text::CSV;
 
 has 'header' => (
-    is        => 'ro',
-    isa       => 'ArrayRef[Str]',
-    predicate => 'has_header',
+    'is'        => 'ro',
+    'isa'       => 'ArrayRef[Str]',
+    'predicate' => 'has_header',
 );
 
 has 'inject_header' => (
-    is      => 'ro',
-    isa     => 'Bool',
-    default => 0,
+    'is'      => 'ro',
+    'isa'     => 'Bool',
+    'default' => 0,
 );
 
 has 'text_csv_opts' => (
-    is        => 'ro',
-    isa       => 'HashRef',
-    predicate => 'has_text_csv_opts',
+    'is'        => 'ro',
+    'isa'       => 'HashRef',
+    'predicate' => 'has_text_csv_opts',
 );
 
 has 'csv' => (
-    is      => 'ro',
-    isa     => 'Text::CSV',
-    lazy    => 1,
-    default => sub {
+    'is'      => 'ro',
+    'isa'     => 'Text::CSV',
+    'lazy'    => 1,
+    'default' => sub {
         my $self = shift;
 
         my $make_csv = sub {
@@ -44,8 +44,8 @@ has 'csv' => (
         };
         return $make_csv->() unless $self->inject_header;
 
-        croak
-'Thou hast requested to inject headers but, alas, no header has been provided'
+        croak 'Thou hast requested to inject headers but,'
+          . 'alas, no header has been provided'
           unless ( $self->has_header );
 
         $self->_add_output( $self->deref ? @{ $self->header } : $self->header );
@@ -54,7 +54,7 @@ has 'csv' => (
 );
 
 has '+process_item' => (
-    default => sub {
+    'default' => sub {
         return sub {
             my ( $self, $data ) = @_;
             return $data unless ref($data) eq 'ARRAY';
@@ -79,7 +79,7 @@ DataFlow::Node::CSV - A CSV converting node
 
 =head1 VERSION
 
-version 0.91.06
+version 0.91.07
 
 =head1 AUTHOR
 
@@ -91,5 +91,46 @@ This software is copyright (c) 2011 by Alexei Znamensky.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://github.com/russoz/DataFlow/issues>.
+
+=head1 AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see L<http://search.cpan.org/dist/DataFlow/>.
+
+The development version lives at L<http://github.com/russoz/DataFlow>
+and may be cloned from L<git://github.com/russoz/DataFlow.git>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
+
+=head1 DISCLAIMER OF WARRANTY
+
+BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT
+WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER
+PARTIES PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+SOFTWARE IS WITH YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME
+THE COST OF ALL NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
 
 =cut

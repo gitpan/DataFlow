@@ -1,6 +1,49 @@
 Revision History for DataFlow
 =============================
 
+0.91.07
+-------
+
+commit 5225801083e5be9732cae85180f0c274d43897f5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    version 0.91.07
+
+commit c4693773607b398eed35f92d72926d43e3d48cc4
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    updated the documentation
+
+commit 5665943a1b408f8a9aaef5ba32d53902fd69a4e1
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added quotes around every hash key/attr name/etc
+
+commit 11692b3c74e93c0def5af3955f962b5b424bfd17
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    replaced SourceGitHub with Availability, some Support options too
+
+commit 410cc5bd8c79f5564d8f239ad7c17ade37278ee9
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added [Support], and shuffled sections order in weaver.ini
+
+commit 7868be8050685b5d6dfe469e076dcfcbd3366527
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added [WarrantyDisclaimer] to weaver.ini
+
+commit 9374d610a4af97ae31f1b7a432b47c38f6d38a78
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added SourceGitHub and BugsAndLimitations to weaver.ini
+
+commit 7882b2d1306ed941f96fa0dcff82e1c01c06eb90
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    refactored FileData
+
 0.91.06 2011-03-06
 ------------------
 

@@ -1,39 +1,43 @@
-package DataFlow::Node::SQL;
+package DataFlow::Role::File;
 
-#ABSTRACT: A node that generates SQL clauses
+#ABSTRACT: A role that provides a file-handle for nodes
 
 use strict;
 use warnings;
 
 our $VERSION = '0.91.07';    # VERSION
 
-use Moose;
-extends 'DataFlow::Node';
+use Moose::Role;
+use MooseX::Types::IO 'IO';
 
-use SQL::Abstract;
-
-my $sql = SQL::Abstract->new;
-
-has 'table' => (
-    'is'       => 'ro',
-    'isa'      => 'Str',
-    'required' => 1
+has '_handle' => (
+    'is'        => 'rw',
+    'isa'       => 'IO',
+    'coerce'    => 1,
+    'predicate' => 'has_handle',
+    'clearer'   => 'clear_handle',
 );
 
-has '+process_item' => (
-    'default' => sub {
-        return sub {
-            my ( $self, $data ) = @_;
-            my ( $insert, @bind ) = $sql->insert( $self->table, $data );
+has 'nochomp' => (
+    'is'      => 'ro',
+    'isa'     => 'Bool',
+    'default' => 0,
+);
 
-            # TODO: regex ?
-            map { $insert =~ s/\?/'$_'/; } @bind;
-            print $insert . "\n";
-          }
+has 'do_slurp' => (
+    'is'      => 'ro',
+    'isa'     => 'Bool',
+    'default' => 0,
+);
+
+sub _check_eof {
+    my $self = shift;
+    if ( $self->_handle->eof ) {
+        $self->_handle->close;
+        $self->clear_handle;
     }
-);
-
-__PACKAGE__->meta->make_immutable;
+    return;
+}
 
 1;
 
@@ -43,7 +47,7 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::SQL - A node that generates SQL clauses
+DataFlow::Role::File - A role that provides a file-handle for nodes
 
 =head1 VERSION
 
