@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTML filtering node
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -80,7 +80,7 @@ DataFlow::Node::HTMLFilter - A HTML filtering node
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 SYNOPSIS
 

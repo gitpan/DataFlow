@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A No-Op node, input data is passed unmodified to the output
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -32,7 +32,7 @@ DataFlow::Node::NOP - A No-Op node, input data is passed unmodified to the outpu
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 SYNOPSIS
 

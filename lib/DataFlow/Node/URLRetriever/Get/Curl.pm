@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTTP Getter implementation using Curl
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose::Role;
 use LWP::Curl;
@@ -29,7 +29,7 @@ DataFlow::Node::URLRetriever::Get::Curl - A HTTP Getter implementation using Cur
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 AUTHOR
 

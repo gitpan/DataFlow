@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A piece of information to be processed
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose;
 use DataFlow::Meta;
@@ -36,7 +36,7 @@ DataFlow::Item - A piece of information to be processed
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 SYNOPSIS
 

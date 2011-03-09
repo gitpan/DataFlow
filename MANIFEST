@@ -30,7 +30,7 @@ lib/DataFlow/Node/URLRetriever/Get.pm
 lib/DataFlow/Node/URLRetriever/Get/Curl.pm
 lib/DataFlow/Node/URLRetriever/Get/Mechanize.pm
 lib/DataFlow/Role/File.pm
-scripts/df-portaltransparencia.pl
+scripts/portaltransparencia/ceis.pl
 scripts/tidy
 t/00-compile.t
 t/00-load.t

@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A generic processing node in a data flow
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose;
 
@@ -341,7 +341,7 @@ DataFlow::Node - A generic processing node in a data flow
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 SYNOPSIS
 

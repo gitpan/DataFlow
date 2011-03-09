@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A debugging node that will dump data to STDERR
 # ENCODING: utf8
 
-our $VERSION = '0.91.08';    # VERSION
+our $VERSION = '0.91.09';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -38,7 +38,7 @@ DataFlow::Node::Dumper - A debugging node that will dump data to STDERR
 
 =head1 VERSION
 
-version 0.91.08
+version 0.91.09
 
 =head1 SYNOPSIS
 
