@@ -1,8 +1,21 @@
 Revision History for DataFlow
 =============================
 
-0.91.09
+0.91.10
 -------
+
+commit 0b66b1e1d544af0ead466207375a6959f2048c8a
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    version 0.91.10
+
+commit 9242e7095b6be21fd0531b8381ab5485e5baa213
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    some dependencies nees some specific versions
+
+v0.91.09 2011-03-09
+-------------------
 
 commit a1391ebb5c5cd266b6b4e140e5de6199d72513d6
 Author: Alexei Znamensky <russoz@cpan.org>

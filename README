@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 0.91.09
+    version 0.91.10
 
 SYNOPSIS
             use DataFlow::Node;

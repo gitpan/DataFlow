@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A "super-node" that can link a sequence of nodes
 # ENCODING: utf8
 
-our $VERSION = '0.91.09';    # VERSION
+our $VERSION = '0.91.10';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node';
@@ -91,7 +91,7 @@ DataFlow::Chain - A "super-node" that can link a sequence of nodes
 
 =head1 VERSION
 
-version 0.91.09
+version 0.91.10
 
 =head1 SYNOPSIS
 

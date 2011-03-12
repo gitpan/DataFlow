@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A node provides its initialization data for flow processing
 # ENCODING: utf8
 
-our $VERSION = '0.91.09';    # VERSION
+our $VERSION = '0.91.10';    # VERSION
 
 use Moose;
 extends 'DataFlow::Node::NOP';
@@ -49,7 +49,7 @@ DataFlow::Node::LiteralData - A node provides its initialization data for flow p
 
 =head1 VERSION
 
-version 0.91.09
+version 0.91.10
 
 =head1 AUTHOR
 

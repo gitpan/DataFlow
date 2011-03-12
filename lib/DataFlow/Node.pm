@@ -6,12 +6,12 @@ use warnings;
 # ABSTRACT: A generic processing node in a data flow
 # ENCODING: utf8
 
-our $VERSION = '0.91.09';    # VERSION
+our $VERSION = '0.91.10';    # VERSION
 
 use Moose;
 
 use Scalar::Util qw/blessed reftype looks_like_number/;
-use Queue::Base;
+use Queue::Base 2.1;
 
 has 'name' => (
     'is'  => 'ro',
@@ -341,7 +341,7 @@ DataFlow::Node - A generic processing node in a data flow
 
 =head1 VERSION
 
-version 0.91.09
+version 0.91.10
 
 =head1 SYNOPSIS
 

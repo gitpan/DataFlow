@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTTP Getter
 # ENCODING: utf8
 
-our $VERSION = '0.91.09';    # VERSION
+our $VERSION = '0.91.10';    # VERSION
 
 use Moose;
 
@@ -120,7 +120,7 @@ DataFlow::Node::URLRetriever::Get - A HTTP Getter
 
 =head1 VERSION
 
-version 0.91.09
+version 0.91.10
 
 =head2 get URL
 

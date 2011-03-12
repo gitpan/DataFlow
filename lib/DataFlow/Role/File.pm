@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A role that provides a file-handle for nodes
 # ENCODING: utf8
 
-our $VERSION = '0.91.09';    # VERSION
+our $VERSION = '0.91.10';    # VERSION
 
 use Moose::Role;
 use MooseX::Types::IO 'IO';
@@ -54,7 +54,7 @@ DataFlow::Role::File - A role that provides a file-handle for nodes
 
 =head1 VERSION
 
-version 0.91.09
+version 0.91.10
 
 =head1 AUTHOR
 

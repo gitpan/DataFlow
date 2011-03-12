@@ -34,12 +34,13 @@ requires:
   MooseX::OneArgNew: 0
   MooseX::Traits: 0
   MooseX::Types::IO: 0
-  Queue::Base: 0
+  Queue::Base: 2.1
   SQL::Abstract: 0
   Scalar::Util: 0
   Text::CSV: 0
   WWW::Mechanize: 0
+  perl: 5.008
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 0.91.09
+version: 0.91.10

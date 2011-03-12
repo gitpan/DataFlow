@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+BEGIN { require 5.008; }
 
 use ExtUtils::MakeMaker 6.31;
 
@@ -42,13 +42,13 @@ my %WriteMakefileArgs = (
     'MooseX::OneArgNew' => '0',
     'MooseX::Traits' => '0',
     'MooseX::Types::IO' => '0',
-    'Queue::Base' => '0',
+    'Queue::Base' => '2.1',
     'SQL::Abstract' => '0',
     'Scalar::Util' => '0',
     'Text::CSV' => '0',
     'WWW::Mechanize' => '0'
   },
-  'VERSION' => '0.91.09',
+  'VERSION' => '0.91.10',
   'test' => {
     'TESTS' => 't/*.t'
   }
