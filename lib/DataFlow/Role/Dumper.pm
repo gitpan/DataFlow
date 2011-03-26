@@ -1,98 +1,44 @@
-package DataFlow::Node::MultiPageURLGenerator;
+package DataFlow::Role::Dumper;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A node that generates multi-paged URL lists
+# ABSTRACT: A generic processing node in a data flow
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
-use Moose;
-extends 'DataFlow::Node';
+use Moose::Role;
 
-use Carp;
-
-has 'first_page' => (
-    'is'      => 'ro',
-    'isa'     => 'Int',
-    'default' => 1,
-);
-
-has 'last_page' => (
-    'is'       => 'ro',
-    'isa'      => 'Int',
-    'required' => 1,
-    'lazy'     => 1,
-    'default'  => sub {
-        my $self = shift;
-
-        #warn 'last_page';
-        carp q{DataFlow::Node::MultiPageURLGenerator: paged_url not set!}
-          unless $self->has_paged_url;
-        return $self->produce_last_page->( $self->_paged_url );
-    },
-);
-
-# calling convention for the sub:
-#   - $self
-#   - $url (Str)
-has 'produce_last_page' => (
+has '_dumper' => (
     'is'      => 'ro',
     'isa'     => 'CodeRef',
     'lazy'    => 1,
-    'default' => sub { shift->confess(q{produce_last_page not implemented!}); },
-);
-
-# calling convention for the sub:
-#   - $self
-#   - $paged_url (Str)
-#   - $page      (Int)
-has 'make_page_url' => (
-    'is'       => 'ro',
-    'isa'      => 'CodeRef',
-    'required' => 1,
-);
-
-has '_paged_url' => (
-    'is'        => 'rw',
-    'isa'       => 'Str',
-    'predicate' => 'has_paged_url',
-    'clearer'   => 'clear_paged_url',
-);
-
-has '+process_item' => (
     'default' => sub {
+        use Data::Dumper;
         return sub {
-            my ( $self, $url ) = @_;
-
-            #warn 'multi page process item, url = '.$url;
-            $self->_paged_url($url);
-
-            #use Data::Dumper;
-            #print STDERR Dumper($self);
-
-            my $first = $self->first_page;
-            my $last  = $self->last_page;
-            $first = 1 + $last + $first if $first < 0;
-
-            my @result =
-              map { $self->make_page_url->( $self, $url, $_ ) } $first .. $last;
-
-            #use Data::Dumper;
-            #warn 'url list = ' . Dumper($result);
-            $self->clear_paged_url;
-            return [@result];
-          }
+            return Dumper(@_);
+        };
+    },
+    'handles' => {
+        'prefix_dumper' => sub {
+            my ( $self, $prefix, @args ) = @_;
+            print STDERR $prefix;
+            if (@args) {
+                print STDERR ' ' . $self->_dumper->(@args);
+            }
+            else {
+                print STDERR "\n";
+            }
+        },
+        'raw_dumper' => sub {
+            my $self = shift;
+            print STDERR $self->_dumper->(@_);
+        },
     },
 );
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
-
 1;
-
-__END__
 
 =pod
 
@@ -100,11 +46,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::MultiPageURLGenerator - A node that generates multi-paged URL lists
+DataFlow::Role::Dumper - A generic processing node in a data flow
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
 
 =head1 AUTHOR
 
@@ -159,3 +105,5 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+__END__

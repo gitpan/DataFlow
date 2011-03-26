@@ -1,40 +1,109 @@
-package DataFlow::Node::SQL;
+package DataFlow::Util::HTTPGet;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A node that generates SQL clauses
+# ABSTRACT: A HTTP Getter
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
 
-use SQL::Abstract;
+with 'MooseX::Traits';
+has '+_trait_namespace' => ( default => 'DataFlow::Util::HTTPGet' );
 
-my $sql = SQL::Abstract->new;
+has 'referer' => (
+    'is'      => 'rw',
+    'isa'     => 'Str',
+    'default' => '',
+);
 
-has 'table' => (
+has 'timeout' => (
+    'is'      => 'rw',
+    'isa'     => 'Int',
+    'default' => 30
+);
+
+has 'agent' => (
+    'is'      => 'ro',
+    'isa'     => 'Str',
+    'default' => 'Linux Mozilla'
+);
+
+has 'attempts' => (
+    'is'      => 'ro',
+    'isa'     => 'Int',
+    'default' => 5
+);
+
+has 'obj' => (
+    'is'        => 'ro',
+    'isa'       => 'Any',
+    'lazy'      => 1,
+    'predicate' => 'has_obj',
+    'default'   => sub {
+        my $self = shift;
+        my $mod  = q{DataFlow::Util::HTTPGet::} . $self->browser;
+        eval { with $mod };
+        confess($@) if $@;
+        return $self->_make_obj;
+    },
+);
+
+has 'browser' => (
     'is'       => 'ro',
     'isa'      => 'Str',
-    'required' => 1
+    'required' => 1,
+    'lazy'     => 1,
+    'default'  => 'Mechanize',
 );
 
-has '+process_item' => (
+has 'content_sub' => (
+    'is'      => 'ro',
+    'isa'     => 'CodeRef',
+    'lazy'    => 1,
     'default' => sub {
-        return sub {
-            my ( $self, $data ) = @_;
-            my ( $insert, @bind ) = $sql->insert( $self->table, $data );
+        my $self = shift;
+        my $mod  = q{DataFlow::Util::HTTPGet::} . $self->browser;
 
-            # TODO: regex ?
-            map { $insert =~ s/\?/'$_'/; } @bind;
-            print $insert . "\n";
-          }
-    }
+        eval { with $mod };
+        confess($@) if $@;
+
+        return sub { return $self->_content(shift); }
+          if $self->can('_content');
+
+        return sub { return shift }
+    },
 );
 
-__PACKAGE__->meta->make_immutable;
+sub get {
+    my ( $self, $url ) = @_;
+
+    #use Data::Dumper;
+    #1 if $self->obj;
+    #print STDERR Dumper($self);
+    for ( 1 .. $self->attempts ) {
+        my $content = $self->obj->get($url);
+
+        #print STDERR Dumper($content);
+        #print STDERR 'obj = '.$self->obj."\n";
+        #my $res = $self->content_sub->($content) if $content;
+        #print STDERR Dumper($res);
+        return $self->content_sub->($content) if $content;
+    }
+    return;
+}
+
+sub post {
+    my ( $self, $url, $form ) = @_;
+    for ( 1 .. $self->attempts ) {
+        my $content = $self->obj->post( $url, $form, $self->referer );
+        return $self->content_sub->($content) if $content;
+    }
+    return;
+}
+
 no Moose;
 
 1;
@@ -47,11 +116,19 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::SQL - A node that generates SQL clauses
+DataFlow::Util::HTTPGet - A HTTP Getter
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
+
+=head2 get URL
+
+Issues a HTTP GET request to the URL
+
+=head2 post URL
+
+Issues a HTTP POST request to the URL
 
 =head1 AUTHOR
 

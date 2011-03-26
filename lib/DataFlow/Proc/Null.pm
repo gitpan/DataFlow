@@ -1,4 +1,4 @@
-package DataFlow::Node::Null;
+package DataFlow::Proc::Null;
 
 use strict;
 use warnings;
@@ -6,16 +6,15 @@ use warnings;
 # ABSTRACT: A null node, will discard any input and return undef in the output
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Proc';
 
 has '+process_into' => ( 'default' => 0, );
-
-has '+process_item' => (
+has '+p' => (
     'default' => sub {
-        return sub { shift; return; }
+        return sub { }
     },
 );
 
@@ -30,17 +29,17 @@ no Moose;
 
 =head1 NAME
 
-DataFlow::Node::Null - A null node, will discard any input and return undef in the output
+DataFlow::Proc::Null - A null node, will discard any input and return undef in the output
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
 
 =head1 SYNOPSIS
 
     use DataFlow::Null;
 
-    my $null = DataFlow::Node::Null->new;
+    my $null = DataFlow::Proc::Null->new;
 
     my $result = $null->process( 'abc' );
     # $result == undef
@@ -52,12 +51,8 @@ provided to it.
 
 =head1 METHODS
 
-The interface for C<DataFlow::Node::Null> is the same of
-C<DataFlow::Node>.
-
-=head1 DEPENDENCIES
-
-L<DataFlow::Node>
+The interface for C<DataFlow::Proc::Null> is the same of
+C<DataFlow::Proc>.
 
 =head1 AUTHOR
 

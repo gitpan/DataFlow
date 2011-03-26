@@ -1,43 +1,85 @@
-package DataFlow::Node::Encoding;
+package DataFlow::Proc::MultiPageURLGenerator;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A encoding conversion node
+# ABSTRACT: A processor that generates multi-paged URL lists
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Proc';
 
-use Encode;
+use Carp;
 
-has 'input_encoding' => (
-    'is'        => 'ro',
-    'isa'       => 'Str',
-    'predicate' => 'has_input_encoding',
+has 'first_page' => (
+    'is'      => 'ro',
+    'isa'     => 'Int',
+    'default' => 1,
 );
 
-has 'output_encoding' => (
-    'is'        => 'ro',
-    'isa'       => 'Str',
-    'predicate' => 'has_output_encoding',
+has 'last_page' => (
+    'is'       => 'ro',
+    'isa'      => 'Int',
+    'required' => 1,
+    'lazy'     => 1,
+    'default'  => sub {
+        my $self = shift;
+
+        #warn 'last_page';
+        confess(q{DataFlow::Proc::MultiPageURLGenerator: paged_url not set!})
+          unless $self->has_paged_url;
+        return $self->produce_last_page->( $self->_paged_url );
+    },
 );
 
-has '+process_item' => (
+# calling convention for the sub:
+#   - $self
+#   - $url (Str)
+has 'produce_last_page' => (
+    'is'      => 'ro',
+    'isa'     => 'CodeRef',
+    'lazy'    => 1,
+    'default' => sub { confess(q{produce_last_page not implemented!}); },
+);
+
+# calling convention for the sub:
+#   - $self
+#   - $paged_url (Str)
+#   - $page      (Int)
+has 'make_page_url' => (
+    'is'       => 'ro',
+    'isa'      => 'CodeRef',
+    'required' => 1,
+);
+
+has '_paged_url' => (
+    'is'        => 'rw',
+    'isa'       => 'Str',
+    'predicate' => 'has_paged_url',
+    'clearer'   => 'clear_paged_url',
+);
+
+has '+p' => (
     'default' => sub {
+        my $self = shift;
+
         return sub {
-            my ( $me, $item ) = @_;
-            return $item unless ref($item) ne '';
-            my $data =
-              $me->has_input_encoding
-              ? decode( $me->input_encoding, $item )
-              : $item;
-            return $me->has_output_encoding
-              ? encode( $me->output_encoding, $data )
-              : $data;
-          }
+            my $url = shift;
+
+            $self->_paged_url($url);
+
+            my $first = $self->first_page;
+            my $last  = $self->last_page;
+            $first = 1 + $last + $first if $first < 0;
+
+            my @result =
+              map { $self->make_page_url->( $self, $url, $_ ) } $first .. $last;
+
+            $self->clear_paged_url;
+            return [@result];
+        };
     },
 );
 
@@ -54,11 +96,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::Encoding - A encoding conversion node
+DataFlow::Proc::MultiPageURLGenerator - A processor that generates multi-paged URL lists
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
 
 =head1 AUTHOR
 

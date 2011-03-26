@@ -1,35 +1,20 @@
-package DataFlow::Node::SimpleFileOutput;
+package DataFlow::Proc::NOP;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A node that writes data to a file
+# ABSTRACT: A No-Op node, input data is passed unmodified to the output
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
-with 'DataFlow::Role::File';
+extends 'DataFlow::Proc';
 
-has 'ors' => (
-    'is'            => 'ro',
-    'isa'           => 'Str',
-    'lazy'          => 1,
-    'default'       => "\n",
-    'predicate'     => 'has_ors',
-    'documentation' => 'Output record separator',
-);
-
-has '+process_item' => (
+has '+process_into' => ( 'default' => 0, );
+has '+p' => (
     'default' => sub {
-        return sub {
-            my ( $self, $item ) = @_;
-            my $fh = $self->file;
-            local $\ = $self->ors if $self->has_ors;
-            print $fh $item;
-            return $item;
-          }
+        return sub { return $_[0]; }
     },
 );
 
@@ -38,19 +23,38 @@ no Moose;
 
 1;
 
-__END__
-
 =pod
 
 =encoding utf8
 
 =head1 NAME
 
-DataFlow::Node::SimpleFileOutput - A node that writes data to a file
+DataFlow::Proc::NOP - A No-Op node, input data is passed unmodified to the output
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
+
+=head1 SYNOPSIS
+
+    use DataFlow::Proc::NOP;
+
+    my $nop = DataFlow::Proc::NOP->new;
+
+    my $result = $nop->process_one( 'abc' );
+    # $result == 'abc'
+
+=head1 DESCRIPTION
+
+This class represents a no-op processor: the very input is passed without
+modifications to the output.
+
+This class is more useful as parent class than by itself.
+
+=head1 METHODS
+
+The interface for C<DataFlow::Proc::NOP> is the same of
+C<DataFlow::Proc>.
 
 =head1 AUTHOR
 
@@ -105,3 +109,5 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+__END__

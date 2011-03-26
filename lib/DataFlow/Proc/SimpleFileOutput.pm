@@ -1,45 +1,37 @@
-package DataFlow::Node::URLRetriever;
+package DataFlow::Proc::SimpleFileOutput;
 
 use strict;
 use warnings;
 
-# ABSTRACT: An URL-retriever node
+# ABSTRACT: A node that writes data to a file
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Proc';
+with 'DataFlow::Role::File';
 
-use DataFlow::Node::URLRetriever::Get;
-
-has '_get' => (
-    'is'      => 'rw',
-    'isa'     => 'DataFlow::Node::URLRetriever::Get',
-    'lazy'    => 1,
-    'default' => sub { DataFlow::Node::URLRetriever::Get->new }
+has 'ors' => (
+    'is'            => 'ro',
+    'isa'           => 'Str',
+    'lazy'          => 1,
+    'default'       => "\n",
+    'predicate'     => 'has_ors',
+    'documentation' => 'Output record separator',
 );
 
-has 'baseurl' => (
-    'is'        => 'ro',
-    'isa'       => 'Str',
-    'predicate' => 'has_baseurl',
-);
-
-has '+process_item' => (
+has '+p' => (
     'default' => sub {
+        my $self = shift;
+
         return sub {
-            my ( $self, $item ) = @_;
-
-            #warn 'process_item:: item = '.$item;
-            my $url =
-              $self->has_baseurl
-              ? URI->new_abs( $item, $self->baseurl )->as_string
-              : $item;
-
-            #$self->debug("process_item:: url = $url");
-            return $self->_get->get($url);
-          }
+            my $item = shift;
+            my $fh   = $self->file;
+            local $\ = $self->ors if $self->has_ors;
+            print $fh $item;
+            return $item;
+        };
     },
 );
 
@@ -56,11 +48,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::URLRetriever - An URL-retriever node
+DataFlow::Proc::SimpleFileOutput - A node that writes data to a file
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
 
 =head1 AUTHOR
 

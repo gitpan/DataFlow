@@ -1,39 +1,32 @@
-package DataFlow::Node::LiteralData;
+package DataFlow::Util::HTTPGet::Mechanize;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A node provides its initialization data for flow processing
+# ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
-use Moose;
-extends 'DataFlow::Node::NOP';
-with 'MooseX::OneArgNew' => {
-    'type'     => 'Any',
-    'init_arg' => 'data',
-};
+use Moose::Role;
 
-has 'data' => (
-    'is'        => 'ro',
-    'isa'       => 'Any',
-    'clearer'   => 'clear_data',
-    'predicate' => 'has_data',
-    'required'  => 1,
-    'trigger'   => sub {
-        my $self = shift;
-        if ( $self->has_data ) {
-            $self->_add_input(@_);
-            $self->clear_data;
-        }
-    },
-);
+use WWW::Mechanize;
 
-override 'input' => sub { };
+sub _make_obj {
+    my $self = shift;
+    return WWW::Mechanize->new(
+        agent   => $self->agent,
+        onerror => sub { confess(@_) },
+        timeout => $self->timeout
+    );
+}
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+sub _content {
+    my ( $self, $response ) = @_;
+
+    #print STDERR "mech _content\n";
+    return $response->content;
+}
 
 1;
 
@@ -45,11 +38,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::LiteralData - A node provides its initialization data for flow processing
+DataFlow::Util::HTTPGet::Mechanize - A HTTP Getter implementation using WWW::Mechanize
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
 
 =head1 AUTHOR
 

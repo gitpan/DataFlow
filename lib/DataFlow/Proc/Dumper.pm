@@ -1,23 +1,32 @@
-package DataFlow::Node::URLRetriever::Get::Curl;
+package DataFlow::Proc::Dumper;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A HTTP Getter implementation using Curl
+# ABSTRACT: A debugging processor that will dump data to STDERR
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
-use Moose::Role;
-use LWP::Curl;
+use Moose;
+extends 'DataFlow::Proc';
+with 'DataFlow::Role::Dumper';
 
-sub _make_obj {
-    return LWP::Curl->new;
-}
+has '+p' => (
+    'default' => sub {
+        my $self = shift;
+        return sub {
+            my $item = shift;
+            $self->raw_dumper($item);
+            return $item;
+        };
+    },
+);
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
 
 1;
-
-__END__
 
 =pod
 
@@ -25,11 +34,26 @@ __END__
 
 =head1 NAME
 
-DataFlow::Node::URLRetriever::Get::Curl - A HTTP Getter implementation using Curl
+DataFlow::Proc::Dumper - A debugging processor that will dump data to STDERR
 
 =head1 VERSION
 
-version 0.91.10
+version 0.950000
+
+=head1 SYNOPSIS
+
+    use DataFlow::Proc::Dumper;
+
+    my $dump = DataFlow::Proc::Dumper->new;
+
+    my $result = $dump->process+one( 'abc' );
+    # $result == 'abc'
+
+=head1 DESCRIPTION
+
+Dumper node. Every item passed to its input will be printed in the C<STDERR>
+file handle, using the method C<raw_dumper()> defined at the role
+L<DataFlow::Role::Dumper>.
 
 =head1 AUTHOR
 
@@ -84,3 +108,5 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+__END__

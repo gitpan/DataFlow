@@ -1,26 +1,47 @@
-package DataFlow::Node::Dumper;
+package DataFlow::Proc::URLRetriever;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A debugging node that will dump data to STDERR
+# ABSTRACT: An URL-retriever node
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Proc';
 
-use Data::Dumper;
+use DataFlow::Util::HTTPGet;
 
-has '+process_item' => (
+has '_get' => (
+    'is'      => 'ro',
+    'isa'     => 'DataFlow::Util::HTTPGet',
+    'lazy'    => 1,
+    'default' => sub { DataFlow::Util::HTTPGet->new }
+);
+
+has 'baseurl' => (
+    'is'        => 'ro',
+    'isa'       => 'Str',
+    'predicate' => 'has_baseurl',
+);
+
+has '+p' => (
     'default' => sub {
+        my $self = shift;
+
         return sub {
-            my ( $self, $item ) = @_;
-            $self->raw_dumper($item);
-            return $item;
-          }
-    }
+            my $item = shift;
+
+            my $url =
+              $self->has_baseurl
+              ? URI->new_abs( $item, $self->baseurl )->as_string
+              : $item;
+
+            #$self->debug("process_item:: url = $url");
+            return $self->_get->get($url);
+        };
+    },
 );
 
 __PACKAGE__->meta->make_immutable;
@@ -28,42 +49,19 @@ no Moose;
 
 1;
 
+__END__
+
 =pod
 
 =encoding utf8
 
 =head1 NAME
 
-DataFlow::Node::Dumper - A debugging node that will dump data to STDERR
+DataFlow::Proc::URLRetriever - An URL-retriever node
 
 =head1 VERSION
 
-version 0.91.10
-
-=head1 SYNOPSIS
-
-    use DataFlow::Dumper;
-
-    my $nop = DataFlow::Node::Dumper->new;
-
-    my $result = $nop->process( 'abc' );
-    # $result == undef
-
-=head1 DESCRIPTION
-
-Dumper node. Every item passed to its input will be printed in the C<STDERR>
-file handle, using L<Data::Dumper>.
-
-=head1 METHODS
-
-The interface for C<DataFlow::Node::Dumper> is the same of
-C<DataFlow::Node>.
-
-=head1 DEPENDENCIES
-
-L<Data::Dumper>
-
-L<DataFlow::Node>
+version 0.950000
 
 =head1 AUTHOR
 
@@ -118,5 +116,3 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-__END__

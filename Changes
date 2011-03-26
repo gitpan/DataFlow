@@ -1,8 +1,43 @@
 Revision History for DataFlow
 =============================
 
-0.91.10
--------
+0.950000
+--------
+
+commit 154efc77e2c1f73f30e47807fd624205063b7ed1
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    release version 0.950000
+
+commit bdcb477a11cb33ae202f48f39e80104c4aab84ba
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Multiple changes
+
+commit 239bfbcef0c8f9cfc0915cfbbb55658f2b3af64d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    big refactor
+
+commit 1cc633376f76c6ec8690be929944392c0c50b48f
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    tidy
+
+commit 1dc7ba76cadfef1c3b6883136a2cbb2506dca592
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    tidy
+
+commit b5a309f1cc1d5283e4543eb65869fc036b91290c
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    renamed DataFlow/Node/URLRetriever/Get* to lib/DataFlow/Util/HTTPGet*
+
+commit ed9590514c5551b1fdac90d1f8387b266623d3ee
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    implementing processors
 
 commit 0b66b1e1d544af0ead466207375a6959f2048c8a
 Author: Alexei Znamensky <russoz@cpan.org>

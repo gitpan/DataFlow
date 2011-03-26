@@ -1,26 +1,106 @@
-package DataFlow::Node::NOP;
+package DataFlow::Proc::CSV;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A No-Op node, input data is passed unmodified to the output
+# ABSTRACT: A CSV converting processor
 # ENCODING: utf8
 
-our $VERSION = '0.91.10';    # VERSION
+our $VERSION = '0.950000';    # VERSION
 
 use Moose;
-extends 'DataFlow::Node';
+extends 'DataFlow::Proc';
 
-has '+process_item' => (
+use Moose::Util::TypeConstraints 1.01;
+use Text::CSV;
+
+has 'headers' => (
+    'is'        => 'rw',
+    'isa'       => 'ArrayRef[Str]',
+    'predicate' => 'have_headers',
+);
+
+has '_header_unused' => (
+    'is'      => 'rw',
+    'isa'     => 'Bool',
+    'default' => 1,
+    'clearer' => '_use_header',
+);
+
+has 'direction' => (
+    'is'       => 'ro',
+    'isa'      => enum( [qw/FROM_CSV TO_CSV/] ),
+    'required' => 1,
+);
+
+has 'text_csv_opts' => (
+    'is'        => 'ro',
+    'isa'       => 'HashRef',
+    'predicate' => 'has_text_csv_opts',
+);
+
+has 'csv' => (
+    'is'      => 'ro',
+    'isa'     => 'Text::CSV',
     'default' => sub {
-        return sub { shift; my $item = shift; return $item; }
+        my $self = shift;
+
+        return $self->has_text_csv_opts
+          ? Text::CSV->new( $self->text_csv_opts )
+          : Text::CSV->new();
+    },
+);
+
+sub _combine {
+    my ( $self, $e ) = @_;
+    $self->csv->combine( @{$e} );
+    return $self->csv->string;
+}
+
+sub _parse {
+    my ( $self, $line ) = @_;
+    $self->csv->parse($line);
+    return [ $self->csv->fields ];
+}
+
+has '+process_into' => ( 'default' => 0, );
+
+has '+p' => (
+    'lazy'    => 1,
+    'default' => sub {
+        my $self = shift;
+
+        return sub {
+            my $data = shift;
+            if ( $self->_header_unused ) {
+                $self->_header_unused(0);
+                return ( $self->_combine( $self->headers ),
+                    $self->_combine($data) );
+            }
+
+            return $self->_combine($data);
+          }
+          if $self->direction eq 'TO_CSV';
+
+        return sub {
+            my $csv_line = shift;
+            if ( $self->_header_unused ) {
+                $self->_header_unused(0);
+                $self->headers( $self->_parse($csv_line) );
+                return;
+            }
+            return $self->_parse($csv_line);
+        };
     },
 );
 
 __PACKAGE__->meta->make_immutable;
+no Moose::Util::TypeConstraints;
 no Moose;
 
 1;
+
+__END__
 
 =pod
 
@@ -28,36 +108,11 @@ no Moose;
 
 =head1 NAME
 
-DataFlow::Node::NOP - A No-Op node, input data is passed unmodified to the output
+DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 0.91.10
-
-=head1 SYNOPSIS
-
-    use DataFlow::NOP;
-
-    my $nop = DataFlow::Node::NOP->new;
-
-    my $result = $nop->process( 'abc' );
-    # $result == 'abc'
-
-=head1 DESCRIPTION
-
-This class represents a no-op node: the very input is passed without
-modifications to the output.
-
-This class is more useful as parent class than by itself.
-
-=head1 METHODS
-
-The interface for C<DataFlow::Node::NOP> is the same of
-C<DataFlow::Node>.
-
-=head1 DEPENDENCIES
-
-L<DataFlow::Node>
+version 0.950000
 
 =head1 AUTHOR
 
@@ -112,5 +167,3 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-__END__
