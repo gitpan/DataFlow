@@ -1,5 +1,5 @@
 ---
-abstract: 'A framework for dataflow processing'
+abstract: 'A component for dataflow processing'
 author:
   - 'Alexei Znamensky <russoz@cpan.org>'
 build_requires:
@@ -9,7 +9,6 @@ build_requires:
   Test::More: 0.94
   Test::UseAllModules: 0
   aliased: 0
-  common::sense: 0
   perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.31
@@ -30,6 +29,7 @@ requires:
   Moose: 0
   Moose::Role: 0
   Moose::Util::TypeConstraints: 1.01
+  MooseX::OneArgNew: 0
   MooseX::Traits: 0
   MooseX::Types::IO: 0
   Queue::Base: 2.1
@@ -42,4 +42,4 @@ requires:
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 0.950000
+version: 1.110860

@@ -6,7 +6,6 @@ META.json
 META.yml
 Makefile.PL
 README
-TODO
 dist.ini
 examples/file.test
 lib/DataFlow.pm
@@ -36,9 +35,11 @@ scripts/tidy
 t/00-compile.t
 t/00-load.t
 t/000-report-versions.t
-t/01-dataflow-many.t
 t/01-dataflow.t
-t/01-proc.t
+t/02-dataflow-init.t
+t/02-dataflow-many.t
+t/03-proc.t
+t/04-proc-init.t
 t/10-deref.t
 t/10-process-into.t
 t/11-get.t
@@ -46,7 +47,9 @@ t/12-get-curl.t
 t/12-get-mechanize.t
 t/20-nop.t
 t/20-null.t
-t/21-simplefileinput.t
+t/25-dumper.t
+t/50-simplefileinput.t
+t/50-simplefileoutput.t
 t/60-multipageurlgenerator.t
 t/62-urlretriever.t
 t/64-htmlfilter.t

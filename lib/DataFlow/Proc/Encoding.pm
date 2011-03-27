@@ -3,10 +3,10 @@ package DataFlow::Proc::Encoding;
 use strict;
 use warnings;
 
-# ABSTRACT: A encoding conversion node
+# ABSTRACT: A encoding conversion processor
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -55,11 +55,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Proc::Encoding - A encoding conversion node
+DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

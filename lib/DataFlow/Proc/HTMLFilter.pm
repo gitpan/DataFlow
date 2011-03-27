@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTML filtering processor
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -63,6 +63,7 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
+no Moose::Util::TypeConstraints;
 no Moose;
 
 1;
@@ -77,7 +78,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 SYNOPSIS
 
@@ -110,7 +111,7 @@ version 0.950000
 
 =head1 DESCRIPTION
 
-This node type provides a filter for HTML content.
+This processor type provides a filter for HTML content.
 Each item will be considered as a HTML content and will be filtered
 using L<HTML::TreeBuilder::XPath>.
 

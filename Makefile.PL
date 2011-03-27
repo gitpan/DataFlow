@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'A framework for dataflow processing',
+  'ABSTRACT' => 'A component for dataflow processing',
   'AUTHOR' => 'Alexei Znamensky <russoz@cpan.org>',
   'BUILD_REQUIRES' => {
     'English' => '0',
@@ -18,7 +18,6 @@ my %WriteMakefileArgs = (
     'Test::More' => '0.94',
     'Test::UseAllModules' => '0',
     'aliased' => '0',
-    'common::sense' => '0',
     'perl' => '5.004'
   },
   'CONFIGURE_REQUIRES' => {
@@ -38,6 +37,7 @@ my %WriteMakefileArgs = (
     'Moose' => '0',
     'Moose::Role' => '0',
     'Moose::Util::TypeConstraints' => '1.01',
+    'MooseX::OneArgNew' => '0',
     'MooseX::Traits' => '0',
     'MooseX::Types::IO' => '0',
     'Queue::Base' => '2.1',
@@ -47,7 +47,7 @@ my %WriteMakefileArgs = (
     'WWW::Mechanize' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '0.950000',
+  'VERSION' => '1.110860',
   'test' => {
     'TESTS' => 't/*.t'
   }

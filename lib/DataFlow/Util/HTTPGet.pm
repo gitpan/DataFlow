@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTTP Getter
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 
@@ -120,7 +120,7 @@ DataFlow::Util::HTTPGet - A HTTP Getter
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head2 get URL
 

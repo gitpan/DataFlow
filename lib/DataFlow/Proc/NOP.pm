@@ -3,10 +3,10 @@ package DataFlow::Proc::NOP;
 use strict;
 use warnings;
 
-# ABSTRACT: A No-Op node, input data is passed unmodified to the output
+# ABSTRACT: A No-Op processor: input data is passed unmodified to the output
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -29,11 +29,11 @@ no Moose;
 
 =head1 NAME
 
-DataFlow::Proc::NOP - A No-Op node, input data is passed unmodified to the output
+DataFlow::Proc::NOP - A No-Op processor: input data is passed unmodified to the output
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 SYNOPSIS
 

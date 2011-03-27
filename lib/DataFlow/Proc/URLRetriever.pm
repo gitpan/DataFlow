@@ -3,10 +3,10 @@ package DataFlow::Proc::URLRetriever;
 use strict;
 use warnings;
 
-# ABSTRACT: An URL-retriever node
+# ABSTRACT: An URL-retriever processor
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -57,11 +57,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Proc::URLRetriever - An URL-retriever node
+DataFlow::Proc::URLRetriever - An URL-retriever processor
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

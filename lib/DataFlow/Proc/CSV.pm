@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A CSV converting processor
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -112,7 +112,7 @@ DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

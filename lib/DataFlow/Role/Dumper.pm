@@ -3,10 +3,10 @@ package DataFlow::Role::Dumper;
 use strict;
 use warnings;
 
-# ABSTRACT: A generic processing node in a data flow
+# ABSTRACT: A role that provides a facility for dumping data to STDERR
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose::Role;
 
@@ -46,11 +46,11 @@ has '_dumper' => (
 
 =head1 NAME
 
-DataFlow::Role::Dumper - A generic processing node in a data flow
+DataFlow::Role::Dumper - A role that provides a facility for dumping data to STDERR
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

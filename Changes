@@ -1,8 +1,31 @@
 Revision History for DataFlow
 =============================
 
-0.950000
+1.110860
 --------
+
+commit 83f6866b9c884626fe108972b88895081c8d6ff7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    ran through perltidy
+
+commit b2ad7e90e46e6393288599d940a5f2d15da94095
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    autoversion and twitter upon releasing
+
+commit df715d80847e83fc85f5360517bf0acdab518368
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    simple test for DataFlow::Proc::SimpleFileOutput
+
+commit 9f59e81105e1d39dfa8ae5b63fe2dcccf9ba1356
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    multiple changes
+
+v0.950000 2011-03-25
+--------------------
 
 commit 154efc77e2c1f73f30e47807fd624205063b7ed1
 Author: Alexei Znamensky <russoz@cpan.org>

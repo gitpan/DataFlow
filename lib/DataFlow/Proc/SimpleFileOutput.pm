@@ -3,10 +3,10 @@ package DataFlow::Proc::SimpleFileOutput;
 use strict;
 use warnings;
 
-# ABSTRACT: A node that writes data to a file
+# ABSTRACT: A processor that writes data to a file
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -48,11 +48,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Proc::SimpleFileOutput - A node that writes data to a file
+DataFlow::Proc::SimpleFileOutput - A processor that writes data to a file
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

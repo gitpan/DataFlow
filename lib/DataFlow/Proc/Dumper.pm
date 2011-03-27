@@ -6,12 +6,16 @@ use warnings;
 # ABSTRACT: A debugging processor that will dump data to STDERR
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 with 'DataFlow::Role::Dumper';
 
+has '+process_into' => (
+    default  => 0,
+    init_arg => undef,
+);
 has '+p' => (
     'default' => sub {
         my $self = shift;
@@ -38,7 +42,7 @@ DataFlow::Proc::Dumper - A debugging processor that will dump data to STDERR
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 SYNOPSIS
 
@@ -51,7 +55,7 @@ version 0.950000
 
 =head1 DESCRIPTION
 
-Dumper node. Every item passed to its input will be printed in the C<STDERR>
+Dumper processor. Every item passed to its input will be printed in the C<STDERR>
 file handle, using the method C<raw_dumper()> defined at the role
 L<DataFlow::Role::Dumper>.
 

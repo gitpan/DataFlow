@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose::Role;
 
@@ -42,7 +42,7 @@ DataFlow::Util::HTTPGet::Mechanize - A HTTP Getter implementation using WWW::Mec
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

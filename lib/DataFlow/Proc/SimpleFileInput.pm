@@ -3,10 +3,10 @@ package DataFlow::Proc::SimpleFileInput;
 use strict;
 use warnings;
 
-# ABSTRACT: A node that reads that from a file
+# ABSTRACT: A processor that reads that from a file
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -86,11 +86,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Proc::SimpleFileInput - A node that reads that from a file
+DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

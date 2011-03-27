@@ -1,8 +1,8 @@
 NAME
-    DataFlow - A framework for dataflow processing
+    DataFlow - A component for dataflow processing
 
 VERSION
-    version 0.950000
+    version 1.110860
 
 SYNOPSIS
     use DataFlow;
@@ -29,8 +29,7 @@ HISTORY
 
     As of now (Mar, 2011) it is still a 'work in progress', and there is a
     lot of progress to make. It is highly recommended that you read the
-    tests, and also the documentation for DataFlow::Node and
-    DataFlow::Chain, to start with.
+    tests, and the documentation of DataFlow::Proc, to start with.
 
     An article has been recently written in Brazilian Portuguese about this
     framework, per the São Paulo Perl Mongers "Equinócio" (Equinox) virtual
@@ -42,7 +41,8 @@ HISTORY
     UPDATE: DataFlow is a fast-evolving project, and this article, as it was
     published there, refers to versions 0.91.x of the framework. There has
     been a big refactor since then and, although the concept remains the
-    same, the programming interface has been changed violently.
+    same, since version 0.950000 the programming interface has been changed
+    violently.
 
     Any doubts, feel free to get in touch.
 
@@ -69,10 +69,10 @@ METHODS
     processors.
 
   input
-    Accepts input data for the node. It will gladly accept anything passed
-    as parameters. However, it must be noticed that it will not be able to
-    make a distinction between arrays and hashes. Both forms below will
-    render the exact same results:
+    Accepts input data for the data flow. It will gladly accept anything
+    passed as parameters. However, it must be noticed that it will not be
+    able to make a distinction between arrays and hashes. Both forms below
+    will render the exact same results:
 
             $flow->input( qw/all the simple things/ );
             $flow->input( all => 'the', simple => 'things' );
@@ -80,8 +80,8 @@ METHODS
     If you do want to handle arrays and hashes differently, we strongly
     suggest that you use references:
 
-            $node->input( [ qw/all the simple things/ ] );
-            $node->input( { all => the, simple => 'things' } );
+            $flow->input( [ qw/all the simple things/ ] );
+            $flow->input( { all => the, simple => 'things' } );
 
     Processors with "process_into" enabled (true by default) will process
     the items inside an array reference, and the values (not the keys)
@@ -93,9 +93,9 @@ METHODS
     unwanted data and/or if "auto_process" has been disabled.
 
   output
-    Fetches data from the node. If called in scalar context it will return
-    one processed item from the flow. If called in list context it will
-    return all the elements in the last queue.
+    Fetches data from the data flow. If called in scalar context it will
+    return one processed item from the flow. If called in list context it
+    will return all the elements in the last queue.
 
   flush
     Flushes all the data through the dataflow, and returns the complete

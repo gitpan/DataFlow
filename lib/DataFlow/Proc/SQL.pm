@@ -3,10 +3,10 @@ package DataFlow::Proc::SQL;
 use strict;
 use warnings;
 
-# ABSTRACT: A node that generates SQL clauses
+# ABSTRACT: A processor that generates SQL clauses
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -56,11 +56,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Proc::SQL - A node that generates SQL clauses
+DataFlow::Proc::SQL - A processor that generates SQL clauses
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

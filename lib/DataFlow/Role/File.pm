@@ -3,10 +3,10 @@ package DataFlow::Role::File;
 use strict;
 use warnings;
 
-# ABSTRACT: A role that provides a file-handle for nodes
+# ABSTRACT: A role that provides a file-handle for processors
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose::Role;
 use MooseX::Types::IO 'IO';
@@ -50,11 +50,11 @@ __END__
 
 =head1 NAME
 
-DataFlow::Role::File - A role that provides a file-handle for nodes
+DataFlow::Role::File - A role that provides a file-handle for processors
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 

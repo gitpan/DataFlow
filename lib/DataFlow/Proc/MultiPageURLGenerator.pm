@@ -6,7 +6,7 @@ use warnings;
 # ABSTRACT: A processor that generates multi-paged URL lists
 # ENCODING: utf8
 
-our $VERSION = '0.950000';    # VERSION
+our $VERSION = '1.110860';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -100,7 +100,7 @@ DataFlow::Proc::MultiPageURLGenerator - A processor that generates multi-paged U
 
 =head1 VERSION
 
-version 0.950000
+version 1.110860
 
 =head1 AUTHOR
 
