@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 # ABSTRACT: A CSV converting processor
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -70,27 +69,30 @@ has '+p' => (
     'default' => sub {
         my $self = shift;
 
-        return sub {
-            my $data = shift;
-            if ( $self->_header_unused ) {
-                $self->_header_unused(0);
-                return ( $self->_combine( $self->headers ),
-                    $self->_combine($data) );
-            }
+        my $subs = {
+            'TO_CSV' => sub {
+                my $data = shift;
+                my @res  = ();
+                if ( $self->_header_unused ) {
+                    $self->_header_unused(0);
+                    push @res, $self->_combine( $self->headers );
+                }
 
-            return $self->_combine($data);
-          }
-          if $self->direction eq 'TO_CSV';
-
-        return sub {
-            my $csv_line = shift;
-            if ( $self->_header_unused ) {
-                $self->_header_unused(0);
-                $self->headers( $self->_parse($csv_line) );
-                return;
-            }
-            return $self->_parse($csv_line);
+                push @res, $self->_combine($data);
+                return @res;
+            },
+            'FROM_CSV' => sub {
+                my $csv_line = shift;
+                if ( $self->_header_unused ) {
+                    $self->_header_unused(0);
+                    $self->headers( $self->_parse($csv_line) );
+                    return;
+                }
+                return $self->_parse($csv_line);
+            },
         };
+
+        return $subs->{ $self->direction };
     },
 );
 
@@ -100,11 +102,11 @@ no Moose;
 
 1;
 
-__END__
 
+__END__
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -112,7 +114,7 @@ DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head1 AUTHOR
 
@@ -167,3 +169,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+

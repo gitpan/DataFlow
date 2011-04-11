@@ -48,3 +48,4 @@ ok( !defined( $f->output ) );
 
 $f->flush;
 ok( !$f->output );
+

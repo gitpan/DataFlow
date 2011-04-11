@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 # ABSTRACT: A No-Op processor: input data is passed unmodified to the output
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -23,9 +22,11 @@ no Moose;
 
 1;
 
+
+
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -33,7 +34,7 @@ DataFlow::Proc::NOP - A No-Op processor: input data is passed unmodified to the 
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head1 SYNOPSIS
 
@@ -110,4 +111,6 @@ DAMAGES.
 
 =cut
 
+
 __END__
+

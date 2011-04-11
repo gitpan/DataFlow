@@ -87,3 +87,4 @@ ok($@);
 
 eval { my $f = DataFlow->new( procs => [] ); };
 ok($@);
+

@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 # ABSTRACT: A HTML filtering processor
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -27,6 +26,12 @@ has 'result_type' => (
 );
 
 has 'ref_result' => (
+    'is'      => 'ro',
+    'isa'     => 'Bool',
+    'default' => 0,
+);
+
+has 'nochomp' => (
     'is'      => 'ro',
     'isa'     => 'Bool',
     'default' => 0,
@@ -58,6 +63,10 @@ has '+p' => (
             return map { $_->as_HTML } @result;
         };
 
+        my $proc2 = $self->nochomp ? $proc : sub { return chomp $proc->(@_) };
+        my $proc3 =
+          $self->ref_result ? sub { return [ $proc2->(@_) ] } : $proc2;
+
         return $self->ref_result ? sub { return [ $proc->(@_) ] } : $proc;
     },
 );
@@ -68,9 +77,11 @@ no Moose;
 
 1;
 
+
+
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -78,7 +89,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head1 SYNOPSIS
 
@@ -217,4 +228,7 @@ DAMAGES.
 
 =cut
 
+
 __END__
+
+

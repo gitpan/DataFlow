@@ -22,3 +22,4 @@ ok( !defined( $uc->process_one() ), 'returns nothing for nothing' );
 is( $uc->process_one('aaa'), 'AAA', 'works as it should' );
 isnt( $uc->process_one('bbb'), 'bbb', 'indeed works as it should' );
 is( $uc->process_one(1), 1, );
+

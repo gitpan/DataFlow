@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 # ABSTRACT: A processor that writes data to a file
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -40,11 +39,11 @@ no Moose;
 
 1;
 
-__END__
 
+__END__
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -52,7 +51,7 @@ DataFlow::Proc::SimpleFileOutput - A processor that writes data to a file
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head1 AUTHOR
 
@@ -107,3 +106,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+

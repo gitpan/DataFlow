@@ -30,11 +30,12 @@ lib/DataFlow/Util/HTTPGet/Curl.pm
 lib/DataFlow/Util/HTTPGet/Mechanize.pm
 scripts/portaltransparencia/ceis.pl
 scripts/simple-deref.pl
+scripts/simple-noref.pl
 scripts/simple.pl
 scripts/tidy
 t/00-compile.t
 t/00-load.t
-t/000-report-versions.t
+t/000-report-versions-tiny.t
 t/01-dataflow.t
 t/02-dataflow-init.t
 t/02-dataflow-many.t

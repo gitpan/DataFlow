@@ -9,7 +9,6 @@ use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
 use DataFlow;
-use aliased 'DataFlow::Proc::NOP';
 use Data::Dumper;
 
 my $flow = DataFlow->new(
@@ -23,10 +22,12 @@ my $flow = DataFlow->new(
             #print "BBB: ".Dumper(\@res);;
             return [@res];
         },
-        NOP->new( deref => 1 ),
-        sub {
-            return lc(shift);
-        },
+        DataFlow::Proc->new(
+            dump_input   => 1,
+            dump_output  => 1,
+            process_into => 0,
+            p            => sub { return lc(shift); },
+        ),
     ],
 );
 

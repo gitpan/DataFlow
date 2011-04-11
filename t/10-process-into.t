@@ -53,3 +53,4 @@ my $copy   = $valnot;
 my $resnot = $not_into->process_one( \$copy );
 is( ref($resnot), '' );
 isnt( $resnot, $valnot );
+

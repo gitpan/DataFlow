@@ -16,3 +16,4 @@ my $html = $get->get(q{http://www.kernel.org/});
 ok($html);
 
 1;
+

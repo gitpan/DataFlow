@@ -1,8 +1,26 @@
 Revision History for DataFlow
 =============================
 
-1.110860
+1.111010
 --------
+
+commit 82ae399f343c1849605e7a16a7581d8730afc279
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit 10361f7f2e413ec4907f08b34b3c88a349b7e7f6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added some moose-attribute documentation
+
+commit 94978b9b1fe39c300e3ecaed22e418fac509934d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    changed tweet url upon releasing
+
+v1.110860 2011-03-26
+--------------------
 
 commit 83f6866b9c884626fe108972b88895081c8d6ff7
 Author: Alexei Znamensky <russoz@cpan.org>

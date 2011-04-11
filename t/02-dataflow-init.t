@@ -49,3 +49,4 @@ my @mix = ( $flow, $proc, sub { lc(shift) }, $ucfirst );
 # mix
 test_ucf_with( procs => [@mix] );
 test_ucf_with( [@mix] );
+

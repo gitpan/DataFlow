@@ -15,10 +15,9 @@ my %WriteMakefileArgs = (
     'English' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
-    'Test::More' => '0.94',
+    'Test::More' => '0.88',
     'Test::UseAllModules' => '0',
-    'aliased' => '0',
-    'perl' => '5.004'
+    'aliased' => '0'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
@@ -30,7 +29,7 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Carp' => '0',
     'Data::Dumper' => '0',
-    'DateTime' => '0',
+    'DateTime' => '0.51',
     'Encode' => '0',
     'HTML::TreeBuilder::XPath' => '0',
     'LWP::Curl' => '0',
@@ -47,7 +46,7 @@ my %WriteMakefileArgs = (
     'WWW::Mechanize' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '1.110860',
+  'VERSION' => '1.111010',
   'test' => {
     'TESTS' => 't/*.t'
   }

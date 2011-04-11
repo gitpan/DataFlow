@@ -15,3 +15,4 @@ test_uc_with( p => DataFlow::Proc->new( p => $uc ) );
 use DataFlow;
 my $d = DataFlow->new( procs => [ DataFlow::Proc->new( p => $uc ) ] );
 test_uc_with( p => $d );
+

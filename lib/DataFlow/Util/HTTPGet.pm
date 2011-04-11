@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 # ABSTRACT: A HTTP Getter
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
 
@@ -77,6 +76,7 @@ has 'content_sub' => (
     },
 );
 
+
 sub get {
     my ( $self, $url ) = @_;
 
@@ -95,6 +95,7 @@ sub get {
     return;
 }
 
+
 sub post {
     my ( $self, $url, $form ) = @_;
     for ( 1 .. $self->attempts ) {
@@ -108,11 +109,11 @@ no Moose;
 
 1;
 
-__END__
 
+__END__
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -120,7 +121,7 @@ DataFlow::Util::HTTPGet - A HTTP Getter
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head2 get URL
 
@@ -183,3 +184,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+

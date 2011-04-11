@@ -4,12 +4,11 @@ use strict;
 use warnings;
 
 # ABSTRACT: A piece of information metadata
-# ENCODING: utf8
 
-our $VERSION = '1.110860';    # VERSION
+our $VERSION = '1.111010'; # VERSION
 
 use Moose;
-use DateTime;
+use DateTime 0.51;
 
 has 'timestamp'    => ( is => 'rw', isa => 'DateTime', );
 has 'title'        => ( is => 'rw', isa => 'Str', );
@@ -23,9 +22,11 @@ no Moose;
 
 1;
 
+
+
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -33,7 +34,7 @@ DataFlow::Meta - A piece of information metadata
 
 =head1 VERSION
 
-version 1.110860
+version 1.111010
 
 =head1 AUTHOR
 
@@ -89,4 +90,6 @@ DAMAGES.
 
 =cut
 
+
 __END__
+

@@ -6,3 +6,4 @@ use strict;
 use_ok('DataFlow::Util::HTTPGet::Mechanize');
 
 1;
+
