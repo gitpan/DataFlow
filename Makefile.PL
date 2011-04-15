@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     'DateTime' => '0.51',
     'Encode' => '0',
     'HTML::TreeBuilder::XPath' => '0',
-    'LWP::Curl' => '0',
+    'LWP::Curl' => '0.08',
     'Moose' => '0',
     'Moose::Role' => '0',
     'Moose::Util::TypeConstraints' => '1.01',
@@ -46,7 +46,7 @@ my %WriteMakefileArgs = (
     'WWW::Mechanize' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '1.111010',
+  'VERSION' => '1.111050',
   'test' => {
     'TESTS' => 't/*.t'
   }

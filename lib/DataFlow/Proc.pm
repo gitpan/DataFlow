@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Dumper';
@@ -201,7 +201,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 SYNOPSIS
 
@@ -250,7 +250,7 @@ scalar.
 
 =head2 allows_undef_input
 
-[Bool] It controls whether C<$self->p->()> will be handed C<undef> as input
+[Bool] It controls whether C<< $self->p->() >> will accept C<undef> as input
 or if DataFlow::Proc will filter those out. (DEFAULT = false)
 
 =head2 deref
@@ -322,7 +322,7 @@ what this code reference can or should do. (REQUIRED)
 
 Processes one single scalar (or anything else that can be passed in on scalar,
 such as references or globs), and returns the application of the function
-C<$self->p->()> over the item.
+C<< $self->p->() >> over the item.
 
 =head1 DEPENDENCIES
 

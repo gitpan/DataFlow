@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -58,7 +58,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 AUTHOR
 

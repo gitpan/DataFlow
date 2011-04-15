@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A component for dataflow processing
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 use Moose::Util::TypeConstraints 1.01;
@@ -167,7 +167,7 @@ DataFlow - A component for dataflow processing
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 SYNOPSIS
 

@@ -1,8 +1,26 @@
 Revision History for DataFlow
 =============================
 
-1.111010
+1.111050
 --------
+
+commit e2385c8ec3bbc9293cc68da9f7589865dd073d31
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fixed pod tags in documentation
+
+commit 22f75adf696c31c72405862e7ea30b8c32764375
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fixed twitter url
+
+commit 76ceda0b76058f32ded39816c5f12ac7459b6e45
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added minimum level for LWP::Curl
+
+v1.111010 2011-04-10
+--------------------
 
 commit 82ae399f343c1849605e7a16a7581d8730afc279
 Author: Alexei Znamensky <russoz@cpan.org>

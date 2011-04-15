@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose::Role;
 
@@ -41,7 +41,7 @@ DataFlow::Util::HTTPGet::Mechanize - A HTTP Getter implementation using WWW::Mec
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 AUTHOR
 

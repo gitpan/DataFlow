@@ -26,7 +26,7 @@
             "DateTime" : "0.51",
             "Encode" : 0,
             "HTML::TreeBuilder::XPath" : 0,
-            "LWP::Curl" : 0,
+            "LWP::Curl" : "0.08",
             "Moose" : 0,
             "Moose::Role" : 0,
             "Moose::Util::TypeConstraints" : "1.01",
@@ -64,6 +64,6 @@
          "web" : "http://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111010"
+   "version" : "1.111050"
 }
 

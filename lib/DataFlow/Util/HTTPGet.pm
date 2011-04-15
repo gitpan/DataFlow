@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A HTTP Getter
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 
@@ -121,7 +121,7 @@ DataFlow::Util::HTTPGet - A HTTP Getter
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head2 get URL
 

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A piece of information metadata
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 use DateTime 0.51;
@@ -34,7 +34,7 @@ DataFlow::Meta - A piece of information metadata
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 AUTHOR
 

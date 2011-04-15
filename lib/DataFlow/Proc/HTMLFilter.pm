@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A HTML filtering processor
 
-our $VERSION = '1.111010'; # VERSION
+our $VERSION = '1.111050'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -89,7 +89,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 1.111010
+version 1.111050
 
 =head1 SYNOPSIS
 
