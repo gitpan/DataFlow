@@ -5,11 +5,13 @@ use warnings;
 
 # ABSTRACT: A HTTP Getter
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
-
 with 'MooseX::Traits';
+
+use namespace::autoclean;
+
 has '+_trait_namespace' => ( default => 'DataFlow::Util::HTTPGet' );
 
 has 'referer' => (
@@ -105,8 +107,6 @@ sub post {
     return;
 }
 
-no Moose;
-
 1;
 
 
@@ -121,7 +121,7 @@ DataFlow::Util::HTTPGet - A HTTP Getter
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head2 get URL
 

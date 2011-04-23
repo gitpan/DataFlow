@@ -1,43 +1,48 @@
-package DataFlow::Util::HTTPGet::Mechanize;
+package DataFlow::TypePolicy::ProcessInto;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
+# ABSTRACT: A TypePolicy that processes into references' values
 
 our $VERSION = '1.111130'; # VERSION
 
-use Moose::Role;
+use Moose;
+with 'DataFlow::Role::TypePolicy';
 
-use WWW::Mechanize;
+use namespace::autoclean;
 
-sub _make_obj {
-    my $self = shift;
-    return WWW::Mechanize->new(
-        agent   => $self->agent,
-        onerror => sub { confess(@_) },
-        timeout => $self->timeout
-    );
-}
+has '+handlers' => (
+    'default' => sub {
+        my $type_handler = {
+            'SCALAR' => \&_handle_scalar_ref,
+            'ARRAY'  => \&_handle_array_ref,
+            'HASH'   => \&_handle_hash_ref,
+            'CODE'   => \&_handle_code_ref,
+        };
+        return $type_handler;
+    },
+);
 
-sub _content {
-    my ( $self, $response ) = @_;
+has '+default_handler' => (
+    'default' => sub {
+        return \&_handle_svalue;
+    },
+);
 
-    #print STDERR "mech _content\n";
-    return $response->content;
-}
+__PACKAGE__->meta->make_immutable;
 
 1;
 
 
-__END__
+
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Util::HTTPGet::Mechanize - A HTTP Getter implementation using WWW::Mechanize
+DataFlow::TypePolicy::ProcessInto - A TypePolicy that processes into references' values
 
 =head1 VERSION
 
@@ -96,4 +101,7 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+
+__END__
 

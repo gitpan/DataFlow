@@ -5,11 +5,13 @@ use warnings;
 
 # ABSTRACT: A debugging processor that will dump data to STDERR
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 with 'DataFlow::Role::Dumper';
+
+use namespace::autoclean;
 
 has '+process_into' => (
     default  => 0,
@@ -27,7 +29,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -43,7 +44,7 @@ DataFlow::Proc::Dumper - A debugging processor that will dump data to STDERR
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 SYNOPSIS
 

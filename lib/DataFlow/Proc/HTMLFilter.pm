@@ -5,11 +5,12 @@ use warnings;
 
 # ABSTRACT: A HTML filtering processor
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
+use namespace::autoclean;
 use Moose::Util::TypeConstraints 1.01;
 use HTML::TreeBuilder::XPath;
 
@@ -72,8 +73,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose::Util::TypeConstraints;
-no Moose;
 
 1;
 
@@ -89,7 +88,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 SYNOPSIS
 

@@ -37,8 +37,9 @@ requires:
   Text::CSV: 0
   WWW::Mechanize: 0
   autodie: 0
+  namespace::autoclean: 0
   perl: 5.008
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111050
+version: 1.111130

@@ -1,8 +1,83 @@
 Revision History for DataFlow
 =============================
 
-1.111050
+1.111130
 --------
+
+commit ed420af09e71959f6dd9eef910dae3a656f7309b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit 1be887663a96d65484e2d0d91dd819b62311aa8c
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fixed code and resolved issue #1
+
+commit c384f29bc5d292724ff3a3ff3b90aae626e5281f
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    enabled coercion for type policy
+
+commit 3d44ab9190cd67927b62af9d4e8f817d46e0fa35
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Fixed abstract
+
+commit 4de6d4cfe9314d68731b1cc78908e1bf9d45d05d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Added a ArrayRef only type policy
+
+commit e78cd01822e094e160daaa40c61beb7f74a8bdf3
+Merge: e2385c8 1dec7e6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'feature/handlers' into develop
+
+commit 1dec7e603bc9b663d7d2d27e236e5743bc45e171
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Procs return only arrays
+
+commit 31b0654b25679515b2cf5caf11a12e76bbe0e4bb
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    DataFlow::Proc using TypePolicy
+
+commit 0c519818d5b50023baa711b48d33120af320c8f5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    renamed ProcHandlers to TypePolicies
+
+commit 3b69545979c22531c570661d9b700d155754a9fa
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    generic handlers
+
+commit 473db6697bcb3e05db6b582d0c4f11792010bbbe
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed unecessary 'use', renamed a var for clarity
+
+commit bae67882ee84190b109361b90cdc6cdb506e73e7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    using namespace::autoclean
+
+commit 9c982ecf703226620535df768833cac8f41ef7b3
+Merge: daaddd2 e1da81c
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'master' into feature/handlers
+
+commit daaddd20b730b2851256516b8c89106af9a7770d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    partial commit for handlers feature
+
+v1.111050 2011-04-14
+--------------------
 
 commit e2385c8ec3bbc9293cc68da9f7589865dd073d31
 Author: Alexei Znamensky <russoz@cpan.org>

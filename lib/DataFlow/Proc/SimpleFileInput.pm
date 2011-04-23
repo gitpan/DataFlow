@@ -5,13 +5,14 @@ use warnings;
 
 # ABSTRACT: A processor that reads that from a file
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 with 'DataFlow::Role::File';
 
 use autodie;
+use namespace::autoclean;
 use Queue::Base;
 
 has '_slurpy_read' => (
@@ -73,7 +74,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -89,7 +89,7 @@ DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 AUTHOR
 

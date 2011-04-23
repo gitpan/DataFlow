@@ -1,33 +1,81 @@
-package DataFlow::Util::HTTPGet::Mechanize;
+package DataFlow::Role::TypePolicy;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A HTTP Getter implementation using WWW::Mechanize
+# ABSTRACT: A role that defines a proc-handler
 
 our $VERSION = '1.111130'; # VERSION
 
 use Moose::Role;
 
-use WWW::Mechanize;
+use namespace::autoclean;
+use Scalar::Util 'reftype';
 
-sub _make_obj {
-    my $self = shift;
-    return WWW::Mechanize->new(
-        agent   => $self->agent,
-        onerror => sub { confess(@_) },
-        timeout => $self->timeout
-    );
+has 'handlers' => (
+    'is'      => 'ro',
+    'isa'     => 'HashRef[CodeRef]',
+    'lazy'    => 1,
+    'default' => sub { return {} },
+);
+
+has 'default_handler' => (
+    'is'      => 'ro',
+    'isa'     => 'CodeRef',
+    'lazy'    => 1,
+    'default' => sub {
+        shift->confess(q{Must provide a default handler!});
+    },
+);
+
+sub apply {
+    my ( $self, $p, $item ) = @_;
+    my $type = _param_type($item);
+
+    return
+      exists $self->handlers->{$type}
+      ? $self->handlers->{$type}->( $p, $item )
+      : $self->default_handler->( $p, $item );
 }
 
-sub _content {
-    my ( $self, $response ) = @_;
+sub _param_type {
+    my $p = shift;
+    my $r = reftype($p);
+    return $r ? $r : 'SVALUE';
+}
 
-    #print STDERR "mech _content\n";
-    return $response->content;
+sub _handle_svalue {
+    my ( $p, $item ) = @_;
+    return $p->($item);
+}
+
+sub _handle_scalar_ref {
+    my ( $p, $item ) = @_;
+    my $r = $p->($$item);
+    return \$r;
+}
+
+sub _handle_array_ref {
+    my ( $p, $item ) = @_;
+
+    #use Data::Dumper; warn 'handle_array_ref :: item = ' . Dumper($item);
+    my @r = map { $p->($_) } @{$item};
+    return [@r];
+}
+
+sub _handle_hash_ref {
+    my ( $p, $item ) = @_;
+    my %r = map { $_ => $p->( $item->{$_} ) } keys %{$item};
+    return {%r};
+}
+
+sub _handle_code_ref {
+    my ( $p, $item ) = @_;
+    return sub { $p->( $item->() ) };
 }
 
 1;
+
 
 
 __END__
@@ -37,11 +85,15 @@ __END__
 
 =head1 NAME
 
-DataFlow::Util::HTTPGet::Mechanize - A HTTP Getter implementation using WWW::Mechanize
+DataFlow::Role::TypePolicy - A role that defines a proc-handler
 
 =head1 VERSION
 
 version 1.111130
+
+=head2 apply P ITEM
+
+Applies the policy using function P and input data ITEM.
 
 =head1 AUTHOR
 

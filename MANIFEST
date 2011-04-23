@@ -25,6 +25,10 @@ lib/DataFlow/Proc/SimpleFileOutput.pm
 lib/DataFlow/Proc/URLRetriever.pm
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
+lib/DataFlow/Role/TypePolicy.pm
+lib/DataFlow/TypePolicy/ArrayRef.pm
+lib/DataFlow/TypePolicy/ProcessInto.pm
+lib/DataFlow/TypePolicy/Scalar.pm
 lib/DataFlow/Util/HTTPGet.pm
 lib/DataFlow/Util/HTTPGet/Curl.pm
 lib/DataFlow/Util/HTTPGet/Mechanize.pm
@@ -49,6 +53,7 @@ t/12-get-mechanize.t
 t/20-nop.t
 t/20-null.t
 t/25-dumper.t
+t/40-csv.t
 t/50-simplefileinput.t
 t/50-simplefileoutput.t
 t/60-multipageurlgenerator.t

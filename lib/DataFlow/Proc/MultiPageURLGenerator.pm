@@ -5,11 +5,12 @@ use warnings;
 
 # ABSTRACT: A processor that generates multi-paged URL lists
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
+use namespace::autoclean;
 use Carp;
 
 has 'first_page' => (
@@ -83,7 +84,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -99,7 +99,7 @@ DataFlow::Proc::MultiPageURLGenerator - A processor that generates multi-paged U
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 AUTHOR
 

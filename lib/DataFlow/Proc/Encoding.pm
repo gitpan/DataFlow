@@ -5,11 +5,12 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
+use namespace::autoclean;
 use Encode;
 
 has 'input_encoding' => (
@@ -42,7 +43,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -58,7 +58,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 AUTHOR
 

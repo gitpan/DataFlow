@@ -5,10 +5,12 @@ use warnings;
 
 # ABSTRACT: A No-Op processor: input data is passed unmodified to the output
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
+
+use namespace::autoclean;
 
 has '+process_into' => ( 'default' => 0, );
 has '+p' => (
@@ -18,7 +20,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -34,7 +35,7 @@ DataFlow::Proc::NOP - A No-Op processor: input data is passed unmodified to the 
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 SYNOPSIS
 

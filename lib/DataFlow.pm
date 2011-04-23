@@ -5,12 +5,12 @@ use warnings;
 
 # ABSTRACT: A component for dataflow processing
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 use Moose::Util::TypeConstraints 1.01;
 
-use Scalar::Util qw/looks_like_number/;
+use namespace::autoclean;
 use Queue::Base 2.1;
 use DataFlow::Proc;
 use Data::Dumper;
@@ -86,10 +86,10 @@ sub _count_queued_items {
 }
 
 sub _process_queues {
-    my ( $p, $inputq, $outputq ) = @_;
+    my ( $proc, $inputq, $outputq ) = @_;
 
     my $item = $inputq->remove;
-    my @res  = $p->process_one($item);
+    my @res  = $proc->process_one($item);
     $outputq->add(@res);
     return;
 }
@@ -149,8 +149,6 @@ sub process {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose::Util::TypeConstraints;
-no Moose;
 
 1;
 
@@ -167,7 +165,7 @@ DataFlow - A component for dataflow processing
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 SYNOPSIS
 
@@ -316,11 +314,15 @@ in addition to those websites please use your favorite search engine to discover
 
 Search CPAN
 
+The default CPAN search engine, useful to view POD in HTML format.
+
 L<http://search.cpan.org/dist/DataFlow>
 
 =item *
 
-AnnoCPAN: Annotated CPAN documentation
+AnnoCPAN
+
+The AnnoCPAN is a website that allows community annonations of Perl module documentation.
 
 L<http://annocpan.org/dist/DataFlow>
 
@@ -328,29 +330,39 @@ L<http://annocpan.org/dist/DataFlow>
 
 CPAN Ratings
 
+The CPAN Ratings is a website that allows community ratings and reviews of Perl modules.
+
 L<http://cpanratings.perl.org/d/DataFlow>
 
 =item *
 
 CPAN Forum
 
+The CPAN Forum is a web forum for discussing Perl modules.
+
 L<http://cpanforum.com/dist/DataFlow>
 
 =item *
 
-CPANTS Kwalitee
+CPANTS
+
+The CPANTS is a website that analyzes the Kwalitee ( code metrics ) of a distribution.
 
 L<http://cpants.perl.org/dist/overview/DataFlow>
 
 =item *
 
-CPAN Testers Results
+CPAN Testers
 
-L<http://cpantesters.org/distro/D/DataFlow.html>
+The CPAN Testers is a network of smokers who run automated tests on uploaded CPAN distributions.
+
+L<http://www.cpantesters.org/distro/D/DataFlow>
 
 =item *
 
 CPAN Testers Matrix
+
+The CPAN Testers Matrix is a website that provides a visual way to determine what Perls/platforms PASSed for a distribution.
 
 L<http://matrix.cpantesters.org/?dist=DataFlow>
 

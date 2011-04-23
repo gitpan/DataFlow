@@ -5,11 +5,12 @@ use warnings;
 
 # ABSTRACT: An URL-retriever processor
 
-our $VERSION = '1.111050'; # VERSION
+our $VERSION = '1.111130'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
+use namespace::autoclean;
 use DataFlow::Util::HTTPGet;
 
 has '_get' => (
@@ -44,7 +45,6 @@ has '+p' => (
 );
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -60,7 +60,7 @@ DataFlow::Proc::URLRetriever - An URL-retriever processor
 
 =head1 VERSION
 
-version 1.111050
+version 1.111130
 
 =head1 AUTHOR
 

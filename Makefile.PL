@@ -44,9 +44,10 @@ my %WriteMakefileArgs = (
     'Scalar::Util' => '0',
     'Text::CSV' => '0',
     'WWW::Mechanize' => '0',
-    'autodie' => '0'
+    'autodie' => '0',
+    'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111050',
+  'VERSION' => '1.111130',
   'test' => {
     'TESTS' => 't/*.t'
   }
