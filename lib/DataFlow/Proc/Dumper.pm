@@ -3,9 +3,9 @@ package DataFlow::Proc::Dumper;
 use strict;
 use warnings;
 
-# ABSTRACT: A debugging processor that will dump data to STDERR
+# ABSTRACT: [DEPRECATED] A debugging processor that will dump data to STDERR
 
-our $VERSION = '1.111130'; # VERSION
+our $VERSION = '1.111140'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -40,11 +40,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::Proc::Dumper - A debugging processor that will dump data to STDERR
+DataFlow::Proc::Dumper - [DEPRECATED] A debugging processor that will dump data to STDERR
 
 =head1 VERSION
 
-version 1.111130
+version 1.111140
 
 =head1 SYNOPSIS
 
@@ -57,9 +57,16 @@ version 1.111130
 
 =head1 DESCRIPTION
 
+B<DEPRECATED:> Every processor now has its own data-dumping facility, by
+using the attributes C<dump_input> and C<dump_output>.
+
 Dumper processor. Every item passed to its input will be printed in the C<STDERR>
 file handle, using the method C<raw_dumper()> defined at the role
 L<DataFlow::Role::Dumper>.
+
+=head1 SEE ALSO
+
+L<DataFlow::Proc>
 
 =head1 AUTHOR
 

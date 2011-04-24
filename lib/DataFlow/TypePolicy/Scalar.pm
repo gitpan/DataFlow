@@ -3,9 +3,9 @@ package DataFlow::TypePolicy::Scalar;
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that processes only scalar values, no refs
+# ABSTRACT: A TypePolicy that treats all items as scalars
 
-our $VERSION = '1.111130'; # VERSION
+our $VERSION = '1.111140'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::TypePolicy';
@@ -30,11 +30,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::TypePolicy::Scalar - A TypePolicy that processes only scalar values, no refs
+DataFlow::TypePolicy::Scalar - A TypePolicy that treats all items as scalars
 
 =head1 VERSION
 
-version 1.111130
+version 1.111140
 
 =head1 AUTHOR
 

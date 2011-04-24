@@ -42,4 +42,4 @@ requires:
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111130
+version: 1.111140

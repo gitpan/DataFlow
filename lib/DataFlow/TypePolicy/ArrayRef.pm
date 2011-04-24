@@ -3,18 +3,24 @@ package DataFlow::TypePolicy::ArrayRef;
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that processes only array references
+# ABSTRACT: A TypePolicy that accepts only array-references
 
-our $VERSION = '1.111130'; # VERSION
+our $VERSION = '1.111140'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::TypePolicy';
 
 use namespace::autoclean;
 
+has '+handlers' => (
+    'default' => sub {
+        return { 'ARRAY' => \&_handle_svalue, };
+    },
+);
+
 has '+default_handler' => (
     'default' => sub {
-        return \&_handle_array_ref;
+        die q{Must be an array reference!};
     },
 );
 
@@ -30,11 +36,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::TypePolicy::ArrayRef - A TypePolicy that processes only array references
+DataFlow::TypePolicy::ArrayRef - A TypePolicy that accepts only array-references
 
 =head1 VERSION
 
-version 1.111130
+version 1.111140
 
 =head1 AUTHOR
 

@@ -1,8 +1,46 @@
 Revision History for DataFlow
 =============================
 
-1.111130
+1.111140
 --------
+
+commit f6ca8438fae8c4ef18ac73e7c7e5051ddd75c33c
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added new type policies, CSV now using them
+
+commit 4ef481d38406c609ea84d4e3c13caa54de4bac78
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit 02a3559a86f59d985f8952d74661fc43ff3807d9
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed test verbosity
+
+commit 736114b682a46518f5d8cec8b1ca396de7edb25b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    improved data dump output
+
+commit 86e1cae8774dc69bd0ccbdf75665ee3a42803551
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    updated doc for Dumper proc - deprecated
+
+commit b095d61c5c57e86959e6158f03dca0c6aeb78daa
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    ceis.pl puxa todos os dados
+
+commit 78d076f3758ab54ef57c7b8cb6c23e4beb5ff28d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fixed bug in ceis.pl script
+
+v1.111130 2011-04-23
+--------------------
 
 commit ed420af09e71959f6dd9eef910dae3a656f7309b
 Author: Alexei Znamensky <russoz@cpan.org>

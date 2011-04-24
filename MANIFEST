@@ -28,6 +28,7 @@ lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/TypePolicy.pm
 lib/DataFlow/TypePolicy/ArrayRef.pm
 lib/DataFlow/TypePolicy/ProcessInto.pm
+lib/DataFlow/TypePolicy/ProcessIntoArrayRef.pm
 lib/DataFlow/TypePolicy/Scalar.pm
 lib/DataFlow/Util/HTTPGet.pm
 lib/DataFlow/Util/HTTPGet/Curl.pm
@@ -60,6 +61,7 @@ t/60-multipageurlgenerator.t
 t/62-urlretriever.t
 t/64-htmlfilter.t
 t/author-critic.t
+t/bug-anonsub-with-array.t
 t/release-distmeta.t
 t/release-eol.t
 t/release-has-version.t
