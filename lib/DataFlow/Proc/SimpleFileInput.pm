@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that reads that from a file
 
-our $VERSION = '1.111140'; # VERSION
+our $VERSION = '1.111230'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -37,21 +37,24 @@ has '_fileq' => (
     'is'      => 'ro',
     'isa'     => 'Queue::Base',
     'lazy'    => 1,
-    'default' => sub {
-        return Queue::Base->new;
-    },
+    'default' => sub { return Queue::Base->new },
 );
 
-has '+allows_undef_input' => ( 'default' => 1 );
+has '+allows_undef_input' => (
+    'default' => sub {
+        my $self = shift;
+        return $self->do_slurp ? 0 : 1;
+    }
+);
 
 has '+p' => (
     'default' => sub {
         my $self = shift;
 
+        return $self->_slurpy_read if $self->do_slurp;
+
         return sub {
             my $filename = shift;
-
-            return $self->_slurpy_read->($filename) if $self->do_slurp;
 
             # if filename is provided, add it to the queue
             $self->_fileq->add($filename) if defined $filename;
@@ -89,7 +92,7 @@ DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 1.111140
+version 1.111230
 
 =head1 AUTHOR
 

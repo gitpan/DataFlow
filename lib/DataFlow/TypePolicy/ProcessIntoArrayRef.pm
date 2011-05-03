@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A TypePolicy that processes into array references only
 
-our $VERSION = '1.111140'; # VERSION
+our $VERSION = '1.111230'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::TypePolicy';
@@ -40,7 +40,7 @@ DataFlow::TypePolicy::ProcessIntoArrayRef - A TypePolicy that processes into arr
 
 =head1 VERSION
 
-version 1.111140
+version 1.111230
 
 =head1 AUTHOR
 

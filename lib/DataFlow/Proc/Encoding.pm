@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111140'; # VERSION
+our $VERSION = '1.111230'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -30,14 +30,14 @@ has '+p' => (
         my $self = shift;
         return sub {
             my $item = shift;
-            return $item unless ref($item) ne '';
-            my $data =
+            return $item unless ref($item) eq '';
+            my $internal =
               $self->has_input_encoding
               ? decode( $self->input_encoding, $item )
               : $item;
             return $self->has_output_encoding
-              ? encode( $self->output_encoding, $data )
-              : $data;
+              ? encode( $self->output_encoding, $internal )
+              : $internal;
         };
     },
 );
@@ -58,7 +58,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111140
+version 1.111230
 
 =head1 AUTHOR
 

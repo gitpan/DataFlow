@@ -10,9 +10,9 @@ build_requires:
   Test::UseAllModules: 0
   aliased: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.31
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -35,6 +35,7 @@ requires:
   SQL::Abstract: 0
   Scalar::Util: 0
   Text::CSV: 0
+  Text::CSV::Encoded: 0
   WWW::Mechanize: 0
   autodie: 0
   namespace::autoclean: 0
@@ -42,4 +43,4 @@ requires:
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111140
+version: 1.111230

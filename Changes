@@ -1,8 +1,46 @@
 Revision History for DataFlow
 =============================
 
-1.111140
+1.111230
 --------
+
+commit ddce42c62c1c76c1eacb5451230ecb29c4b93b0d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    fixed encoding proc - not tested yet
+
+commit 79fac642c11f1fcf64b616c9fb0e885d7966784b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added support for Text::CSV::Encoded to CSV proc
+
+commit a6c0970bde660b1094b72b5794e96e2a6b9ff264
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    no it doesnt
+
+commit dee71e9e29e9f63b8780543fd4c77d2ff9677e53
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    SimpleFileInput
+
+commit 9789c75b58eda108824bcad7275fdfc2afa7515b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    last queue must be counted too
+
+commit 3a3b1cec957bff7cbe6f7774c3e3b29decc2bdff
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    cosmetic changes
+
+commit e2a486d3d060775ed7a14b11f7713cfdddca6ee1
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    small changes
+
+v1.111140 2011-04-24
+--------------------
 
 commit f6ca8438fae8c4ef18ac73e7c7e5051ddd75c33c
 Author: Alexei Znamensky <russoz@cpan.org>

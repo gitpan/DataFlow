@@ -4,7 +4,7 @@ use warnings;
 
 BEGIN { require 5.008; }
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
     'aliased' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'DataFlow',
   'EXE_FILES' => [],
@@ -43,11 +43,12 @@ my %WriteMakefileArgs = (
     'SQL::Abstract' => '0',
     'Scalar::Util' => '0',
     'Text::CSV' => '0',
+    'Text::CSV::Encoded' => '0',
     'WWW::Mechanize' => '0',
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111140',
+  'VERSION' => '1.111230',
   'test' => {
     'TESTS' => 't/*.t'
   }

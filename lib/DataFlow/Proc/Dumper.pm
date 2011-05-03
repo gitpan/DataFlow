@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: [DEPRECATED] A debugging processor that will dump data to STDERR
 
-our $VERSION = '1.111140'; # VERSION
+our $VERSION = '1.111230'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -44,7 +44,7 @@ DataFlow::Proc::Dumper - [DEPRECATED] A debugging processor that will dump data 
 
 =head1 VERSION
 
-version 1.111140
+version 1.111230
 
 =head1 SYNOPSIS
 
