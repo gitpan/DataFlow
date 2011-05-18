@@ -5,24 +5,27 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
 use namespace::autoclean;
 use Encode;
+use MooseX::Aliases;
 
 has 'input_encoding' => (
     'is'        => 'ro',
     'isa'       => 'Str',
     'predicate' => 'has_input_encoding',
+    'alias'     => 'from',
 );
 
 has 'output_encoding' => (
     'is'        => 'ro',
     'isa'       => 'Str',
     'predicate' => 'has_output_encoding',
+    'alias'     => 'to',
 );
 
 has '+p' => (
@@ -58,7 +61,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head1 AUTHOR
 

@@ -1,37 +1,95 @@
-package DataFlow::Meta;
+package DataFlow::Role::Converter;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A piece of information metadata
+# ABSTRACT: A role for format-conversion processors
 
 our $VERSION = '1.111380'; # VERSION
 
-use Moose;
+use MooseX::Role::Parameterized;
+use Moose::Util::TypeConstraints 1.01;
 
-use namespace::autoclean;
-use DateTime 0.51;
+parameter 'type_attr' => (
+    'isa'      => 'Str',
+    'required' => 1,
+);
 
-has 'timestamp'    => ( is => 'rw', isa => 'DateTime', );
-has 'title'        => ( is => 'rw', isa => 'Str', );
-has 'publisher'    => ( is => 'rw', isa => 'Str', );
-has 'author'       => ( is => 'rw', isa => 'Str', );
-has 'original'     => ( is => 'rw', isa => 'Str', );
-has 'restrictions' => ( is => 'rw', isa => 'Str', );
+parameter 'type_class' => (
+    'isa'      => 'Str',
+    'required' => 1,
+);
 
-__PACKAGE__->meta->make_immutable;
+parameter 'type_class_imports' => (
+    'isa'       => 'ArrayRef',
+    'predicate' => 'has_imports',
+);
+
+parameter 'type_short' => (
+    'isa'      => 'Str',
+    'required' => 1,
+);
+
+role {
+    my $p = shift;
+
+    my $attr     = $p->type_attr;
+    my $class    = $p->type_class;
+    my $opts     = $attr . '_opts';
+    my $has_opts = 'has_' . $opts;
+    my $short    = $p->type_short;
+
+    my $direction_from = 'FROM_' . uc($short);
+    my $direction_to   = 'TO_' . uc($short);
+
+    has 'direction' => (
+        is       => 'ro',
+        isa      => enum( [ $direction_from, $direction_to ] ),
+        required => 1,
+    );
+
+    has $opts => (
+        is        => 'ro',
+        isa       => 'Ref',
+        predicate => $has_opts,
+    );
+
+    has $attr => (
+        is      => 'ro',
+        isa     => $class,
+        lazy    => 1,
+        default => sub {
+            my $self = shift;
+            return $self->_attr_default;
+        },
+    );
+
+    method '_attr_default' => sub {
+        my $self = shift;
+        my $options = $self->$opts || +{};
+
+        my $use_clause = "use $class";
+        $use_clause .= " (@{ $p->type_class_imports })" if $p->has_imports;
+
+        eval $use_clause;    ## no critic
+        my $o = $class->new($options);
+        eval "no $class";    ## no critic
+
+        return $o;
+    };
+};
 
 1;
 
 
-
+__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Meta - A piece of information metadata
+DataFlow::Role::Converter - A role for format-conversion processors
 
 =head1 VERSION
 
@@ -90,7 +148,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-
-__END__
 

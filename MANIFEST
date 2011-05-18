@@ -8,6 +8,7 @@ Makefile.PL
 README
 dist.ini
 examples/file.test
+examples/simples.pl
 lib/DataFlow.pm
 lib/DataFlow/Item.pm
 lib/DataFlow/Meta.pm
@@ -16,6 +17,7 @@ lib/DataFlow/Proc/CSV.pm
 lib/DataFlow/Proc/Dumper.pm
 lib/DataFlow/Proc/Encoding.pm
 lib/DataFlow/Proc/HTMLFilter.pm
+lib/DataFlow/Proc/JSON.pm
 lib/DataFlow/Proc/MultiPageURLGenerator.pm
 lib/DataFlow/Proc/NOP.pm
 lib/DataFlow/Proc/Null.pm
@@ -23,6 +25,7 @@ lib/DataFlow/Proc/SQL.pm
 lib/DataFlow/Proc/SimpleFileInput.pm
 lib/DataFlow/Proc/SimpleFileOutput.pm
 lib/DataFlow/Proc/URLRetriever.pm
+lib/DataFlow/Role/Converter.pm
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/TypePolicy.pm
@@ -54,6 +57,7 @@ t/12-get-mechanize.t
 t/20-nop.t
 t/20-null.t
 t/25-dumper.t
+t/30-encoding.t
 t/40-csv.t
 t/50-simplefileinput.t
 t/50-simplefileoutput.t
@@ -62,12 +66,17 @@ t/62-urlretriever.t
 t/64-htmlfilter.t
 t/author-critic.t
 t/bug-anonsub-with-array.t
+t/release-dist-manifest.t
 t/release-distmeta.t
 t/release-eol.t
 t/release-has-version.t
 t/release-kwalitee.t
-t/release-notabs.t
+t/release-meta-json.t
+t/release-minimum-version.t
+t/release-no-tabs.t
 t/release-pod-coverage.t
+t/release-pod-linkcheck.t
 t/release-pod-syntax.t
+t/release-portability.t
 t/release-unused-vars.t
 weaver.ini

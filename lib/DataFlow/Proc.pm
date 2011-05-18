@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Dumper';
@@ -15,7 +15,7 @@ use DataFlow;
 use DataFlow::Role::TypePolicy;
 
 use Moose::Util::TypeConstraints 1.01;
-use Scalar::Util qw/blessed reftype/;
+use Scalar::Util qw/reftype/;
 
 subtype 'Processor' => as 'CodeRef';
 coerce 'Processor' => from 'DataFlow::Proc' => via {
@@ -151,7 +151,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head1 SYNOPSIS
 

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A TypePolicy that treats all items as scalars
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::TypePolicy';
@@ -34,7 +34,7 @@ DataFlow::TypePolicy::Scalar - A TypePolicy that treats all items as scalars
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head1 AUTHOR
 

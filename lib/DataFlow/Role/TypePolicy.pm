@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that defines a proc-handler
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose::Role;
 
@@ -89,7 +89,7 @@ DataFlow::Role::TypePolicy - A role that defines a proc-handler
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head2 apply P ITEM
 

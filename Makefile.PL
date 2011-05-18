@@ -32,23 +32,25 @@ my %WriteMakefileArgs = (
     'DateTime' => '0.51',
     'Encode' => '0',
     'HTML::TreeBuilder::XPath' => '0',
+    'JSON::Any' => '0',
     'LWP::Curl' => '0.08',
     'Moose' => '0',
     'Moose::Role' => '0',
     'Moose::Util::TypeConstraints' => '1.01',
+    'MooseX::Aliases' => '0',
     'MooseX::OneArgNew' => '0',
+    'MooseX::Role::Parameterized' => '0',
     'MooseX::Traits' => '0',
     'MooseX::Types::IO' => '0',
     'Queue::Base' => '2.1',
     'SQL::Abstract' => '0',
     'Scalar::Util' => '0',
-    'Text::CSV' => '0',
     'Text::CSV::Encoded' => '0',
     'WWW::Mechanize' => '0',
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111230',
+  'VERSION' => '1.111380',
   'test' => {
     'TESTS' => 't/*.t'
   }

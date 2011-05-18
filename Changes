@@ -1,8 +1,56 @@
 Revision History for DataFlow
 =============================
 
-1.111230
+1.111380
 --------
+
+commit f8bbf6204a64e2a83df752c96b44e5effaffe651
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    modified ceis.pl to generate JSON
+
+commit f6075635b769889effe035827c51c1dc70319136
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added a JSON Converter proc
+
+commit 0a4e3835c1ab9c6d3e69aa4d8240b83307d5f927
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added another role parameter to allow imports
+
+commit b6e9c7835d4ede630529c50a0eb56ea38c234c78
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    tidy
+
+commit 71f76e502642b9ec76ad5012a657a658ce332cef
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added a dump AFTER the conversion to CSV
+
+commit 6a4c84b5550f74dc0783582cbba509b66171dacc
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    multiple changes
+
+commit b92ac7c1fe0b75353a172574b8a62ae3eee14514
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    exemplo de fluxo simples
+
+commit f24b8f4b41e8163761e29fd2daee798924822efd
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    multiplas modificacoes
+
+commit 40705379f6661adc33e79dee48d31f2276a4eb26
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added aliases to Encoding parameters
+
+v1.111230 2011-05-02
+--------------------
 
 commit ddce42c62c1c76c1eacb5451230ecb29c4b93b0d
 Author: Alexei Znamensky <russoz@cpan.org>

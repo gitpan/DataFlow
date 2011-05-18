@@ -5,10 +5,10 @@ use warnings;
 
 # ABSTRACT: A HTTP Getter implementation using Curl
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose::Role;
-use LWP::Curl;
+use LWP::Curl 0.08;
 
 sub _make_obj {
     return LWP::Curl->new;
@@ -28,7 +28,7 @@ DataFlow::Util::HTTPGet::Curl - A HTTP Getter implementation using Curl
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head1 AUTHOR
 

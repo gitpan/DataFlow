@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: An URL-retriever processor
 
-our $VERSION = '1.111230'; # VERSION
+our $VERSION = '1.111380'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -60,7 +60,7 @@ DataFlow::Proc::URLRetriever - An URL-retriever processor
 
 =head1 VERSION
 
-version 1.111230
+version 1.111380
 
 =head1 AUTHOR
 

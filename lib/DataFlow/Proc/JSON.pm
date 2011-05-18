@@ -1,37 +1,62 @@
-package DataFlow::Meta;
+package DataFlow::Proc::JSON;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A piece of information metadata
+# ABSTRACT: A JSON converting processor
 
 our $VERSION = '1.111380'; # VERSION
 
 use Moose;
+extends 'DataFlow::Proc';
+with 'DataFlow::Role::Converter' => {
+    type_attr  => 'json',
+    type_short => 'json',
+    type_class => 'JSON::Any',
+};
 
 use namespace::autoclean;
-use DateTime 0.51;
+use JSON::Any;
 
-has 'timestamp'    => ( is => 'rw', isa => 'DateTime', );
-has 'title'        => ( is => 'rw', isa => 'Str', );
-has 'publisher'    => ( is => 'rw', isa => 'Str', );
-has 'author'       => ( is => 'rw', isa => 'Str', );
-has 'original'     => ( is => 'rw', isa => 'Str', );
-has 'restrictions' => ( is => 'rw', isa => 'Str', );
+has '+type_policy' => (
+    'default' => sub {
+        return shift->direction eq 'TO_JSON' ? 'ArrayRef' : 'Scalar';
+    },
+);
+
+has '+p' => (
+    'lazy'    => 1,
+    'default' => sub {
+        my $self = shift;
+
+        my $subs = {
+            'TO_JSON' => sub {
+                my $data = shift;
+                return $self->json->to_json($data);
+            },
+            'FROM_JSON' => sub {
+                my $json = shift;
+                return $self->json->from_json($json);
+            },
+        };
+
+        return $subs->{ $self->direction };
+    },
+);
 
 __PACKAGE__->meta->make_immutable;
 
 1;
 
 
-
+__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Meta - A piece of information metadata
+DataFlow::Proc::JSON - A JSON converting processor
 
 =head1 VERSION
 
@@ -90,7 +115,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-
-__END__
 
