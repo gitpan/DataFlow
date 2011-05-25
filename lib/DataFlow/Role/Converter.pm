@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role for format-conversion processors
 
-our $VERSION = '1.111380'; # VERSION
+our $VERSION = '1.111450'; # VERSION
 
 use MooseX::Role::Parameterized;
 use Moose::Util::TypeConstraints 1.01;
@@ -93,7 +93,7 @@ DataFlow::Role::Converter - A role for format-conversion processors
 
 =head1 VERSION
 
-version 1.111380
+version 1.111450
 
 =head1 AUTHOR
 

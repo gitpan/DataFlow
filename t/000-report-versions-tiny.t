@@ -50,6 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Data::Dumper','any version') };
+eval { $v .= pmver('Data::MessagePack','any version') };
 eval { $v .= pmver('DateTime','0.51') };
 eval { $v .= pmver('Encode','any version') };
 eval { $v .= pmver('English','any version') };
@@ -74,6 +75,7 @@ eval { $v .= pmver('Test::More','0.88') };
 eval { $v .= pmver('Test::UseAllModules','any version') };
 eval { $v .= pmver('Text::CSV::Encoded','any version') };
 eval { $v .= pmver('WWW::Mechanize','any version') };
+eval { $v .= pmver('YAML::Any','any version') };
 eval { $v .= pmver('aliased','any version') };
 eval { $v .= pmver('autodie','any version') };
 eval { $v .= pmver('namespace::autoclean','any version') };

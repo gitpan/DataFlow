@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A piece of information to be processed
 
-our $VERSION = '1.111380'; # VERSION
+our $VERSION = '1.111450'; # VERSION
 
 use Moose;
 use DataFlow::Meta;
@@ -38,36 +38,13 @@ DataFlow::Item - A piece of information to be processed
 
 =head1 VERSION
 
-version 1.111380
+version 1.111450
 
 =head1 SYNOPSIS
 
     use DataFlow::Item;
 
 =head1 DESCRIPTION
-
-=head1 DEPENDENCIES
-
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
-L<Scalar::Util>
-
-L<Queue::Base>
-
-=head1 INCOMPATIBILITIES
-
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
-
-None reported.
 
 =head1 AUTHOR
 

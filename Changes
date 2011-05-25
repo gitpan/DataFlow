@@ -1,8 +1,36 @@
 Revision History for DataFlow
 =============================
 
-1.111380
+1.111450
 --------
+
+commit a88706266d9686775b45d6b5858f4c08d510e4ae
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added support for plain string when defining flows
+
+commit 22b64aa0d783d60998a9ffc050802853d5e38163
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    tidy
+
+commit 3cd418c91a847dc5a897d4ec542890b20764b65d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    tidy t/60-multipageurlgenerator.t
+
+commit 6f2f1193d5a2090272a4c3f89811b1a7a7e830d0
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added UC Proc, runs uc()
+
+commit 20fd5855f08c28fc39511a7f2846059758ce3d79
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Multiple changes
+
+v1.111380 2011-05-18
+--------------------
 
 commit f8bbf6204a64e2a83df752c96b44e5effaffe651
 Author: Alexei Znamensky <russoz@cpan.org>

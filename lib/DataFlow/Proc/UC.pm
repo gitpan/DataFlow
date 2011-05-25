@@ -1,9 +1,9 @@
-package DataFlow::Proc::URLRetriever;
+package DataFlow::Proc::UC;
 
 use strict;
 use warnings;
 
-# ABSTRACT: An URL-retriever processor
+# ABSTRACT: Upper-case processor: output data is input passed through uc()
 
 our $VERSION = '1.111450'; # VERSION
 
@@ -11,36 +11,10 @@ use Moose;
 extends 'DataFlow::Proc';
 
 use namespace::autoclean;
-use DataFlow::Util::HTTPGet;
-
-has '_get' => (
-    'is'      => 'ro',
-    'isa'     => 'DataFlow::Util::HTTPGet',
-    'lazy'    => 1,
-    'default' => sub { DataFlow::Util::HTTPGet->new }
-);
-
-has 'baseurl' => (
-    'is'        => 'ro',
-    'isa'       => 'Str',
-    'predicate' => 'has_baseurl',
-);
 
 has '+p' => (
     'default' => sub {
-        my $self = shift;
-
-        return sub {
-            my $item = shift;
-
-            my $url =
-              $self->has_baseurl
-              ? URI->new_abs( $item, $self->baseurl )->as_string
-              : $item;
-
-            #$self->debug("process_item:: url = $url");
-            return $self->_get->get($url);
-        };
+        return sub { uc( $_[0] ) }
     },
 );
 
@@ -49,18 +23,34 @@ __PACKAGE__->meta->make_immutable;
 1;
 
 
-__END__
+
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Proc::URLRetriever - An URL-retriever processor
+DataFlow::Proc::UC - Upper-case processor: output data is input passed through uc()
 
 =head1 VERSION
 
 version 1.111450
+
+=head1 SYNOPSIS
+
+    use DataFlow::Proc::UC;
+
+    my $nop = DataFlow::Proc::UC->new;
+
+    my $result = $nop->process_one( 'abc' );
+    # $result == 'ABC'
+
+=head1 DESCRIPTION
+
+This class transforms the data by applying the C<< uc() >> function to it.
+Not really all that useful, but it can provide for some samples and tests.
+
+This class is more useful as parent class than by itself.
 
 =head1 AUTHOR
 
@@ -115,4 +105,7 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+
+__END__
 

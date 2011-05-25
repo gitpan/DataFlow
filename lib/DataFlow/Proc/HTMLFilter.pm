@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A HTML filtering processor
 
-our $VERSION = '1.111380'; # VERSION
+our $VERSION = '1.111450'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -88,7 +88,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 1.111380
+version 1.111450
 
 =head1 SYNOPSIS
 
@@ -137,19 +137,23 @@ The C<search_xpath> attribute is mandatory.
 This attribute is a string, but its value B<must> be one of:
 C<HTML>, C<VALUE>, C<NODE>. The default is C<HTML>.
 
-=head3 HTML
+=over
+
+=item HTML
 
 The result will be the HTML content specified by C<search_xpath>.
 
-=head3 VALUE
+=item VALUE
 
 The result will be the literal value enclosed by the tag and/or attribute
 specified by C<search_xpath>.
 
-=head3 NODE
+=item NODE
 
 The result will be a list of L<HTML::Element> objects, as returned by the
 C<findnodes> method of L<HTML::TreeBuilder::XPath> class.
+
+=back
 
 Most people will probably use C<HTML> or C<VALUE>, but this option is also
 provided in case someone wants to manipulate the HTML elements directly.
@@ -166,12 +170,6 @@ i.e. it is a one-to-one mapping.
 On the other hand, by keeping C<ref_result> as 0 (false), one HTML item
 may produce any number of items as result,
 i.e. it is a one-to-many mapping.
-
-=head1 DEPENDENCIES
-
-L<HTML::TreeBuilder::XPath>
-
-L<HTML::Element>
 
 =head1 AUTHOR
 

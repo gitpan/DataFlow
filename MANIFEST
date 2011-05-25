@@ -18,13 +18,16 @@ lib/DataFlow/Proc/Dumper.pm
 lib/DataFlow/Proc/Encoding.pm
 lib/DataFlow/Proc/HTMLFilter.pm
 lib/DataFlow/Proc/JSON.pm
+lib/DataFlow/Proc/MessagePack.pm
 lib/DataFlow/Proc/MultiPageURLGenerator.pm
 lib/DataFlow/Proc/NOP.pm
 lib/DataFlow/Proc/Null.pm
 lib/DataFlow/Proc/SQL.pm
 lib/DataFlow/Proc/SimpleFileInput.pm
 lib/DataFlow/Proc/SimpleFileOutput.pm
+lib/DataFlow/Proc/UC.pm
 lib/DataFlow/Proc/URLRetriever.pm
+lib/DataFlow/Proc/YAML.pm
 lib/DataFlow/Role/Converter.pm
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
@@ -73,6 +76,7 @@ t/release-has-version.t
 t/release-kwalitee.t
 t/release-meta-json.t
 t/release-minimum-version.t
+t/release-mojibake.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-linkcheck.t

@@ -21,6 +21,7 @@ name: DataFlow
 requires:
   Carp: 0
   Data::Dumper: 0
+  Data::MessagePack: 0
   DateTime: 0.51
   Encode: 0
   HTML::TreeBuilder::XPath: 0
@@ -39,10 +40,11 @@ requires:
   Scalar::Util: 0
   Text::CSV::Encoded: 0
   WWW::Mechanize: 0
+  YAML::Any: 0
   autodie: 0
   namespace::autoclean: 0
   perl: 5.008
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111380
+version: 1.111450

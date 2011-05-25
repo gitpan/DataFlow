@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Carp' => '0',
     'Data::Dumper' => '0',
+    'Data::MessagePack' => '0',
     'DateTime' => '0.51',
     'Encode' => '0',
     'HTML::TreeBuilder::XPath' => '0',
@@ -47,10 +48,11 @@ my %WriteMakefileArgs = (
     'Scalar::Util' => '0',
     'Text::CSV::Encoded' => '0',
     'WWW::Mechanize' => '0',
+    'YAML::Any' => '0',
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111380',
+  'VERSION' => '1.111450',
   'test' => {
     'TESTS' => 't/*.t'
   }
