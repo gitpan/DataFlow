@@ -2,7 +2,7 @@ NAME
     DataFlow - A component for dataflow processing
 
 VERSION
-    version 1.111450
+    version 1.111480
 
 SYNOPSIS
     use DataFlow;
@@ -12,6 +12,10 @@ SYNOPSIS
                             DataFlow::Proc->new( p => sub { do this thing } ),
                             sub { ... do something },
                             sub { ... do something else },
+                            CSV => {
+                                    direction     => 'TO_CSV',
+                                    text_csv_opts => { binary => 1 },
+                            },
                     ]
             );
 
@@ -38,6 +42,22 @@ ATTRIBUTES
     [ArrayRef[DataFlow::Proc]] The list of processors that make this
     DataFlow. Optionally, you may pass CodeRefs that will be automatically
     converted to DataFlow::Proc objects. (REQUIRED)
+
+    The "procs" parameter will accept some variations in its value. Any
+    "ArrayRef" passed will be parsed, and additionaly to plain
+    "DataFlow::Proc" objects, it will accept: "DataFlow" objects (so one can
+    nest flows), code references ("sub{}" blocks) and plain text strings.
+
+    The text string form is treatedi, for a given "TEXT", in the following
+    order: if it contains '::' then DataFlow will try to use a class named
+    "TEXT"; it that doesn't work (or if it doesn't contain '::'), DataFlow
+    will try to load a class named 'DataFlow::Proc::TEXT'; if that fails, it
+    tries one last time to load a class named 'TEXT'. If that last try
+    doesn't work, it dies.
+
+    Additionally, one may pass any of these forms as a single argument to
+    the constructor "new", plus a single "DataFlow", or "DataFlow:Proc" or
+    string.
 
 METHODS
   has_queued_data

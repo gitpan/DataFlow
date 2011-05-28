@@ -32,9 +32,10 @@ requires:
   Moose::Util::TypeConstraints: 1.01
   MooseX::Aliases: 0
   MooseX::OneArgNew: 0
-  MooseX::Role::Parameterized: 0
   MooseX::Traits: 0
+  MooseX::Types: 0
   MooseX::Types::IO: 0
+  MooseX::Types::Moose: 0
   Queue::Base: 2.1
   SQL::Abstract: 0
   Scalar::Util: 0
@@ -47,4 +48,4 @@ requires:
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111450
+version: 1.111480

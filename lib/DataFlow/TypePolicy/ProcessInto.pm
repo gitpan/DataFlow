@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A TypePolicy that processes into references' values
 
-our $VERSION = '1.111450'; # VERSION
+our $VERSION = '1.111480'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::TypePolicy';
@@ -46,7 +46,7 @@ DataFlow::TypePolicy::ProcessInto - A TypePolicy that processes into references'
 
 =head1 VERSION
 
-version 1.111450
+version 1.111480
 
 =head1 AUTHOR
 

@@ -14,6 +14,7 @@ lib/DataFlow/Item.pm
 lib/DataFlow/Meta.pm
 lib/DataFlow/Proc.pm
 lib/DataFlow/Proc/CSV.pm
+lib/DataFlow/Proc/Converter.pm
 lib/DataFlow/Proc/Dumper.pm
 lib/DataFlow/Proc/Encoding.pm
 lib/DataFlow/Proc/HTMLFilter.pm
@@ -28,7 +29,6 @@ lib/DataFlow/Proc/SimpleFileOutput.pm
 lib/DataFlow/Proc/UC.pm
 lib/DataFlow/Proc/URLRetriever.pm
 lib/DataFlow/Proc/YAML.pm
-lib/DataFlow/Role/Converter.pm
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/TypePolicy.pm
@@ -36,6 +36,7 @@ lib/DataFlow/TypePolicy/ArrayRef.pm
 lib/DataFlow/TypePolicy/ProcessInto.pm
 lib/DataFlow/TypePolicy/ProcessIntoArrayRef.pm
 lib/DataFlow/TypePolicy/Scalar.pm
+lib/DataFlow/Types.pm
 lib/DataFlow/Util/HTTPGet.pm
 lib/DataFlow/Util/HTTPGet/Curl.pm
 lib/DataFlow/Util/HTTPGet/Mechanize.pm

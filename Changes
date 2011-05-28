@@ -1,8 +1,36 @@
 Revision History for DataFlow
 =============================
 
-1.111450
+1.111480
 --------
+
+commit e33f079bb92e967683f00bc4997dc329bfe24577
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit d07b4e17193734eda1c20cfb8b4441b0c5cdc8d6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Dropped role Converter, moved to proc Converter
+
+commit e2403c017f9cf275dfa53d4154c7c3e2ec0c3e85
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    refactored the subtypes out to DataFlow::Types
+
+commit 9ad4cbdec797235a775410dc85d43fcc866b5618
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit e3e258850d643339671254ed8c00e15f3df2a704
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    improved procs' string proc loading and POD
+
+v1.111450 2011-05-25
+--------------------
 
 commit a88706266d9686775b45d6b5858f4c08d510e4ae
 Author: Alexei Znamensky <russoz@cpan.org>

@@ -40,9 +40,10 @@ my %WriteMakefileArgs = (
     'Moose::Util::TypeConstraints' => '1.01',
     'MooseX::Aliases' => '0',
     'MooseX::OneArgNew' => '0',
-    'MooseX::Role::Parameterized' => '0',
     'MooseX::Traits' => '0',
+    'MooseX::Types' => '0',
     'MooseX::Types::IO' => '0',
+    'MooseX::Types::Moose' => '0',
     'Queue::Base' => '2.1',
     'SQL::Abstract' => '0',
     'Scalar::Util' => '0',
@@ -52,7 +53,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111450',
+  'VERSION' => '1.111480',
   'test' => {
     'TESTS' => 't/*.t'
   }

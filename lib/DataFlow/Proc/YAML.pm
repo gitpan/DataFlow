@@ -5,15 +5,10 @@ use warnings;
 
 # ABSTRACT: A YAML converting processor
 
-our $VERSION = '1.111450'; # VERSION
+our $VERSION = '1.111480'; # VERSION
 
 use Moose;
-extends 'DataFlow::Proc';
-with 'DataFlow::Role::Converter' => {
-    type_attr  => 'yaml',
-    type_short => 'yaml',
-    type_class => 'YAML::Any',
-};
+extends 'DataFlow::Proc::Converter';
 
 use namespace::autoclean;
 use YAML::Any;
@@ -60,7 +55,7 @@ DataFlow::Proc::YAML - A YAML converting processor
 
 =head1 VERSION
 
-version 1.111450
+version 1.111480
 
 =head1 AUTHOR
 
