@@ -1,8 +1,16 @@
 Revision History for DataFlow
 =============================
 
-1.111480
+1.111490
 --------
+
+commit 3e9ed7b157ed66bad6d4800771f58327d2546fd8
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Improved/fixed code in the converters modules
+
+v1.111480 2011-05-28
+--------------------
 
 commit e33f079bb92e967683f00bc4997dc329bfe24577
 Author: Alexei Znamensky <russoz@cpan.org>

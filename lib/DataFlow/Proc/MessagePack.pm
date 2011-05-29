@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A MessagePack converting processor
 
-our $VERSION = '1.111480'; # VERSION
+our $VERSION = '1.111490'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc::Converter';
@@ -27,7 +27,15 @@ has '+converter' => (
           ? Data::MessagePack->new( $self->converter_opts )
           : Data::MessagePack->new;
     },
+    'handles' => {
+        'msgpack'          => sub { shift->converter(@_) },
+        'msgpack_opts'     => sub { shift->converter_opts(@_) },
+        'has_msgpack_opts' => sub { shift->has_converter_opts },
+    },
+    'init_arg' => 'msgpack',
 );
+
+has '+converter_opts' => ( 'init_arg' => 'msgpack_opts', );
 
 has '+converter_subs' => (
     'lazy'    => 1,
@@ -66,7 +74,7 @@ DataFlow::Proc::MessagePack - A MessagePack converting processor
 
 =head1 VERSION
 
-version 1.111480
+version 1.111490
 
 =head1 AUTHOR
 

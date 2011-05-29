@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A component for dataflow processing
 
-our $VERSION = '1.111480'; # VERSION
+our $VERSION = '1.111490'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Dumper';
@@ -171,7 +171,7 @@ DataFlow - A component for dataflow processing
 
 =head1 VERSION
 
-version 1.111480
+version 1.111490
 
 =head1 SYNOPSIS
 
