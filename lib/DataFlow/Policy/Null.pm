@@ -1,32 +1,20 @@
-package DataFlow::TypePolicy::ProcessInto;
+package DataFlow::Policy::Null;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that processes into references' values
+# ABSTRACT: A ProcPolicy that returns undef to any type
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
-with 'DataFlow::Role::TypePolicy';
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+handlers' => (
-    'default' => sub {
-        my $type_handler = {
-            'SCALAR' => \&_handle_scalar_ref,
-            'ARRAY'  => \&_handle_array_ref,
-            'HASH'   => \&_handle_hash_ref,
-            'CODE'   => \&_handle_code_ref,
-        };
-        return $type_handler;
-    },
-);
-
 has '+default_handler' => (
     'default' => sub {
-        return \&_handle_svalue;
+        sub { }
     },
 );
 
@@ -42,11 +30,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::TypePolicy::ProcessInto - A TypePolicy that processes into references' values
+DataFlow::Policy::Null - A ProcPolicy that returns undef to any type
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 AUTHOR
 

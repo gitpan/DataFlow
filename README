@@ -1,8 +1,8 @@
 NAME
-    DataFlow - A component for dataflow processing
+    DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111490
+    version 1.111500
 
 SYNOPSIS
     use DataFlow;

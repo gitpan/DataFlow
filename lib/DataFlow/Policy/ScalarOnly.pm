@@ -1,26 +1,20 @@
-package DataFlow::TypePolicy::ProcessIntoArrayRef;
+package DataFlow::Policy::ScalarOnly;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that processes into array references only
+# ABSTRACT: A ProcPolicy that treats all items as scalars
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
-with 'DataFlow::Role::TypePolicy';
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+handlers' => (
-    'default' => sub {
-        return { 'ARRAY' => \&_handle_array_ref, };
-    },
-);
-
 has '+default_handler' => (
     'default' => sub {
-        die q{Must be an array reference!};
+        return \&_handle_svalue;
     },
 );
 
@@ -36,11 +30,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::TypePolicy::ProcessIntoArrayRef - A TypePolicy that processes into array references only
+DataFlow::Policy::ScalarOnly - A ProcPolicy that treats all items as scalars
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 AUTHOR
 

@@ -1,5 +1,5 @@
 ---
-abstract: 'A component for dataflow processing'
+abstract: 'A framework for dataflow processing'
 author:
   - 'Alexei Znamensky <russoz@cpan.org>'
 build_requires:
@@ -48,4 +48,4 @@ requires:
 resources:
   bugtracker: http://github.com/russoz/DataFlow/issues
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111490
+version: 1.111500

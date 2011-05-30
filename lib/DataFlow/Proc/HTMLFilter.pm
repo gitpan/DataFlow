@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A HTML filtering processor
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -13,17 +13,20 @@ extends 'DataFlow::Proc';
 use namespace::autoclean;
 use DataFlow::Types qw(HTMLFilterTypes);
 use HTML::TreeBuilder::XPath;
+use MooseX::Aliases;
 
 has 'search_xpath' => (
     'is'       => 'ro',
     'isa'      => 'Str',
     'required' => 1,
+    'alias'    => 'xpath',
 );
 
 has 'result_type' => (
     'is'      => 'ro',
     'isa'     => 'HTMLFilterTypes',
     'default' => 'HTML',
+    'alias'   => 'type',
 );
 
 has 'ref_result' => (
@@ -88,7 +91,7 @@ DataFlow::Proc::HTMLFilter - A HTML filtering processor
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 SYNOPSIS
 
@@ -113,10 +116,10 @@ version 1.111490
     </html></body>
     EOM
 
-    $filter_html->process_one( $input );
+    $filter_html->process( $input );
     # @result == '<td>Line 1</td>', ... '<td>L2, Column 2</td>'
 
-    $filter_value->process_one( $input );
+    $filter_value->process( $input );
     # @result == q{Line 1}, ... q{L2, Column 2}
 
 =head1 DESCRIPTION

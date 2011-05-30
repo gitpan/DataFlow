@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A CSV converting processor
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc::Converter';
@@ -63,7 +63,7 @@ sub _parse {
     return [ $self->converter->fields ];
 }
 
-has '+type_policy' => (
+has '+policy' => (
     'default' => sub {
         return shift->direction eq 'CONVERT_TO' ? 'ArrayRef' : 'Scalar';
     },
@@ -115,7 +115,7 @@ DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 AUTHOR
 

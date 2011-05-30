@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A MessagePack converting processor
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc::Converter';
@@ -13,7 +13,7 @@ extends 'DataFlow::Proc::Converter';
 use namespace::autoclean;
 use Data::MessagePack;
 
-has '+type_policy' => (
+has '+policy' => (
     'default' => sub {
         return shift->direction eq 'CONVERT_TO' ? 'ArrayRef' : 'Scalar';
     },
@@ -74,7 +74,7 @@ DataFlow::Proc::MessagePack - A MessagePack converting processor
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 AUTHOR
 

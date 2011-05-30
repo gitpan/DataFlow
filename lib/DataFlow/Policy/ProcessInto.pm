@@ -1,25 +1,47 @@
-package DataFlow::Item;
+package DataFlow::Policy::ProcessInto;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A piece of information to be processed
+# ABSTRACT: A ProcPolicy that processes into references' values recursively
 
 our $VERSION = '1.111500'; # VERSION
 
 use Moose;
-use DataFlow::Meta;
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has 'metadata' => (
-    'is'  => 'ro',
-    'isa' => 'DataFlow::Meta',
+has '+handlers' => (
+    'default' => sub {
+        my $self         = shift;
+        my $type_handler = {
+            'SCALAR' => sub {
+                my ( $p, $item ) = @_;
+                return _handle_scalar_ref( _make_apply_ref( $self, $p ),
+                    $item );
+            },
+            'ARRAY' => sub {
+                my ( $p, $item ) = @_;
+                return _handle_array_ref( _make_apply_ref( $self, $p ), $item );
+            },
+            'HASH' => sub {
+                my ( $p, $item ) = @_;
+                return _handle_hash_ref( _make_apply_ref( $self, $p ), $item );
+            },
+            'CODE' => sub {
+                my ( $p, $item ) = @_;
+                return _handle_code_ref( _make_apply_ref( $self, $p ), $item );
+            },
+        };
+        return $type_handler;
+    },
 );
 
-has 'data' => (
-    'is'  => 'ro',
-    'isa' => 'Any',
+has '+default_handler' => (
+    'default' => sub {
+        return \&_handle_svalue;
+    },
 );
 
 __PACKAGE__->meta->make_immutable;
@@ -34,17 +56,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::Item - A piece of information to be processed
+DataFlow::Policy::ProcessInto - A ProcPolicy that processes into references' values recursively
 
 =head1 VERSION
 
 version 1.111500
-
-=head1 SYNOPSIS
-
-    use DataFlow::Item;
-
-=head1 DESCRIPTION
 
 =head1 AUTHOR
 

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A No-Op processor: input data is passed unmodified to the output
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -35,7 +35,7 @@ DataFlow::Proc::NOP - A No-Op processor: input data is passed unmodified to the 
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 SYNOPSIS
 
@@ -43,7 +43,7 @@ version 1.111490
 
     my $nop = DataFlow::Proc::NOP->new;
 
-    my $result = $nop->process_one( 'abc' );
+    my $result = $nop->process( 'abc' );
     # $result == 'abc'
 
 =head1 DESCRIPTION

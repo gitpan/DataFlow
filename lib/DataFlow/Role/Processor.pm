@@ -1,50 +1,31 @@
-package DataFlow::Item;
+package DataFlow::Role::Processor;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A piece of information to be processed
+# ABSTRACT: A role that defines anything that processes something
 
 our $VERSION = '1.111500'; # VERSION
 
-use Moose;
-use DataFlow::Meta;
+use Moose::Role;
 
-use namespace::autoclean;
-
-has 'metadata' => (
-    'is'  => 'ro',
-    'isa' => 'DataFlow::Meta',
-);
-
-has 'data' => (
-    'is'  => 'ro',
-    'isa' => 'Any',
-);
-
-__PACKAGE__->meta->make_immutable;
+requires 'process';
 
 1;
 
 
-
+__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Item - A piece of information to be processed
+DataFlow::Role::Processor - A role that defines anything that processes something
 
 =head1 VERSION
 
 version 1.111500
-
-=head1 SYNOPSIS
-
-    use DataFlow::Item;
-
-=head1 DESCRIPTION
 
 =head1 AUTHOR
 
@@ -99,7 +80,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-
-__END__
 

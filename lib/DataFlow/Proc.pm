@@ -5,15 +5,37 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
+with 'DataFlow::Role::Processor';
 with 'DataFlow::Role::Dumper';
-
-use DataFlow::Types qw(Processor _TypePolicy);
 
 use namespace::autoclean;
 use Scalar::Util qw/reftype/;
+use Moose::Util::TypeConstraints 1.01;
+
+################################################################################
+
+subtype 'Processor' => as 'CodeRef';
+coerce 'Processor' => from 'DataFlow::Role::Processor' => via {
+    my $f = $_;
+    return sub { $f->process(shift) };
+};
+
+use DataFlow::Role::ProcPolicy;
+subtype 'ProcPolicy' => as 'DataFlow::Role::ProcPolicy';
+coerce 'ProcPolicy' => from 'Str' => via { _make_policy($_) };
+
+sub _make_policy {
+    my $class = 'DataFlow::Policy::' . shift;
+    my $obj;
+    eval 'use ' . $class . '; $obj = ' . $class . '->new()';    ## no critic
+    die $@ if $@;
+    return $obj;
+}
+
+################################################################################
 
 has 'name' => (
     'is'        => 'ro',
@@ -58,13 +80,12 @@ has 'dump_output' => (
     'documentation' => 'Prints a dump of the output load to STDERR',
 );
 
-has 'type_policy' => (
-    'is'       => 'ro',
-    'does'     => '_TypePolicy',
-    'coerce'   => 1,
-    'required' => 1,
-    'lazy'     => 1,
-    'default'  => sub {
+has 'policy' => (
+    'is'      => 'ro',
+    'isa'     => 'ProcPolicy',
+    'coerce'  => 1,
+    'lazy'    => 1,
+    'default' => sub {
         my $self = shift;
         return $self->process_into ? 'ProcessInto' : 'Scalar';
     },
@@ -79,9 +100,9 @@ has 'p' => (
       'Code reference that returns the result of processing one single item',
 );
 
-sub _process {
+sub _process_one {
     my ( $self, $item ) = @_;
-    return $self->type_policy->apply( $self->p, $item );
+    return $self->policy->apply( $self->p, $item );
 }
 
 sub _deref {
@@ -94,7 +115,7 @@ sub _deref {
     return $value;
 }
 
-sub process_one {
+sub process {
     my ( $self, $item ) = @_;
 
     $self->prefix_dumper( $self->has_name ? $self->name . ' <<' : '<<', $item )
@@ -103,8 +124,8 @@ sub process_one {
 
     my @result =
       $self->deref
-      ? map { _deref($_) } ( $self->_process($item) )
-      : $self->_process($item);
+      ? map { _deref($_) } ( $self->_process_one($item) )
+      : $self->_process_one($item);
 
     $self->prefix_dumper( $self->has_name ? $self->name . ' >>' : '>>',
         @result )
@@ -128,7 +149,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 SYNOPSIS
 
@@ -140,10 +161,10 @@ version 1.111490
 		}
 	);
 
-	my @res = $uc->process_one( 'something' );
+	my @res = $uc->process( 'something' );
 	# @res == qw/SOMETHING/;
 
-	my @res = $uc->process_one( [qw/aaa bbb ccc/] );
+	my @res = $uc->process( [qw/aaa bbb ccc/] );
 	# @res == [qw/AAA BBB CCC/];
 
 Or
@@ -155,7 +176,7 @@ Or
 		}
 	);
 
-	my @res = $uc_deref->process_one( [qw/aaa bbb ccc/] );
+	my @res = $uc_deref->process( [qw/aaa bbb ccc/] );
 	# @res == qw/AAA BBB CCC/;
 
 =head1 DESCRIPTION
@@ -166,7 +187,7 @@ to provide flexibility for implementors to make their own specialized
 processors as they see fit.
 
 Apart from atribute accessors, an object of the type C<DataFlow::Proc> will
-provide only a single method, C<process_one()>, which will process a single
+provide only a single method, C<process()>, which will process a single
 scalar.
 
 =head1 ATTRIBUTES
@@ -245,7 +266,7 @@ what this code reference can or should do. (REQUIRED)
 
 =head1 METHODS
 
-=head2 process_one
+=head2 process
 
 Processes one single scalar (or anything else that can be passed in on scalar,
 such as references or globs), and returns the application of the function

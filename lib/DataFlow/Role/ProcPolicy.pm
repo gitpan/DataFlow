@@ -1,46 +1,108 @@
-package DataFlow::TypePolicy::ArrayRef;
+package DataFlow::Role::ProcPolicy;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that accepts only array-references
+# ABSTRACT: A role that defines how to use proc-handlers
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
-use Moose;
-with 'DataFlow::Role::TypePolicy';
+use Moose::Role;
 
 use namespace::autoclean;
+use Scalar::Util 'reftype';
 
-has '+handlers' => (
+has 'handlers' => (
+    'is'      => 'ro',
+    'isa'     => 'HashRef[CodeRef]',
+    'lazy'    => 1,
+    'default' => sub { return {} },
+);
+
+has 'default_handler' => (
+    'is'      => 'ro',
+    'isa'     => 'CodeRef',
+    'lazy'    => 1,
     'default' => sub {
-        return { 'ARRAY' => \&_handle_svalue, };
+        shift->confess(q{Must provide a default handler!});
     },
 );
 
-has '+default_handler' => (
-    'default' => sub {
-        die q{Must be an array reference!};
-    },
-);
+sub apply {
+    my ( $self, $p, $item ) = @_;
+    my $type = _param_type($item);
 
-__PACKAGE__->meta->make_immutable;
+    return
+      exists $self->handlers->{$type}
+      ? $self->handlers->{$type}->( $p, $item )
+      : $self->default_handler->( $p, $item );
+}
+
+sub _param_type {
+    my $p = shift;
+    my $r = reftype($p);
+    return $r ? $r : 'SVALUE';
+}
+
+sub _nop_handle {    ## no critic
+    return $_[1];
+}
+
+sub _handle_svalue {
+    my ( $p, $item ) = @_;
+    return $p->($item);
+}
+
+sub _handle_scalar_ref {
+    my ( $p, $item ) = @_;
+    my $r = $p->($$item);
+    return \$r;
+}
+
+sub _handle_array_ref {
+    my ( $p, $item ) = @_;
+
+    #use Data::Dumper; warn 'handle_array_ref :: item = ' . Dumper($item);
+    my @r = map { $p->($_) } @{$item};
+    return [@r];
+}
+
+sub _handle_hash_ref {
+    my ( $p, $item ) = @_;
+    my %r = map { $_ => $p->( $item->{$_} ) } keys %{$item};
+    return {%r};
+}
+
+sub _handle_code_ref {
+    my ( $p, $item ) = @_;
+    return sub { $p->( $item->() ) };
+}
+
+sub _make_apply_ref {
+    my ( $self, $p ) = @_;
+    return sub { $self->apply( $p, $_[0] ) };
+}
 
 1;
 
 
 
+__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::TypePolicy::ArrayRef - A TypePolicy that accepts only array-references
+DataFlow::Role::ProcPolicy - A role that defines how to use proc-handlers
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
+
+=head2 apply P ITEM
+
+Applies the policy using function P and input data ITEM.
 
 =head1 AUTHOR
 
@@ -95,7 +157,4 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
-
-
-__END__
 

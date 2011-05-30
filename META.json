@@ -1,5 +1,5 @@
 {
-   "abstract" : "A component for dataflow processing",
+   "abstract" : "A framework for dataflow processing",
    "author" : [
       "Alexei Znamensky <russoz@cpan.org>"
    ],
@@ -71,6 +71,6 @@
          "web" : "http://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111490"
+   "version" : "1.111500"
 }
 

@@ -1,25 +1,27 @@
-package DataFlow::Item;
+package DataFlow::Policy::ArrayRef;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A piece of information to be processed
+# ABSTRACT: A ProcPolicy that accepts only array-references
 
 our $VERSION = '1.111500'; # VERSION
 
 use Moose;
-use DataFlow::Meta;
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has 'metadata' => (
-    'is'  => 'ro',
-    'isa' => 'DataFlow::Meta',
+has '+handlers' => (
+    'default' => sub {
+        return { 'ARRAY' => \&_handle_svalue, };
+    },
 );
 
-has 'data' => (
-    'is'  => 'ro',
-    'isa' => 'Any',
+has '+default_handler' => (
+    'default' => sub {
+        die q{Must be an array reference!};
+    },
 );
 
 __PACKAGE__->meta->make_immutable;
@@ -34,17 +36,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::Item - A piece of information to be processed
+DataFlow::Policy::ArrayRef - A ProcPolicy that accepts only array-references
 
 =head1 VERSION
 
 version 1.111500
-
-=head1 SYNOPSIS
-
-    use DataFlow::Item;
-
-=head1 DESCRIPTION
 
 =head1 AUTHOR
 

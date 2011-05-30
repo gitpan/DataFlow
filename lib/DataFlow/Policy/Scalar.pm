@@ -1,16 +1,29 @@
-package DataFlow::TypePolicy::Scalar;
+package DataFlow::Policy::Scalar;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A TypePolicy that treats all items as scalars
+# ABSTRACT: A ProcPolicy that treats scalars items and pass other types as-is.
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
 use Moose;
-with 'DataFlow::Role::TypePolicy';
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
+
+has '+handlers' => (
+    'default' => sub {
+        my $self         = shift;
+        my $type_handler = {
+            'SCALAR' => \&_nop_handle,
+            'ARRAY'  => \&_nop_handle,
+            'HASH'   => \&_nop_handle,
+            'CODE'   => \&_nop_handle,
+        };
+        return $type_handler;
+    },
+);
 
 has '+default_handler' => (
     'default' => sub {
@@ -30,11 +43,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::TypePolicy::Scalar - A TypePolicy that treats all items as scalars
+DataFlow::Policy::Scalar - A ProcPolicy that treats scalars items and pass other types as-is.
 
 =head1 VERSION
 
-version 1.111490
+version 1.111500
 
 =head1 AUTHOR
 

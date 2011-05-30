@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'A component for dataflow processing',
+  'ABSTRACT' => 'A framework for dataflow processing',
   'AUTHOR' => 'Alexei Znamensky <russoz@cpan.org>',
   'BUILD_REQUIRES' => {
     'English' => '0',
@@ -53,7 +53,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111490',
+  'VERSION' => '1.111500',
   'test' => {
     'TESTS' => 't/*.t'
   }

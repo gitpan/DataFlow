@@ -1,99 +1,46 @@
-package DataFlow::Role::TypePolicy;
+package DataFlow::Policy::ProcessIntoArrayRef;
 
 use strict;
 use warnings;
 
-# ABSTRACT: A role that defines a proc-handler
+# ABSTRACT: A Policy that processes into array references only
 
-our $VERSION = '1.111490'; # VERSION
+our $VERSION = '1.111500'; # VERSION
 
-use Moose::Role;
+use Moose;
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
-use Scalar::Util 'reftype';
 
-has 'handlers' => (
-    'is'      => 'ro',
-    'isa'     => 'HashRef[CodeRef]',
-    'lazy'    => 1,
-    'default' => sub { return {} },
-);
-
-has 'default_handler' => (
-    'is'      => 'ro',
-    'isa'     => 'CodeRef',
-    'lazy'    => 1,
+has '+handlers' => (
     'default' => sub {
-        shift->confess(q{Must provide a default handler!});
+        return { 'ARRAY' => \&_handle_array_ref, };
     },
 );
 
-sub apply {
-    my ( $self, $p, $item ) = @_;
-    my $type = _param_type($item);
+has '+default_handler' => (
+    'default' => sub {
+        die q{Must be an array reference!};
+    },
+);
 
-    return
-      exists $self->handlers->{$type}
-      ? $self->handlers->{$type}->( $p, $item )
-      : $self->default_handler->( $p, $item );
-}
-
-sub _param_type {
-    my $p = shift;
-    my $r = reftype($p);
-    return $r ? $r : 'SVALUE';
-}
-
-sub _handle_svalue {
-    my ( $p, $item ) = @_;
-    return $p->($item);
-}
-
-sub _handle_scalar_ref {
-    my ( $p, $item ) = @_;
-    my $r = $p->($$item);
-    return \$r;
-}
-
-sub _handle_array_ref {
-    my ( $p, $item ) = @_;
-
-    #use Data::Dumper; warn 'handle_array_ref :: item = ' . Dumper($item);
-    my @r = map { $p->($_) } @{$item};
-    return [@r];
-}
-
-sub _handle_hash_ref {
-    my ( $p, $item ) = @_;
-    my %r = map { $_ => $p->( $item->{$_} ) } keys %{$item};
-    return {%r};
-}
-
-sub _handle_code_ref {
-    my ( $p, $item ) = @_;
-    return sub { $p->( $item->() ) };
-}
+__PACKAGE__->meta->make_immutable;
 
 1;
 
 
 
-__END__
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-DataFlow::Role::TypePolicy - A role that defines a proc-handler
+DataFlow::Policy::ProcessIntoArrayRef - A Policy that processes into array references only
 
 =head1 VERSION
 
-version 1.111490
-
-=head2 apply P ITEM
-
-Applies the policy using function P and input data ITEM.
+version 1.111500
 
 =head1 AUTHOR
 
@@ -148,4 +95,7 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+
+__END__
 
