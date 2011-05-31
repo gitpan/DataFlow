@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111500'; # VERSION
+our $VERSION = '1.111510'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -172,7 +172,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111500
+version 1.111510
 
 =head1 SYNOPSIS
 

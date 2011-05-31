@@ -5,18 +5,21 @@ use warnings;
 
 # ABSTRACT: A CSV converting processor
 
-our $VERSION = '1.111500'; # VERSION
+our $VERSION = '1.111510'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc::Converter';
 
 use namespace::autoclean;
 use Text::CSV::Encoded;
+use MooseX::Aliases;
 
 has 'header' => (
     'is'        => 'rw',
     'isa'       => 'ArrayRef[Maybe[Str]]',
     'predicate' => 'has_header',
+    'alias'     => 'headers',
+    'handles'   => { 'has_headers' => sub { shift->has_header }, },
 );
 
 has 'header_wanted' => (
@@ -115,7 +118,7 @@ DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 1.111500
+version 1.111510
 
 =head1 AUTHOR
 

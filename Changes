@@ -1,8 +1,37 @@
 Revision History for DataFlow
 =============================
 
-1.111500
+1.111510
 --------
+
+commit 9816761de40c535500ac1fbfe0eaf50da8481f46
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy + small fix
+
+commit c923f98367384702fc25c9e3f9e1d62b228b5757
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added test for ScalarOnly policy
+
+commit ab586d1d54108d0ef9daff674c9991f6690c3b07
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    will accept 'Proc' as a string definition for a processor
+
+commit cd916ea073b9ed3eec0f577803aa42b55bc650c5
+Merge: b5e784a 0f1b3d2
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'develop' of github.com:russoz/DataFlow into develop
+
+commit 0f1b3d2ea452814380e8a8332dac984113c81f3e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added aliases to header attribute/predicate
+
+v1.111500 2011-05-29
+--------------------
 
 commit b5e784af413dca280caa6d4c9c989eafc44384a7
 Author: Alexei Znamensky <russoz@cpan.org>
