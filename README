@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111510
+    version 1.111560
 
 SYNOPSIS
     use DataFlow;
@@ -128,15 +128,6 @@ HISTORY
 
     Any doubts, feel free to get in touch.
 
-AUTHOR
-    Alexei Znamensky <russoz@cpan.org>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Alexei Znamensky.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
-
 SUPPORT
   Perldoc
     You can find documentation for this module with the perldoc command.
@@ -195,6 +186,10 @@ SUPPORT
 
         <http://matrix.cpantesters.org/?dist=DataFlow>
 
+  Email
+    You can email the author of this module at "RUSSOZ at cpan.org" asking
+    for help with any problems you have.
+
   Internet Relay Chat
     You can get live help by using IRC ( Internet Relay Chat ). If you don't
     know what IRC is, please read this excellent guide:
@@ -205,23 +200,38 @@ SUPPORT
     *   irc.perl.org
 
         You can connect to the server at 'irc.perl.org' and join this
-        channel: #opendata-br to get help.
+        channel: #sao-paulo.pm then talk to this person for help: russoz.
+
+  Bugs / Feature Requests
+    Please report any bugs or feature requests by email to "bug-dataflow at
+    rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=DataFlow>. You will be
+    automatically notified of any progress on the request by the system.
+
+  Source Code
+    The code is open to the world, and available for you to hack on. Please
+    feel free to browse it and play with it, or whatever. If you want to
+    contribute patches, please send me a diff or prod me to pull from your
+    repository :)
+
+    <http://github.com/russoz/DataFlow>
+
+      git clone git://github.com/russoz/DataFlow.git
+
+AUTHOR
+    Alexei Znamensky <russoz@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Alexei Znamensky.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
 BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://github.com/russoz/DataFlow/issues>.
-
-AVAILABILITY
-    The latest version of this module is available from the Comprehensive
-    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
-    CPAN site near you, or see <http://search.cpan.org/dist/DataFlow/>.
-
-    The development version lives at <http://github.com/russoz/DataFlow> and
-    may be cloned from <git://github.com/russoz/DataFlow.git>. Instead of
-    sending patches, please fork this project using the standard git and
-    github infrastructure.
+    <http://rt.cpan.org>.
 
 DISCLAIMER OF WARRANTY
     BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY

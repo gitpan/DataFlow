@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that generates multi-paged URL lists
 
-our $VERSION = '1.111510'; # VERSION
+our $VERSION = '1.111560'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -66,7 +66,7 @@ has '+p' => (
         my $self = shift;
 
         return sub {
-            my $url = shift;
+            my $url = $_;
 
             $self->_paged_url($url);
 
@@ -99,7 +99,19 @@ DataFlow::Proc::MultiPageURLGenerator - A processor that generates multi-paged U
 
 =head1 VERSION
 
-version 1.111510
+version 1.111560
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<DataFlow|DataFlow>
+
+=back
 
 =head1 AUTHOR
 
@@ -117,18 +129,7 @@ the same terms as the Perl 5 programming language system itself.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://github.com/russoz/DataFlow/issues>.
-
-=head1 AVAILABILITY
-
-The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/DataFlow/>.
-
-The development version lives at L<http://github.com/russoz/DataFlow>
-and may be cloned from L<git://github.com/russoz/DataFlow.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 

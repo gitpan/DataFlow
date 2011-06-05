@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that reads that from a file
 
-our $VERSION = '1.111510'; # VERSION
+our $VERSION = '1.111560'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -22,7 +22,7 @@ has '_slurpy_read' => (
     'default' => sub {
         my $self = shift;
         return sub {
-            my $filename = shift;
+            my $filename = $_;
             open( my $fh, '<', $filename );
             my @slurp = <$fh>;
             close $fh;
@@ -54,7 +54,7 @@ has '+p' => (
         return $self->_slurpy_read if $self->do_slurp;
 
         return sub {
-            my $filename = shift;
+            my $filename = $_;
 
             # if filename is provided, add it to the queue
             $self->_fileq->add($filename) if defined $filename;
@@ -92,7 +92,19 @@ DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 1.111510
+version 1.111560
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<DataFlow|DataFlow>
+
+=back
 
 =head1 AUTHOR
 
@@ -110,18 +122,7 @@ the same terms as the Perl 5 programming language system itself.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://github.com/russoz/DataFlow/issues>.
-
-=head1 AVAILABILITY
-
-The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/DataFlow/>.
-
-The development version lives at L<http://github.com/russoz/DataFlow>
-and may be cloned from L<git://github.com/russoz/DataFlow.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 

@@ -1,8 +1,26 @@
 Revision History for DataFlow
 =============================
 
-1.111510
+1.111560
 --------
+
+commit 4418bf82070618b55f410ab9817a90264c093ee5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy
+
+commit ecea347e1986b2b27ccf1288f2375219765c774b
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Procs now take $_ as parameter
+
+commit ffd71425f30403d185f6f01c5eae6efb5a50a70e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed weaver.ini and started using pod:weaver plugin bundle
+
+v1.111510 2011-05-30
+--------------------
 
 commit 9816761de40c535500ac1fbfe0eaf50da8481f46
 Author: Alexei Znamensky <russoz@cpan.org>

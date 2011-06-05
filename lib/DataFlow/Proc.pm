@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111510'; # VERSION
+our $VERSION = '1.111560'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -20,7 +20,7 @@ use Moose::Util::TypeConstraints 1.01;
 subtype 'Processor' => as 'CodeRef';
 coerce 'Processor' => from 'DataFlow::Role::Processor' => via {
     my $f = $_;
-    return sub { $f->process(shift) };
+    return sub { $f->process($_) };
 };
 
 use DataFlow::Role::ProcPolicy;
@@ -149,7 +149,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111510
+version 1.111560
 
 =head1 SYNOPSIS
 
@@ -272,6 +272,18 @@ Processes one single scalar (or anything else that can be passed in on scalar,
 such as references or globs), and returns the application of the function
 C<< $self->p->() >> over the item.
 
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<DataFlow|DataFlow>
+
+=back
+
 =head1 AUTHOR
 
 Alexei Znamensky <russoz@cpan.org>
@@ -288,18 +300,7 @@ the same terms as the Perl 5 programming language system itself.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://github.com/russoz/DataFlow/issues>.
-
-=head1 AVAILABILITY
-
-The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/DataFlow/>.
-
-The development version lives at L<http://github.com/russoz/DataFlow>
-and may be cloned from L<git://github.com/russoz/DataFlow.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 
