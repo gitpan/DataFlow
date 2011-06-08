@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111560'; # VERSION
+our $VERSION = '1.111590'; # VERSION
 
 use MooseX::Types -declare => [
     qw(ProcessorChain Encoder Decoder HTMLFilterTypes),
@@ -144,7 +144,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111560
+version 1.111590
 
 =head1 SEE ALSO
 

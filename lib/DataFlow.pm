@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111560'; # VERSION
+our $VERSION = '1.111590'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -172,7 +172,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111560
+version 1.111590
 
 =head1 SYNOPSIS
 
@@ -259,9 +259,9 @@ that you use references:
 	$flow->input( [ qw/all the simple things/ ] );
 	$flow->input( { all => the, simple => 'things' } );
 
-Processors with C<process_into> enabled (true by default) will process the
-items inside an array reference, and the values (not the keys) inside a hash
-reference.
+Processors using the L<DataFlow::Policy::ProcessInto> policy (default) will
+process the items inside an array reference, and the values (not the keys)
+inside a hash reference.
 
 =head2 process_input
 

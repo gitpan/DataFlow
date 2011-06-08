@@ -77,7 +77,6 @@ eval { $v .= pmver('Test::UseAllModules','any version') };
 eval { $v .= pmver('Text::CSV::Encoded','any version') };
 eval { $v .= pmver('WWW::Mechanize','any version') };
 eval { $v .= pmver('YAML::Any','any version') };
-eval { $v .= pmver('aliased','any version') };
 eval { $v .= pmver('autodie','any version') };
 eval { $v .= pmver('namespace::autoclean','any version') };
 

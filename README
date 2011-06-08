@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111560
+    version 1.111590
 
 SYNOPSIS
     use DataFlow;
@@ -82,9 +82,9 @@ METHODS
             $flow->input( [ qw/all the simple things/ ] );
             $flow->input( { all => the, simple => 'things' } );
 
-    Processors with "process_into" enabled (true by default) will process
-    the items inside an array reference, and the values (not the keys)
-    inside a hash reference.
+    Processors using the DataFlow::Policy::ProcessInto policy (default) will
+    process the items inside an array reference, and the values (not the
+    keys) inside a hash reference.
 
   process_input
     Processes items in the array of queues and place at least one item in

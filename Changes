@@ -1,8 +1,26 @@
 Revision History for DataFlow
 =============================
 
-1.111560
+1.111590
 --------
+
+commit 3960e7dcb347f8b412f982f3e33993781f629918
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed process_into from DataFlow::Proc
+
+commit 140b14baced38dd0dd2673d09bfc737e614640d7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    rewrote _nop_handle, added/improved more tests
+
+commit 199e9c8ee7fc2943d8cd03f8ce50f1ddb170cb77
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    adjustments to subs with localized $_
+
+v1.111560 2011-06-05
+--------------------
 
 commit 4418bf82070618b55f410ab9817a90264c093ee5
 Author: Alexei Znamensky <russoz@cpan.org>

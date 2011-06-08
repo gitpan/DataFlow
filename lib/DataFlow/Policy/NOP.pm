@@ -1,31 +1,18 @@
-package DataFlow::Proc::Dumper;
+package DataFlow::Policy::NOP;
 
 use strict;
 use warnings;
 
-# ABSTRACT: [DEPRECATED] A debugging processor that will dump data to STDERR
+# ABSTRACT: A ProcPolicy that returns the very item passed
 
-our $VERSION = '1.111560'; # VERSION
+our $VERSION = '1.111590'; # VERSION
 
 use Moose;
-extends 'DataFlow::Proc';
-with 'DataFlow::Role::Dumper';
+with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+process_into' => (
-    default  => 0,
-    init_arg => undef,
-);
-has '+p' => (
-    'default' => sub {
-        my $self = shift;
-        return sub {
-            $self->raw_dumper($_);
-            return $_;
-        };
-    },
-);
+has '+default_handler' => ( 'default' => sub { return \&_nop_handle } );
 
 __PACKAGE__->meta->make_immutable;
 
@@ -39,29 +26,11 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::Proc::Dumper - [DEPRECATED] A debugging processor that will dump data to STDERR
+DataFlow::Policy::NOP - A ProcPolicy that returns the very item passed
 
 =head1 VERSION
 
-version 1.111560
-
-=head1 SYNOPSIS
-
-    use DataFlow::Proc::Dumper;
-
-    my $dump = DataFlow::Proc::Dumper->new;
-
-    my $result = $dump->process+one( 'abc' );
-    # $result == 'abc'
-
-=head1 DESCRIPTION
-
-B<DEPRECATED:> Every processor now has its own data-dumping facility, by
-using the attributes C<dump_input> and C<dump_output>.
-
-Dumper processor. Every item passed to its input will be printed in the C<STDERR>
-file handle, using the method C<raw_dumper()> defined at the role
-L<DataFlow::Role::Dumper>.
+version 1.111590
 
 =head1 SEE ALSO
 
@@ -72,10 +41,6 @@ Please see those modules/websites for more information related to this module.
 =item *
 
 L<DataFlow|DataFlow>
-
-=item *
-
-L<DataFlow::Proc>
 
 =back
 
