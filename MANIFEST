@@ -19,6 +19,7 @@ lib/DataFlow/Policy/ProcessInto.pm
 lib/DataFlow/Policy/ProcessIntoArrayRef.pm
 lib/DataFlow/Policy/Scalar.pm
 lib/DataFlow/Policy/ScalarOnly.pm
+lib/DataFlow/Policy/WithSpec.pm
 lib/DataFlow/Proc.pm
 lib/DataFlow/Proc/CSV.pm
 lib/DataFlow/Proc/Converter.pm
@@ -66,6 +67,7 @@ t/15-policy-nop.t
 t/15-policy-process-into.t
 t/15-policy-scalar-only.t
 t/15-policy-scalar.t
+t/15-policy-withspec.t
 t/20-nop.t
 t/20-null.t
 t/30-encoding.t
@@ -83,6 +85,7 @@ t/release-eol.t
 t/release-kwalitee.t
 t/release-meta-json.t
 t/release-minimum-version.t
+t/release-mojibake.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-linkcheck.t

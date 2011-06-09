@@ -1,8 +1,47 @@
 Revision History for DataFlow
 =============================
 
-1.111590
+1.111600
 --------
+
+commit d50da38661f042c761ee1fb654fdecb5d344fb5d
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    refactored type definitions out of Proc.pm into Types.pm
+
+commit b32a84fee6c5430439491ba2d894a88c5b024ddf
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    changed the syntax for coercion of procs from ArrayRef
+
+commit ce72b419d7dfbf844c2e31e4dfbd8238cce206bd
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    policy can be specified with parameters now
+
+commit 54406036de97a746e65e167f0de7652d347fcf19
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    slight improvement on example script
+
+commit 1a4b9a2b01d2e0d9acb4f143a222ed39b38a32a3
+Merge: 1add909 cc693f7
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'develop' into feature/with-spec
+
+commit cc693f7c475d9e3ee4769e70175b9542b277c588
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added and fixed POD
+
+commit 1add909f66631f6fb813c548534dbdccf13e6c53
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    first draft
+
+v1.111590 2011-06-07
+--------------------
 
 commit 3960e7dcb347f8b412f982f3e33993781f629918
 Author: Alexei Znamensky <russoz@cpan.org>

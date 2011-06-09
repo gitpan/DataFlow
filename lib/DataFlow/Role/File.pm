@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that provides a file-handle for processors
 
-our $VERSION = '1.111590'; # VERSION
+our $VERSION = '1.111600'; # VERSION
 
 use Moose::Role;
 use MooseX::Types::IO 'IO';
@@ -53,7 +53,7 @@ DataFlow::Role::File - A role that provides a file-handle for processors
 
 =head1 VERSION
 
-version 1.111590
+version 1.111600
 
 =head1 SEE ALSO
 

@@ -28,6 +28,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'DataFlow',
   'PREREQ_PM' => {
     'Carp' => '0',
+    'Data::Alias' => '0',
     'Data::Dumper' => '0',
     'Data::MessagePack' => '0',
     'DateTime' => '0.51',
@@ -53,7 +54,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111590',
+  'VERSION' => '1.111600',
   'test' => {
     'TESTS' => 't/*.t'
   }

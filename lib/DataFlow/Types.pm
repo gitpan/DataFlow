@@ -5,10 +5,10 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111590'; # VERSION
+our $VERSION = '1.111600'; # VERSION
 
 use MooseX::Types -declare => [
-    qw(ProcessorChain Encoder Decoder HTMLFilterTypes),
+    qw(ProcessorChain Processor ProcPolicy Encoder Decoder HTMLFilterTypes),
     qw(ConversionSubs ConversionDirection)
 ];
 
@@ -17,6 +17,7 @@ use namespace::autoclean;
 use MooseX::Types::Moose qw/Str CodeRef ArrayRef HashRef/;
 class_type 'DataFlow';
 class_type 'DataFlow::Proc';
+role_type 'DataFlow::Role::Processor';
 
 use Moose::Util::TypeConstraints 1.01;
 use Scalar::Util qw/blessed/;
@@ -25,33 +26,37 @@ use Encode;
 #################### DataFlow ######################
 
 sub _load_class {
-    my $str = shift;
-    if ( $str eq 'Proc' ) {
-        eval "use $str";    ## no critic
-        return $str unless $@;
+    my $name = shift;
+    return q{DataFlow::Proc} if $name eq 'Proc';
+
+    if ( $name =~ m/::/ ) {
+        eval "use $name";    ## no critic
+        return $name unless $@;
     }
-    elsif ( $str =~ m/::/ ) {
-        eval "use $str";    ## no critic
-        return $str unless $@;
-    }
-    my $class = "DataFlow::Proc::$str";
+
+    my $class = "DataFlow::Proc::$name";
     eval "use $class";      ## no critic
     return $class unless $@;
-    eval "use $str";        ## no critic
-    return $str unless $@;
-    die qq{Cannot load class from '$str'};
+
+    eval "use $name";        ## no critic
+    return $name unless $@;
+    die qq{Cannot load class from '$name'};
 }
 
 sub _str_to_proc {
-    my ( $str, $params ) = @_;
-    my $class = _load_class($str);
-    my $obj   = eval {
-        ( defined($params) and ( ref($params) eq 'HASH' ) )
-          ? $class->new($params)
-          : $class->new;
-    };
+    my ( $procname, @args ) = @_;
+    my $class = _load_class($procname);
+    my $obj = eval { $class->new(@args) };
     die "$@" if "$@";
     return $obj;
+}
+
+sub _is_processor {
+    my $obj = shift;
+    return
+         blessed($obj)
+      && $obj->can('does')
+      && $obj->does('DataFlow::Role::Processor');
 }
 
 # subtypes
@@ -60,47 +65,65 @@ subtype 'ProcessorChain' => as 'ArrayRef[DataFlow::Proc]' =>
   message { 'DataFlow must have at least one processor' };
 coerce 'ProcessorChain' => from 'ArrayRef' => via {
     my @list = @{$_};
-    my @res  = ();
-    while ( my $proc = shift @list ) {
-        my $ref = ref($proc);
+    my @res  = map {
+        my $elem = $_;
+        my $ref  = ref($elem);
         if ( $ref eq '' ) {    # String?
-            push @res,
-              ref( $list[0] ) eq 'HASH'
-              ? _str_to_proc( $proc, shift @list )
-              : _str_to_proc($proc);
+            _str_to_proc($elem);
+        }
+        elsif ( $ref eq 'ARRAY' ) {
+            _str_to_proc( @{$elem} );
         }
         elsif ( $ref eq 'CODE' ) {
-            use DataFlow::Proc;
-            push @res, DataFlow::Proc->new( p => $proc );
+            require DataFlow::Proc;
+            DataFlow::Proc->new( p => $elem );
         }
-        elsif ( blessed($proc) ) {
-            if ( $proc->isa('DataFlow::Proc') ) {
-                push @res, $proc;
-            }
-            elsif ( $proc->isa('DataFlow') ) {
-                push @res,
-                  DataFlow::Proc->new( p => sub { $proc->process($_) } );
-            }
-            else {
-                die q{Invalid object (} . $ref
-                  . q{) passed instead of a processor};
-            }
+        elsif ( _is_processor($elem) ) {
+            require DataFlow::Proc;
+            DataFlow::Proc->new( p => sub { $elem->process($_) } );
         }
         else {
             die q{Invalid element (}
-              . join( q{,}, $ref, $proc )
+              . join( q{,}, $ref, $elem )
               . q{) passed instead of a processor};
         }
-    }
+    } @list;
     return [@res];
 },
   from
-  'Str' => via { [ _str_to_proc($_) ] },
-  from
-  'CodeRef' => via { [ DataFlow::Proc->new( p => $_ ) ] },
-  from
-  'DataFlow'            => via { $_->procs },
+  'Str'          => via { [ _str_to_proc($_) ] },
+  from 'CodeRef' => via {
+    require DataFlow::Proc;
+    [ DataFlow::Proc->new( p => $_ ) ];
+  },
+  from 'DataFlow' => via {
+    my $proc = $_;
+    require DataFlow::Proc;
+    [ DataFlow::Proc->new( p => sub { $proc->process($_) } ) ];
+  },
   from 'DataFlow::Proc' => via { [$_] };
+
+#################### DataFlow::Proc ######################
+
+subtype 'Processor' => as 'CodeRef';
+coerce 'Processor' => from 'DataFlow::Role::Processor' => via {
+    my $f = $_;
+    return sub { $f->process($_) };
+};
+
+use DataFlow::Role::ProcPolicy;
+subtype 'ProcPolicy' => as 'DataFlow::Role::ProcPolicy';
+coerce 'ProcPolicy' => from 'Str' => via { _make_policy($_) } => from
+  'ArrayRef' => via { _make_policy( @{$_} ) };
+
+sub _make_policy {
+    my ( $policy, @args ) = @_;
+    my $class = 'DataFlow::Policy::' . $policy;
+    my $obj;
+    eval 'use ' . $class . '; $obj = ' . $class . '->new(@args)';   ## no critic
+    die $@ if $@;
+    return $obj;
+}
 
 #################### DataFlow::Proc::Converter ######################
 
@@ -133,7 +156,7 @@ enum 'HTMLFilterTypes', [qw(NODE HTML VALUE)];
 1;
 
 
-__END__
+
 =pod
 
 =encoding utf-8
@@ -144,7 +167,190 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111590
+version 1.111600
+
+=head1 SYNOPSIS
+
+When defining a Moose attribute. Example:
+
+       has 'direction' => (
+           is  => 'ro',
+           isa => 'ConversionDirection',
+       );
+
+=head1 DESCRIPTION
+
+This module contains only type definitions. Most of the time there will be
+no need to work or mess with this code, unless there is a bug in DataFlow
+and/or you are developing a new feature which requires a new type or an
+adjustment to an existing one.
+
+=head1 SUBTYPES
+
+=head2 ProcessorChain
+
+An ArrayRef of L<DataFlow::Proc> objects, with at least one element.
+
+=head3 Coercions
+
+=head4 from ArrayRef
+
+Attempts to make DataFlow::Proc objects out of different things in an ArrayRef.
+Currently it works for:
+
+=over 4
+
+=item *
+
+Str
+
+Named processors. If it contains the substring '::', DataFlow will try to
+create an object of that type. If it does not, then DataFlow will attempt to
+create an object of the type C<< DataFlow::Proc::<STRING> >>. The string 'Proc'
+is reserved for creating an object of the type <DataFlow::Proc>.
+
+=item *
+
+ArrayRef
+
+Named processor with parameters. The first element of the array must be a
+text string, subject to the rules used in the previous item. The rest of the
+array is passed as parameters for constructing the object.
+
+=item *
+
+CodeRef
+
+Code reference, a.k.a. a C<sub>. A processor object will be created:
+
+    DataFlow::Proc->new( p => CODE )
+
+=item *
+
+DataFlow::Proc
+
+A processor. If the element is blessed and C<< ->isa('DataFlow::Proc') >>, it
+will be used as-is in the resulting ArrayRef.
+
+=item *
+
+DataFlow
+
+A dataflow. If the element is blessed and C<< ->isa('DataFlow') >>, a processor
+object will be created wrapping it:
+
+    DataFlow::Proc->new( p => sub { DATAFLOW->process($_) } )
+
+=back
+
+Anything else will trigger an error.
+
+=head4 from Str
+
+An ArrayRef will be created wrapping a named processor.
+The rules used above for Str elements in the ArrayRef apply.
+
+=head4 from CodeRef
+
+An ArrayRef will be created wrapping a processor.
+The rules used above for CodeRef elements in the ArrayRef apply.
+
+=head4 from DataFlow::Proc
+
+An ArrayRef will be created wrapping the processor.
+The rules used above for DataFlow::Proc elements in the ArrayRef apply.
+
+=head4 from DataFlow
+
+An ArrayRef will be created wrapping a processor.
+The rules used above for DataFlow elements in the ArrayRef apply.
+
+=head2 ConversionDirection
+
+An enumeration used by type L<DataFlow::Proc::Converter>,
+containing two elements:
+
+=over 4
+
+=item *
+
+CONVERT_TO
+
+Indicates the conversion will occur towards a specified type
+
+=item *
+
+CONVERT_FROM
+
+Conversely, indicates the conversion will occur from a specfied type
+
+=back
+
+See DataFlow::Proc::Converter for more information.
+
+=head2 ConversionSubs
+
+A HashRef[CodeRef] also used by DataFlow::Proc::Converter. It must have two
+keys only, 'CONVERT_TO' and 'CONVERT_FROM', holding a code reference (sub) for
+each of those.
+
+See DataFlow::Proc::Converter for more information.
+
+=head2 Decoder
+
+A CodeRef used by L<DataFlow::Proc::Encoding>. It will be used to decode
+strings from some particular character encoding to Perl's internal
+representation.
+
+=head3 Coercions
+
+=head4 from Str
+
+It will automagically create a C<sub> that uses function C<< decode() >> from
+module L<Encode> to decode from a named encoding.
+
+=head2 Encoder
+
+A CodeRef used by L<DataFlow::Proc::Encoding>. It will be used to encode
+strings from Perl's internal representation to some particular character
+encoding.
+
+=head3 Coercions
+
+=head4 from Str
+
+It will automagically create a C<sub> that uses function C<< encode() >> from
+module L<Encode> to encode to a named encoding.
+
+=head2 HTMLFilterTypes
+
+An enumeration used by type L<DataFlow::Proc::HTMLFilter>,
+containing three elements, representing the type of result the HTMLFilter
+object will provide:
+
+=over 4
+
+=item *
+
+NODE
+
+Results will be L<HTML::Element> objects
+
+=item *
+
+HTML
+
+Results will be HTML content.
+
+=item *
+
+VALUE
+
+Results will be literal values
+
+=back
+
+See DataFlow::Proc::HTMLFilter for more information.
 
 =head1 SEE ALSO
 
@@ -200,4 +406,8 @@ SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
 
 =cut
+
+
+__END__
+
 

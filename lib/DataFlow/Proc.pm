@@ -5,35 +5,17 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111590'; # VERSION
+our $VERSION = '1.111600'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
 with 'DataFlow::Role::Dumper';
 
+use DataFlow::Types qw(Processor ProcPolicy);
+
 use namespace::autoclean;
 use Scalar::Util qw/reftype/;
 use Moose::Util::TypeConstraints 1.01;
-
-################################################################################
-
-subtype 'Processor' => as 'CodeRef';
-coerce 'Processor' => from 'DataFlow::Role::Processor' => via {
-    my $f = $_;
-    return sub { $f->process($_) };
-};
-
-use DataFlow::Role::ProcPolicy;
-subtype 'ProcPolicy' => as 'DataFlow::Role::ProcPolicy';
-coerce 'ProcPolicy' => from 'Str' => via { _make_policy($_) };
-
-sub _make_policy {
-    my $class = 'DataFlow::Policy::' . shift;
-    my $obj;
-    eval 'use ' . $class . '; $obj = ' . $class . '->new()';    ## no critic
-    die $@ if $@;
-    return $obj;
-}
 
 ################################################################################
 
@@ -139,7 +121,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111590
+version 1.111600
 
 =head1 SYNOPSIS
 

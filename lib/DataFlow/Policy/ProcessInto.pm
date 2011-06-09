@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that processes into references' values recursively
 
-our $VERSION = '1.111590'; # VERSION
+our $VERSION = '1.111600'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -60,7 +60,7 @@ DataFlow::Policy::ProcessInto - A ProcPolicy that processes into references' val
 
 =head1 VERSION
 
-version 1.111590
+version 1.111600
 
 =head1 SEE ALSO
 

@@ -1,4 +1,4 @@
-package DataFlow::Policy::Scalar;
+package DataFlow::Policy::WithSpec;
 
 use strict;
 use warnings;
@@ -11,23 +11,34 @@ use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
+use Data::Alias;
+use Data::Dumper;
 
-has '+handlers' => (
-    'default' => sub {
-        my $self         = shift;
-        my $type_handler = {
-            'SCALAR' => \&_nop_handle,
-            'ARRAY'  => \&_nop_handle,
-            'HASH'   => \&_nop_handle,
-            'CODE'   => \&_nop_handle,
-        };
-        return $type_handler;
-    },
+has 'spec' => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 1,
 );
+
+sub _spec_handle {
+    my ( $spec, $p, $item ) = @_;
+
+    my $piece = '$item' . $spec;
+    my $data  = eval $piece;           ## no critic
+    my @r     = _run_p( $p, $data );
+    eval $piece . '= $r[0]';           ## no critic
+    return $item;
+}
+
+has '+handlers' => ( 'default' => sub { return {} }, );
 
 has '+default_handler' => (
     'default' => sub {
-        return \&_handle_svalue;
+        my $self = shift;
+        return sub {
+            my ( $p, $item ) = @_;
+            _spec_handle( $self->spec, $p, $item );
+        };
     },
 );
 
@@ -43,7 +54,7 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-DataFlow::Policy::Scalar - A ProcPolicy that treats scalars items and pass other types as-is.
+DataFlow::Policy::WithSpec - A ProcPolicy that treats scalars items and pass other types as-is.
 
 =head1 VERSION
 

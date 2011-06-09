@@ -20,6 +20,7 @@ meta-spec:
 name: DataFlow
 requires:
   Carp: 0
+  Data::Alias: 0
   Data::Dumper: 0
   Data::MessagePack: 0
   DateTime: 0.51
@@ -47,4 +48,4 @@ requires:
   perl: 5.008
 resources:
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111590
+version: 1.111600

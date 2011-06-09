@@ -22,6 +22,7 @@
       "runtime" : {
          "requires" : {
             "Carp" : 0,
+            "Data::Alias" : 0,
             "Data::Dumper" : 0,
             "Data::MessagePack" : 0,
             "DateTime" : "0.51",
@@ -69,6 +70,6 @@
          "web" : "http://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111590"
+   "version" : "1.111600"
 }
 

@@ -49,6 +49,7 @@ sub pmver {
 }
 
 eval { $v .= pmver('Carp','any version') };
+eval { $v .= pmver('Data::Alias','any version') };
 eval { $v .= pmver('Data::Dumper','any version') };
 eval { $v .= pmver('Data::MessagePack','any version') };
 eval { $v .= pmver('DateTime','0.51') };
