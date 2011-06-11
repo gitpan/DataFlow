@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111600'; # VERSION
+our $VERSION = '1.111620'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -139,6 +139,10 @@ sub output {
     return wantarray ? @res : $res[0];
 }
 
+sub reset {    ## no critic
+    return map { $_->clear } @{ shift->_queues };
+}
+
 sub flush {
     my $self = shift;
     while ( $self->has_queued_data ) {
@@ -172,7 +176,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111600
+version 1.111620
 
 =head1 SYNOPSIS
 
@@ -272,6 +276,10 @@ data and/or if C<auto_process> has been disabled.
 Fetches data from the data flow. If called in scalar context it will return
 one processed item from the flow. If called in list context it will return all
 the elements in the last queue.
+
+=head2 reset
+
+Clears all data in the dataflow and makes it ready for a new run.
 
 =head2 flush
 

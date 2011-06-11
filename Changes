@@ -1,8 +1,26 @@
 Revision History for DataFlow
 =============================
 
-1.111600
+1.111620
 --------
+
+commit 314b87ddc5167163dd6d434c3098b926226164d6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    perltidy + moose attr required
+
+commit 2f8a2743feffebd0a7f0785861fcbc5a9fe66922
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    updated POD for DataFlow::Proc
+
+commit bfcf7d96b3ee28d56ab2df2508964affbb0ac125
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added method reset()
+
+v1.111600 2011-06-09
+--------------------
 
 commit d50da38661f042c761ee1fb654fdecb5d344fb5d
 Author: Alexei Znamensky <russoz@cpan.org>

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111600'; # VERSION
+our $VERSION = '1.111620'; # VERSION
 
 use MooseX::Types -declare => [
     qw(ProcessorChain Processor ProcPolicy Encoder Decoder HTMLFilterTypes),
@@ -35,7 +35,7 @@ sub _load_class {
     }
 
     my $class = "DataFlow::Proc::$name";
-    eval "use $class";      ## no critic
+    eval "use $class";       ## no critic
     return $class unless $@;
 
     eval "use $name";        ## no critic
@@ -167,7 +167,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111600
+version 1.111620
 
 =head1 SYNOPSIS
 
