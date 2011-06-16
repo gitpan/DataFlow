@@ -5,13 +5,13 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111620'; # VERSION
+our $VERSION = '1.111670'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
 with 'DataFlow::Role::Dumper';
 
-use DataFlow::Types qw(Processor ProcPolicy);
+use DataFlow::Types qw(ProcessorSub ProcPolicy);
 
 use namespace::autoclean;
 use Scalar::Util qw/reftype/;
@@ -65,7 +65,7 @@ has 'policy' => (
 
 has 'p' => (
     'is'       => 'ro',
-    'isa'      => 'Processor',
+    'isa'      => 'ProcessorSub',
     'required' => 1,
     'coerce'   => 1,
     'documentation' =>
@@ -121,7 +121,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111620
+version 1.111670
 
 =head1 SYNOPSIS
 

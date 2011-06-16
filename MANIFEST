@@ -6,6 +6,7 @@ META.json
 META.yml
 Makefile.PL
 README
+SIGNATURE
 dist.ini
 examples/file.test
 examples/simples.pl

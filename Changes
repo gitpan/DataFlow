@@ -1,8 +1,31 @@
 Revision History for DataFlow
 =============================
 
-1.111620
+1.111670
 --------
+
+commit f936dd3f4b8cae6d35d0c9b503adf0fb4eaa8a72
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Types reorg and improve in POD
+
+commit e338a8b6cbf207c07770c6511914faa288c794ef
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added more tests
+
+commit 89a9ae500b4a3bdde05865840c8009f1b0fd7e05
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    bundle @Author::RUSSOZ now uses Module::Signature
+
+commit 7152c931b3b18a6d647ae8d7a8956b47aabeb1a5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    simplified coercion of ProcessorChain
+
+v1.111620 2011-06-11
+--------------------
 
 commit 314b87ddc5167163dd6d434c3098b926226164d6
 Author: Alexei Znamensky <russoz@cpan.org>

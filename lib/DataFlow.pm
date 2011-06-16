@@ -5,13 +5,13 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111620'; # VERSION
+our $VERSION = '1.111670'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
 with 'DataFlow::Role::Dumper';
 
-use DataFlow::Types qw(ProcessorChain);
+use DataFlow::Types qw(ProcessorList);
 
 use namespace::autoclean;
 use Queue::Base 2.1;
@@ -39,7 +39,7 @@ has 'auto_process' => (
 
 has 'procs' => (
     'is'       => 'ro',
-    'isa'      => 'ProcessorChain',
+    'isa'      => 'ProcessorList',
     'required' => 1,
     'coerce'   => 1,
 );
@@ -176,7 +176,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111620
+version 1.111670
 
 =head1 SYNOPSIS
 

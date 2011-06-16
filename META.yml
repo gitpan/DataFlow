@@ -48,4 +48,4 @@ requires:
   perl: 5.008
 resources:
   repository: git://github.com/russoz/DataFlow.git
-version: 1.111620
+version: 1.111670

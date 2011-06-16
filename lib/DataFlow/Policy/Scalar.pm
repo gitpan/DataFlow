@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats scalars items and pass other types as-is.
 
-our $VERSION = '1.111620'; # VERSION
+our $VERSION = '1.111670'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -47,7 +47,7 @@ DataFlow::Policy::Scalar - A ProcPolicy that treats scalars items and pass other
 
 =head1 VERSION
 
-version 1.111620
+version 1.111670
 
 =head1 SEE ALSO
 
