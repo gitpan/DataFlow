@@ -1,8 +1,31 @@
 Revision History for DataFlow
 =============================
 
-1.111670
+1.111720
 --------
+
+commit 0a84b7f264f0423ff6c4028becf87b7a38537a8e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    GithubMeta has been added to bundle @Author::RUSSOZ
+
+commit 8cd3700e37f7db65100cebd014aff3c037b35ff9
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Refactored MessagePack processor out of DataFlow
+
+commit e89801a59efb9afd7be559bf8bbdbe7738f27182
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    improved POD for DataFlow
+
+commit 59fbe4d4ea264daf73e409849beeb1eb050d5986
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added OneArgNew feat to DataFlow::Proc
+
+v1.111670 2011-06-16
+--------------------
 
 commit f936dd3f4b8cae6d35d0c9b503adf0fb4eaa8a72
 Author: Alexei Znamensky <russoz@cpan.org>

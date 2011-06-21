@@ -22,7 +22,6 @@ requires:
   Carp: 0
   Data::Alias: 0
   Data::Dumper: 0
-  Data::MessagePack: 0
   DateTime: 0.51
   Encode: 0
   HTML::TreeBuilder::XPath: 0
@@ -47,5 +46,6 @@ requires:
   namespace::autoclean: 0
   perl: 5.008
 resources:
-  repository: git://github.com/russoz/DataFlow.git
-version: 1.111670
+  homepage: http://github.com/russoz/DataFlow
+  repository: http://github.com/russoz/DataFlow
+version: 1.111720

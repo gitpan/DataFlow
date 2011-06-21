@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111670'; # VERSION
+our $VERSION = '1.111720'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -176,7 +176,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111670
+version 1.111720
 
 =head1 SYNOPSIS
 
@@ -184,15 +184,18 @@ use DataFlow;
 
 	my $flow = DataFlow->new(
 		procs => [
-			[ Proc => { p => sub { do this thing } } ],
-			sub { ... do something },
-			sub { ... do something else },
-			[
+		    DataFlow::Proc->new( p => sub { do this thing } ), # a Proc
+			sub { ... do something },   # a code ref
+			'UC',                       # named Proc
+			[                           # named Proc, with parameters
 			  CSV => {
 				direction     => 'CONVERT_TO',
 				text_csv_opts => { binary => 1 },
 			  }
 			],
+			# named Proc, named "Proc"
+			[ Proc => { p => sub { do this other thing }, deref => 1 } ],
+			DataFlow->new( ... ),       # another flow
 		]
 	);
 
@@ -200,6 +203,23 @@ use DataFlow;
 	my $output = $flow->output();
 
 	my $output = $flow->output( <some other input> );
+
+	# other ways to invoke the constructor
+	my $flow = DataFlow( sub { .. do something } );   # pass a sub
+	my $flow = DataFlow( [                            # pass an array
+		sub { ... do this },
+		'UC',
+		[
+		  HTMLFilter => (
+		    search_xpath => '//td',
+			result_type  => 'VALUE'
+		  )
+		]
+	] );
+	my $flow = DataFlow( $another_flow );   # pass another DataFlow or Proc
+
+	# other way to pass the data through
+	my $output = $flow->process( qw/long list of data/ );
 
 =head1 DESCRIPTION
 
@@ -423,7 +443,7 @@ from your repository :)
 
 L<http://github.com/russoz/DataFlow>
 
-  git clone git://github.com/russoz/DataFlow.git
+  git clone http://github.com/russoz/DataFlow
 
 =head1 AUTHOR
 

@@ -24,7 +24,6 @@
             "Carp" : 0,
             "Data::Alias" : 0,
             "Data::Dumper" : 0,
-            "Data::MessagePack" : 0,
             "DateTime" : "0.51",
             "Encode" : 0,
             "HTML::TreeBuilder::XPath" : 0,
@@ -64,12 +63,13 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {},
+      "homepage" : "http://github.com/russoz/DataFlow",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/russoz/DataFlow.git",
+         "url" : "http://github.com/russoz/DataFlow",
          "web" : "http://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111670"
+   "version" : "1.111720"
 }
 

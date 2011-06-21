@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that generates SQL clauses
 
-our $VERSION = '1.111670'; # VERSION
+our $VERSION = '1.111720'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -59,7 +59,7 @@ DataFlow::Proc::SQL - A processor that generates SQL clauses
 
 =head1 VERSION
 
-version 1.111670
+version 1.111720
 
 =head1 SEE ALSO
 

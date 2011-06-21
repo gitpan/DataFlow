@@ -30,7 +30,6 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'Data::Alias' => '0',
     'Data::Dumper' => '0',
-    'Data::MessagePack' => '0',
     'DateTime' => '0.51',
     'Encode' => '0',
     'HTML::TreeBuilder::XPath' => '0',
@@ -54,7 +53,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111670',
+  'VERSION' => '1.111720',
   'test' => {
     'TESTS' => 't/*.t'
   }

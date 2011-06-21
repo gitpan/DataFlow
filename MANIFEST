@@ -27,7 +27,6 @@ lib/DataFlow/Proc/Converter.pm
 lib/DataFlow/Proc/Encoding.pm
 lib/DataFlow/Proc/HTMLFilter.pm
 lib/DataFlow/Proc/JSON.pm
-lib/DataFlow/Proc/MessagePack.pm
 lib/DataFlow/Proc/MultiPageURLGenerator.pm
 lib/DataFlow/Proc/NOP.pm
 lib/DataFlow/Proc/Null.pm
@@ -90,6 +89,7 @@ t/release-mojibake.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-linkcheck.t
+t/release-pod-no404s.t
 t/release-pod-syntax.t
 t/release-portability.t
 t/release-test-version.t
