@@ -26,7 +26,6 @@ lib/DataFlow/Proc/CSV.pm
 lib/DataFlow/Proc/Converter.pm
 lib/DataFlow/Proc/Encoding.pm
 lib/DataFlow/Proc/HTMLFilter.pm
-lib/DataFlow/Proc/JSON.pm
 lib/DataFlow/Proc/MultiPageURLGenerator.pm
 lib/DataFlow/Proc/NOP.pm
 lib/DataFlow/Proc/Null.pm
@@ -34,16 +33,11 @@ lib/DataFlow/Proc/SQL.pm
 lib/DataFlow/Proc/SimpleFileInput.pm
 lib/DataFlow/Proc/SimpleFileOutput.pm
 lib/DataFlow/Proc/UC.pm
-lib/DataFlow/Proc/URLRetriever.pm
-lib/DataFlow/Proc/YAML.pm
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/ProcPolicy.pm
 lib/DataFlow/Role/Processor.pm
 lib/DataFlow/Types.pm
-lib/DataFlow/Util/HTTPGet.pm
-lib/DataFlow/Util/HTTPGet/Curl.pm
-lib/DataFlow/Util/HTTPGet/Mechanize.pm
 scripts/encoding.pl
 scripts/portaltransparencia/ceis.pl
 scripts/simple-deref.pl
@@ -60,9 +54,6 @@ t/02-dataflow-many.t
 t/03-proc.t
 t/04-proc-init.t
 t/10-deref.t
-t/11-get.t
-t/12-get-curl.t
-t/12-get-mechanize.t
 t/15-policy-nop.t
 t/15-policy-process-into.t
 t/15-policy-scalar-only.t
@@ -75,7 +66,6 @@ t/40-csv.t
 t/50-simplefileinput.t
 t/50-simplefileoutput.t
 t/60-multipageurlgenerator.t
-t/62-urlretriever.t
 t/64-htmlfilter.t
 t/author-critic.t
 t/bug-anonsub-with-array.t
@@ -89,7 +79,6 @@ t/release-mojibake.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-linkcheck.t
-t/release-pod-no404s.t
 t/release-pod-syntax.t
 t/release-portability.t
 t/release-test-version.t

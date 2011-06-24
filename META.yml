@@ -12,7 +12,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,19 +20,15 @@ meta-spec:
 name: DataFlow
 requires:
   Carp: 0
-  Data::Alias: 0
   Data::Dumper: 0
   DateTime: 0.51
   Encode: 0
   HTML::TreeBuilder::XPath: 0
-  JSON::Any: 0
-  LWP::Curl: 0.08
   Moose: 0
   Moose::Role: 0
   Moose::Util::TypeConstraints: 1.01
   MooseX::Aliases: 0
   MooseX::OneArgNew: 0
-  MooseX::Traits: 0
   MooseX::Types: 0
   MooseX::Types::IO: 0
   MooseX::Types::Moose: 0
@@ -40,12 +36,10 @@ requires:
   SQL::Abstract: 0
   Scalar::Util: 0
   Text::CSV::Encoded: 0
-  WWW::Mechanize: 0
-  YAML::Any: 0
   autodie: 0
   namespace::autoclean: 0
   perl: 5.008
 resources:
   homepage: http://github.com/russoz/DataFlow
   repository: http://github.com/russoz/DataFlow
-version: 1.111720
+version: 1.111750

@@ -14,51 +14,45 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 6c716fa4ee2c6135798f96744fe55bfbda468de1 Changes
+SHA1 eef8834ebdad1cea2a35d637271e2066d2389ab1 Changes
 SHA1 ca39491a5a9c5cc00568998d90a6d795966dcbbd INSTALL
 SHA1 06abad21694ddb03c0fd03ba52d6d652ca43856e LICENSE
-SHA1 e7eb48ac70adb56ed40c987a8634942899bdd3d8 MANIFEST
-SHA1 c79592e849bb1a718681a9d6751d1f417bd5d748 META.json
-SHA1 1d4132704767a84fee2c9f7867647f2ba2e25adb META.yml
-SHA1 d55941d3b096ee71fe3fc77c6e15439f53a6ec29 Makefile.PL
-SHA1 b3685912661fd702687f906d5f05094d69f946a8 README
+SHA1 d74d81772213bccc3efc823adcce02a65c3e6b8d MANIFEST
+SHA1 be1a8d0988c5e02be4935219ab863436f7a24bb9 META.json
+SHA1 578e2a657a95cde9b23a75e6ff17c9a709a1feeb META.yml
+SHA1 ea25a227ebde048c29323d550ae6eae13b92a8d6 Makefile.PL
+SHA1 f5fb1424e09f262289930c10be1a44c6cc5a1d17 README
 SHA1 9dde3aad09bcadf5ccff26a98840d452b7bbecfe dist.ini
 SHA1 d74bc51ead3d0be64e250fbc09f1345fd8c9d591 examples/file.test
 SHA1 b430a150752f748abc761d22ab0a8daef8c3a78a examples/simples.pl
-SHA1 10b1c397b9ca885cf8cd00028c3d5c1478f13006 lib/DataFlow.pm
-SHA1 ed9e73fc436c5dc6b8797a8e0ca4b6269056bee5 lib/DataFlow/Item.pm
-SHA1 30daa07e86f460fb96b9f015c284bc938c7442bd lib/DataFlow/Meta.pm
-SHA1 cd3b31c0b48b38310cd09052826d8959bd0efc92 lib/DataFlow/Policy/ArrayRef.pm
-SHA1 b0f2403be698da599f6fcca7e84211285da2e912 lib/DataFlow/Policy/NOP.pm
-SHA1 ccf8a3d0fd26adf379bc0ff74269e5afca827e2e lib/DataFlow/Policy/Null.pm
-SHA1 3892c55af3dfc314f0830d9f5137bfe9139b2f27 lib/DataFlow/Policy/ProcessInto.pm
-SHA1 211f563905f07f092b10b542e1af755c8844f37b lib/DataFlow/Policy/ProcessIntoArrayRef.pm
-SHA1 4ffe523fb97820f0d792e224175c913038898cf1 lib/DataFlow/Policy/Scalar.pm
-SHA1 0fea542e823b10512a5e08d405a01dbff597e03c lib/DataFlow/Policy/ScalarOnly.pm
-SHA1 cf68cfa0965ef14a693a3b3ff61e6e306ab6b4cb lib/DataFlow/Policy/WithSpec.pm
-SHA1 2e5da7fd5c051ba20c601e22473d16e18c4757c0 lib/DataFlow/Proc.pm
-SHA1 886633d9ad3564a2259ec7224917a226973ccb6b lib/DataFlow/Proc/CSV.pm
-SHA1 60822e6bce296c9f02ab39cb407398dc302fcee4 lib/DataFlow/Proc/Converter.pm
-SHA1 2a40416b42fb306ae032e28699069ade97a73cee lib/DataFlow/Proc/Encoding.pm
-SHA1 1a515400bee5f055fa017866d18c342c12ee1803 lib/DataFlow/Proc/HTMLFilter.pm
-SHA1 b064f3f4db2085e875735b68e73f329e6bbad50d lib/DataFlow/Proc/JSON.pm
-SHA1 2b7aed3fc9ae45d9e1e6fea7563363a567739572 lib/DataFlow/Proc/MultiPageURLGenerator.pm
-SHA1 0caa1b0a661fe22f6e1a663417801cd1ca5cd7f6 lib/DataFlow/Proc/NOP.pm
-SHA1 e2306ace158202e0db20a4e85b909bcb8e88516f lib/DataFlow/Proc/Null.pm
-SHA1 c5870a96037deb5e43e6753e90f87266c863e859 lib/DataFlow/Proc/SQL.pm
-SHA1 174a0edcace849dbd95bd54dbcca9429aa9688fd lib/DataFlow/Proc/SimpleFileInput.pm
-SHA1 70dbd1f9a2564f3e993dc4ef1693b3e952c516a6 lib/DataFlow/Proc/SimpleFileOutput.pm
-SHA1 a1794f7a667bf0d4a80be207111796be874cad86 lib/DataFlow/Proc/UC.pm
-SHA1 1952f3fc03e549dbf8d14eab36023365ea370c46 lib/DataFlow/Proc/URLRetriever.pm
-SHA1 7f9e499af1fdb1343ad779fa87c0152fe1eaa6f2 lib/DataFlow/Proc/YAML.pm
-SHA1 b37ed00de83af72d910d71b81c244c2d25ddc06a lib/DataFlow/Role/Dumper.pm
-SHA1 a852d0fb763d5f00005035b28e8c5680352ed26d lib/DataFlow/Role/File.pm
-SHA1 210458630f06ce045181d904bc5144347b6f25c8 lib/DataFlow/Role/ProcPolicy.pm
-SHA1 1459cf64b31ce801f5d54d209ecc0eaa4d78f44d lib/DataFlow/Role/Processor.pm
-SHA1 2a08fbfd1e87dd73dfc8a36d402f8ffdeb57c5f6 lib/DataFlow/Types.pm
-SHA1 2487440e83d51aabf7ac41602be51b97f9015062 lib/DataFlow/Util/HTTPGet.pm
-SHA1 bf305c1e82af3df5756c0b4582e735dac2f141da lib/DataFlow/Util/HTTPGet/Curl.pm
-SHA1 94456ec02e9a28540113c687877b2597de677675 lib/DataFlow/Util/HTTPGet/Mechanize.pm
+SHA1 532e9a0dd720d4a9da1af0c9734c7e43eb940775 lib/DataFlow.pm
+SHA1 ca9359a2a0511d00af348242e3e267d10605d48c lib/DataFlow/Item.pm
+SHA1 47a23d9e461d6f194c0859ec0352152e94309796 lib/DataFlow/Meta.pm
+SHA1 f20e034d8464c7c31aada321bca348b708dd16a6 lib/DataFlow/Policy/ArrayRef.pm
+SHA1 59e6461836383b3cf23ac49c0d824bd59e094f17 lib/DataFlow/Policy/NOP.pm
+SHA1 80d944458ff5b516385ed836b2c1da008e7141af lib/DataFlow/Policy/Null.pm
+SHA1 16b1ca9a691e9e91d5801cb49ed48c29acb6a807 lib/DataFlow/Policy/ProcessInto.pm
+SHA1 ef3ea34a5ab66808252b0ee58de851f15329aaf5 lib/DataFlow/Policy/ProcessIntoArrayRef.pm
+SHA1 6e17a756762e4e20a410781f96603cf4de9979cb lib/DataFlow/Policy/Scalar.pm
+SHA1 f96b14f2bfc38e6dfa6a00f7b447dcb0709eca52 lib/DataFlow/Policy/ScalarOnly.pm
+SHA1 7c80202b50055e175a6d0c28666080237685d1c3 lib/DataFlow/Policy/WithSpec.pm
+SHA1 0a690df1f108b0e5935143334094d5fb901a65e8 lib/DataFlow/Proc.pm
+SHA1 293bf0acf867cfcbcc9c1a31d4754b24cd7c3bbe lib/DataFlow/Proc/CSV.pm
+SHA1 1d9cb612ae112ed74988cb82b1ad59a74eb9c1a1 lib/DataFlow/Proc/Converter.pm
+SHA1 721c78972d65c384c41dee1ef3356a0c62ef9651 lib/DataFlow/Proc/Encoding.pm
+SHA1 599e508bd0083488ac555e8e289a2d2540952e82 lib/DataFlow/Proc/HTMLFilter.pm
+SHA1 6126efd16d59f76dda2b39ebe8fbecf213a789d3 lib/DataFlow/Proc/MultiPageURLGenerator.pm
+SHA1 18743b60a9b67e76e347d0384e125212f929889e lib/DataFlow/Proc/NOP.pm
+SHA1 46e29968c2dd1364364440507e4063bd0f8d9eaf lib/DataFlow/Proc/Null.pm
+SHA1 73b66fac9e851f537cce495ee4b81af1f352de85 lib/DataFlow/Proc/SQL.pm
+SHA1 5982d0ba1e373a0e4e91e90548fa6f584b187291 lib/DataFlow/Proc/SimpleFileInput.pm
+SHA1 61bbae3dcbacbd12e951658c9447ba28a0ca5677 lib/DataFlow/Proc/SimpleFileOutput.pm
+SHA1 4be6c161dfaa94ac1507d0cc0a4e64ea4fff7aa5 lib/DataFlow/Proc/UC.pm
+SHA1 13404748b4a42d3214b212d5f18b8aab2c6b38cb lib/DataFlow/Role/Dumper.pm
+SHA1 4cffdab1121d80ec21e53ad8cc7bb4921c500de9 lib/DataFlow/Role/File.pm
+SHA1 17efa4343e43cd8941d04792e9fbecbbbb201f59 lib/DataFlow/Role/ProcPolicy.pm
+SHA1 13e9f758140b683db96e9fc1c930a217b93079f0 lib/DataFlow/Role/Processor.pm
+SHA1 7e5f1790ff15f3fe72a0740d881fe2252a124080 lib/DataFlow/Types.pm
 SHA1 eea05cd27dce220cd7faabb4ddf555aa86f7313a scripts/encoding.pl
 SHA1 8f7c4cac7f6c0f34279042202b03bd84873079e0 scripts/portaltransparencia/ceis.pl
 SHA1 7c4a6939f51c9b748a32cabfd9a47c50b99a8933 scripts/simple-deref.pl
@@ -67,7 +61,7 @@ SHA1 8cfff67a8a3e63ca5333a813972a28033a713c71 scripts/simple.pl
 SHA1 7aea75fceec59eabd213db9811633c8cb785bff3 scripts/tidy
 SHA1 ca41ffd5806caaf9da5dceea1320ae662780e9fc t/00-compile.t
 SHA1 9675e47749091f26cecf907ec018361f5e6ef10a t/00-load.t
-SHA1 a207c16a25281667956953c55de0ecd157713242 t/000-report-versions-tiny.t
+SHA1 492c8bbe0cf9a8922fa69e14ffe77a4cf7cfe978 t/000-report-versions-tiny.t
 SHA1 1ab9faa0595907a9fb8e71432dfe7efee1d9c1ca t/01-dataflow.t
 SHA1 3d05c6f45789db8008a55c5102ec65468f78f8ba t/02-dataflow-init-sub.t
 SHA1 f18db51b5e467bc4611d9ef421e6b7bafc357e5c t/02-dataflow-init.t
@@ -75,9 +69,6 @@ SHA1 6b65e5b9fc8a451f4819e2f0e550b5a548c9976b t/02-dataflow-many.t
 SHA1 66e476effbad2c57ecfd5c1e8ada389ff16b22c4 t/03-proc.t
 SHA1 6126d0d386099ca40d98b71a44068ca4d481eae9 t/04-proc-init.t
 SHA1 4b296ed07b67e71c41371babf7ca645d44bc958e t/10-deref.t
-SHA1 904c50bba4595d196cc61d8d4e5a6b5d89c00d03 t/11-get.t
-SHA1 52eae88978be72ce58d839beee7ac416af3bac53 t/12-get-curl.t
-SHA1 749488569301d30c0eeada7159d05cb9560986ca t/12-get-mechanize.t
 SHA1 4342b7275325dab7f716bd223ef67da32fffdd25 t/15-policy-nop.t
 SHA1 4b51309a17a2b4fa0cb59d80237e23eb20b14467 t/15-policy-process-into.t
 SHA1 989bfc6c00024956d44c88788fdee636b97da1ee t/15-policy-scalar-only.t
@@ -90,7 +81,6 @@ SHA1 ae02f22eb594d000c6129156a49851b863562e2b t/40-csv.t
 SHA1 d9be636bcb199cfa2a6384ca12d2c20df4267dcc t/50-simplefileinput.t
 SHA1 51daca3f58a1d8aeefbd8773f2e39a0943a2f238 t/50-simplefileoutput.t
 SHA1 1423da3c7aab7a9a95c0144b29711cb8e8949d23 t/60-multipageurlgenerator.t
-SHA1 77e4db63b00841c632675b1648779eae01e43fde t/62-urlretriever.t
 SHA1 ede788e6b53974a7b46fcb25c466028d4ae2d2bb t/64-htmlfilter.t
 SHA1 fa45d6e6ab1cd421349dea4ef527bfd5cdc8a09e t/author-critic.t
 SHA1 bbb618b3a8798d74dda1818c2c47be258f984bda t/bug-anonsub-with-array.t
@@ -104,7 +94,6 @@ SHA1 8556b1e3dda0d4c71ce3ab34261c4f80a585e56c t/release-mojibake.t
 SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
 SHA1 9433c240fe590bc404ab68ff63984df763e347ed t/release-pod-coverage.t
 SHA1 4f2933df3566db6f337817aa885889deb213960b t/release-pod-linkcheck.t
-SHA1 c96a74de71b7a45a6b69614b73c7ccb754c03cd5 t/release-pod-no404s.t
 SHA1 b30cbdfaf935017c4568c0c91b242438cb87786e t/release-pod-syntax.t
 SHA1 3bb783b8a31b5eaff916bcb8bf7b348ee340ecb5 t/release-portability.t
 SHA1 13308c6d118988d59e1c257d3179b839c549ff12 t/release-test-version.t
@@ -112,17 +101,17 @@ SHA1 d7221447937ab93002a123801def7be09748c106 t/release-unused-vars.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iQIcBAEBAgAGBQJN//y9AAoJEMZvtcdxyp88BvUP/j7psNjKo45VnDJLUo7vzxlV
-+Zu2UdufiqzKkJPi4FT0HIYYBp03Eq0KT0sWW71RBu5YxvNOQYnsNiU1u4h9sgFO
-E01POicm6qJRVl7MLqV7SEnYoBXTgpk0pMaI0L0oTEUWlE5RK2DcOanWEOtHg94s
-cONoBE4rO/7OJcLh8SicipkBn5/ZrM8t1AWLjJqELu04+5vQGGDKDe1J+7eW8dR1
-agMQe8OiA49Lswlh+tLJtfMP6mLOe4T1hnkcfQu5IeB3AOAYAkpO6Y9uRXHRGf5K
-wa/nQR4wTBZwlRjeY7Vedy5zxnC/MmyL4KF9F9IhmCUDZPpi7kWyiuRINotJ9I7T
-T6jFDEGBARIgIa0XVjsaqtNdORdfw/x4PtGpfmcOjZdCIXchEhfBAHCtY/yAnK9c
-Vw6P3/c9lhCNZBUeS+whssRC8fzi27L0zeklC2WeupEYJ3Nk85qn1bvPcarE0B5v
-lxTU0vfhoH4pAXT+eBOhVAA15D4UEAgwJMbmyqZoqUlHCFLeItdTfyc9lP8BIlUw
-nbdjeiNflETXUPWM8VPb1iwVOMVYNJI0vrnqseDBu+wWox5BadPq/936+syqe+Fv
-4QUkR8bRidQUUTRdzBv0ATwJhMbKGECPxl8R6wPRALc34iI78xiuwYzLSTqDEQ2+
-xxMeDBH5PfzuP5zFbMRZ
-=oBWk
+iQIcBAEBAgAGBQJOBAJEAAoJEMZvtcdxyp88L38QAJ2ed6nux/yAOg2q1DEWa27t
+Z9KVyxGJNfFnj7MRbxDeJjYqemh0kb979TZF07ibWXuRHtsKbrlrvRDK2MUG4GCD
+155ff59tn3jFY02dFIzwiRBJEx9N5rM6jDxVyKvptVtQm/RhDj+pV6GoiYeM5e+8
+jJqmit5GiXXxUEoMaOjIbMZ24S+uiFZGcHGqrQTkYLboICLRzzYwsKPAelkwLU/L
+lHXzW6/7V1S7mBmlPf2NkF7+NOANAErkiD284c6EROplUi49IKjbaOBxIOLFrvAc
+DBX+N9Eev+rTa+O6Zf8zb6sH7gpGxMUmKRn2VvAa+v5CwutpBbuCAjb1i/QRZDIP
+SIXpSdnM+IRJYyOZ4W2Iq76qh9aXtu/b73Rp2HUibCQ4sgTqzasJI/juu4sM6O/a
+jnq9b2MUUhT1n3fsTjDJrs3nbWGaffz46rmmFGJhyMyemDj6TetWQ39VadEyr3fl
+2CrkwzSkQ59oxBCkrM1Ejf3TpwImmLfKkkKkaL4csmX4K+levb03Ss9lymyo7kJI
+NqJWUnZa4toAtpWrRHTlXZUUguzhI/1FUB17B875C4/qbT6J99+1c+qDE3SzhdMP
+FOq9mTLQMVN/T4sIDfPjAyGybI7z6Mob66Y/YnwmI0HHGKwUf2YVMfoioXlM1bBr
+MXaJpmF3m+VhWOz7vi+/
+=D+Qy
 -----END PGP SIGNATURE-----
