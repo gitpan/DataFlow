@@ -31,7 +31,6 @@ my %WriteMakefileArgs = (
     'Data::Dumper' => '0',
     'DateTime' => '0.51',
     'Encode' => '0',
-    'HTML::TreeBuilder::XPath' => '0',
     'Moose' => '0',
     'Moose::Role' => '0',
     'Moose::Util::TypeConstraints' => '1.01',
@@ -47,7 +46,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111750',
+  'VERSION' => '1.111762',
   'test' => {
     'TESTS' => 't/*.t'
   }

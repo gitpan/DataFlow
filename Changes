@@ -1,8 +1,16 @@
 Revision History for DataFlow
 =============================
 
-1.111750
+1.111762
 --------
+
+commit 9e5fa369895c623f14623ab55e3709db7acb5850
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    refactored DataFlow::Proc::HTMLFilter out of core
+
+v1.111750 2011-06-24
+--------------------
 
 commit fc8f68043bcf3a0d0a5f161d6f28c2f86853a9d3
 Author: Alexei Znamensky <russoz@cpan.org>

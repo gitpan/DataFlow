@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111750'; # VERSION
+our $VERSION = '1.111762'; # VERSION
 
 use MooseX::Types -declare => [
     qw(Processor ProcessorList ProcessorSub ProcPolicy),
@@ -143,10 +143,6 @@ coerce 'Encoder' => from 'Str' => via {
     return sub { return encode( $encoding, shift ) };
 };
 
-# subtype for DataFlow::Proc::HTMLFilter ######################
-
-enum 'HTMLFilterTypes', [qw(NODE HTML VALUE)];
-
 1;
 
 
@@ -162,7 +158,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111750
+version 1.111762
 
 =head1 SYNOPSIS
 
@@ -333,36 +329,6 @@ encoding.
 
 It will automagically create a C<sub> that uses function C<< encode() >> from
 module L<Encode> to encode to a named encoding.
-
-=head2 HTMLFilterTypes
-
-An enumeration used by type L<DataFlow::Proc::HTMLFilter>,
-containing three elements, representing the type of result the HTMLFilter
-object will provide:
-
-=over 4
-
-=item *
-
-NODE
-
-Results will be L<HTML::Element> objects
-
-=item *
-
-HTML
-
-Results will be HTML content.
-
-=item *
-
-VALUE
-
-Results will be literal values
-
-=back
-
-See DataFlow::Proc::HTMLFilter for more information.
 
 =head1 SEE ALSO
 

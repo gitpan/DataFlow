@@ -23,7 +23,6 @@ requires:
   Data::Dumper: 0
   DateTime: 0.51
   Encode: 0
-  HTML::TreeBuilder::XPath: 0
   Moose: 0
   Moose::Role: 0
   Moose::Util::TypeConstraints: 1.01
@@ -42,4 +41,4 @@ requires:
 resources:
   homepage: http://github.com/russoz/DataFlow
   repository: http://github.com/russoz/DataFlow
-version: 1.111750
+version: 1.111762
