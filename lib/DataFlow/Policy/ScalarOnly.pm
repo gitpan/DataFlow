@@ -5,18 +5,16 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats all items as scalars
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+default_handler' => (
-    'default' => sub {
-        return \&_handle_svalue;
-    },
-);
+sub _build_default_handler {
+    return \&_handle_svalue;
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -34,7 +32,7 @@ DataFlow::Policy::ScalarOnly - A ProcPolicy that treats all items as scalars
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

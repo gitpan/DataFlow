@@ -1,8 +1,27 @@
 Revision History for DataFlow
 =============================
 
-1.111762
+1.111810
 --------
+
+commit a46946a29b50a2892b84ba1437a67568b1ff4ad3
+Merge: 9b68a67 f85599e
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'rc/1.111810'
+
+commit f85599efb4fdc9a41c6b8c1465f8620f3c90fc00
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    using builder + laziness
+
+commit 9b68a678e283a880f1177871ff8a9df2a7cc68a6
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    small details
+
+v1.111762 2011-06-25
+--------------------
 
 commit 9e5fa369895c623f14623ab55e3709db7acb5850
 Author: Alexei Znamensky <russoz@cpan.org>

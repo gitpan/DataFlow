@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that defines how to use proc-handlers
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose::Role;
 
@@ -16,14 +16,23 @@ has 'handlers' => (
     'is'      => 'ro',
     'isa'     => 'HashRef[CodeRef]',
     'lazy'    => 1,
-    'default' => sub { return {} },
+    'builder' => '_build_handlers',
 );
+
+sub _build_handlers {
+    return {};
+}
 
 has 'default_handler' => (
     'is'       => 'ro',
     'isa'      => 'CodeRef',
     'required' => 1,
+    'builder'  => '_build_default_handler',
 );
+
+sub _build_default_handler {
+    return;
+}
 
 sub apply {
     my ( $self, $p, $item ) = @_;
@@ -104,7 +113,7 @@ DataFlow::Role::ProcPolicy - A role that defines how to use proc-handlers
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head2 apply P ITEM
 

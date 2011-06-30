@@ -5,14 +5,14 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that returns the very item passed
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+default_handler' => ( 'default' => sub { return \&_nop_handle } );
+sub _build_default_handler { return \&_nop_handle; }
 
 __PACKAGE__->meta->make_immutable;
 
@@ -30,7 +30,7 @@ DataFlow::Policy::NOP - A ProcPolicy that returns the very item passed
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

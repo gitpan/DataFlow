@@ -5,19 +5,18 @@ use warnings;
 
 # ABSTRACT: A 'null' processor, will discard any input and return undef in the output
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
 use namespace::autoclean;
 
-has '+p' => (
-    'default' => sub {
-        sub { }
-    },
-);
+sub _build_p {
+    return sub { }
+}
 
+# avoid all the internal overhead by overriding 'process'
 override 'process' => sub { };
 
 __PACKAGE__->meta->make_immutable;
@@ -36,7 +35,7 @@ DataFlow::Proc::Null - A 'null' processor, will discard any input and return und
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SYNOPSIS
 

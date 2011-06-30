@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use MooseX::Types -declare => [
     qw(Processor ProcessorList ProcessorSub ProcPolicy),
@@ -68,10 +68,10 @@ sub _is_processor {
 sub _any_to_proc {
     my $elem = shift;
     my $ref  = ref($elem);
-    if ( $ref eq '' ) {    # String?
+    if ( $ref eq '' ) {                # Str?
         return _str_to_proc($elem);
     }
-    elsif ( $ref eq 'ARRAY' ) {
+    elsif ( $ref eq 'ARRAY' ) {        # [ Str, <options> ]
         return _str_to_proc( @{$elem} );
     }
     elsif ( $ref eq 'CODE' ) {
@@ -158,7 +158,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SYNOPSIS
 

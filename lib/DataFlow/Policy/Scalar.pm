@@ -5,31 +5,27 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats scalars items and pass other types as-is.
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+handlers' => (
-    'default' => sub {
-        my $self         = shift;
-        my $type_handler = {
-            'SCALAR' => \&_nop_handle,
-            'ARRAY'  => \&_nop_handle,
-            'HASH'   => \&_nop_handle,
-            'CODE'   => \&_nop_handle,
-        };
-        return $type_handler;
-    },
-);
+sub _build_handlers {
+    my $self         = shift;
+    my $type_handler = {
+        'SCALAR' => \&_nop_handle,
+        'ARRAY'  => \&_nop_handle,
+        'HASH'   => \&_nop_handle,
+        'CODE'   => \&_nop_handle,
+    };
+    return $type_handler;
+}
 
-has '+default_handler' => (
-    'default' => sub {
-        return \&_handle_svalue;
-    },
-);
+sub _build_default_handler {
+    return \&_handle_svalue;
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -47,7 +43,7 @@ DataFlow::Policy::Scalar - A ProcPolicy that treats scalars items and pass other
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

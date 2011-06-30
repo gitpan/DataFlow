@@ -5,18 +5,16 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that returns undef to any type
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+default_handler' => (
-    'default' => sub {
-        sub { }
-    },
-);
+sub _build_default_handler {
+    return sub { };
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -34,7 +32,7 @@ DataFlow::Policy::Null - A ProcPolicy that returns undef to any type
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

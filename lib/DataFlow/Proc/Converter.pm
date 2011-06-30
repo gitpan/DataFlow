@@ -5,12 +5,14 @@ use warnings;
 
 # ABSTRACT: A generic processor for format-conversion
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
 use DataFlow::Types qw(ConversionDirection ConversionSubs);
+
+use namespace::autoclean;
 
 has 'direction' => (
     is       => 'ro',
@@ -21,7 +23,9 @@ has 'direction' => (
 has 'converter_subs' => (
     is       => 'ro',
     isa      => 'ConversionSubs',
+    lazy     => 1,
     required => 1,
+    builder  => '_build_subs',
 );
 
 has 'converter_opts' => (
@@ -32,13 +36,14 @@ has 'converter_opts' => (
 
 has 'converter' => ( is => 'ro', );
 
-has '+p' => (
-    'lazy'    => 1,
-    'default' => sub {
-        my $self = shift;
-        return $self->converter_subs->{ $self->direction };
-    },
-);
+sub _build_subs {
+    return;
+}
+
+sub _build_p {
+    my $self = shift;
+    return $self->converter_subs->{ $self->direction };
+}
 
 1;
 
@@ -54,7 +59,7 @@ DataFlow::Proc::Converter - A generic processor for format-conversion
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

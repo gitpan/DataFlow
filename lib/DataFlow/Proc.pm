@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -62,7 +62,7 @@ has 'policy' => (
     'isa'     => 'ProcPolicy',
     'coerce'  => 1,
     'lazy'    => 1,
-    'default' => 'ProcessInto',
+    'builder' => '_policy',
 );
 
 has 'p' => (
@@ -70,9 +70,19 @@ has 'p' => (
     'isa'      => 'ProcessorSub',
     'required' => 1,
     'coerce'   => 1,
+    'lazy'     => 1,
+    'builder'  => '_build_p',
     'documentation' =>
       'Code reference that returns the result of processing one single item',
 );
+
+sub _build_p {
+    return;
+}
+
+sub _policy {
+    return 'ProcessInto';
+}
 
 sub _process_one {
     my ( $self, $item ) = @_;
@@ -123,7 +133,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SYNOPSIS
 
@@ -205,12 +215,10 @@ and adding new attibutes or methods, in which case one can do as below:
 
 	has 'x_factor' => ( isa => 'Int' );
 
-	has '+p' => (
-		default => sub {        # not the p value, but the sub that returns it
-			my $self = shift;
-			return sub { $_ * int( rand( $self->x_factor ) ) };
-		},
-	);
+	sub _build_p {
+		my $self = shift;
+		return sub { $_ * int( rand( $self->x_factor ) ) };
+	}
 
 	package main;
 

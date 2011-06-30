@@ -5,26 +5,20 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that accepts only array-references
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
 
 use namespace::autoclean;
 
-has '+handlers' => (
-    'default' => sub {
-        return { 'ARRAY' => \&_handle_svalue, };
-    },
-);
+sub _build_handlers {
+    return { 'ARRAY' => \&_handle_svalue, };
+}
 
-has '+default_handler' => (
-    'default' => sub {
-        return sub {
-            die q{Must be an array reference!};
-          }
-    },
-);
+sub _build_default_handler {
+    return sub { die q{Must be an array reference!}; };
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -42,7 +36,7 @@ DataFlow::Policy::ArrayRef - A ProcPolicy that accepts only array-references
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that reads that from a file
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -47,34 +47,32 @@ has '+allows_undef_input' => (
     }
 );
 
-has '+p' => (
-    'default' => sub {
-        my $self = shift;
+sub _build_p {
+    my $self = shift;
 
-        return $self->_slurpy_read if $self->do_slurp;
+    return $self->_slurpy_read if $self->do_slurp;
 
-        return sub {
-            my $filename = $_;
+    return sub {
+        my $filename = $_;
 
-            # if filename is provided, add it to the queue
-            $self->_fileq->add($filename) if defined $filename;
+        # if filename is provided, add it to the queue
+        $self->_fileq->add($filename) if defined $filename;
 
-            # if there is no open file
-            if ( !$self->has_file ) {
-                return if $self->_fileq->empty;
-                open( my $fh, '<', $self->_fileq->remove );    ## no critic
-                $self->file( [ $fh, '<' ] );
-            }
+        # if there is no open file
+        if ( !$self->has_file ) {
+            return if $self->_fileq->empty;
+            open( my $fh, '<', $self->_fileq->remove );    ## no critic
+            $self->file( [ $fh, '<' ] );
+        }
 
-            # read a line
-            my $file = $self->file;
-            my $line = <$file>;
-            chomp $line unless $self->nochomp;
-            $self->_check_eof;
-            return $line;
-        };
-    },
-);
+        # read a line
+        my $file = $self->file;
+        my $line = <$file>;
+        chomp $line unless $self->nochomp;
+        $self->_check_eof;
+        return $line;
+    };
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -92,7 +90,7 @@ DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

@@ -5,18 +5,16 @@ use warnings;
 
 # ABSTRACT: Upper-case processor: output data is input passed through uc()
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
 use namespace::autoclean;
 
-has '+p' => (
-    'default' => sub {
-        return sub { uc }
-    },
-);
+sub _build_p {
+    return sub { uc }
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -34,7 +32,7 @@ DataFlow::Proc::UC - Upper-case processor: output data is input passed through u
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SYNOPSIS
 

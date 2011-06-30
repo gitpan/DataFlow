@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats scalars items and pass other types as-is.
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -28,17 +28,13 @@ sub _spec_handle {
     return $item;
 }
 
-has '+handlers' => ( 'default' => sub { return {} }, );
-
-has '+default_handler' => (
-    'default' => sub {
-        my $self = shift;
-        return sub {
-            my ( $p, $item ) = @_;
-            _spec_handle( $self->spec, $p, $item );
-        };
-    },
-);
+sub _build_default_handler {
+    my $self = shift;
+    return sub {
+        my ( $p, $item ) = @_;
+        _spec_handle( $self->spec, $p, $item );
+    };
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -56,7 +52,7 @@ DataFlow::Policy::WithSpec - A ProcPolicy that treats scalars items and pass oth
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

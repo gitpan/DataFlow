@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -37,15 +37,13 @@ has 'output_encoder' => (
     'alias' => 'to',
 );
 
-has '+p' => (
-    'default' => sub {
-        my $self = shift;
-        return sub {
-            my $internal = $self->input_decoder->($_);
-            return $self->output_encoder->($internal);
-        };
-    },
-);
+sub _build_p {
+    my $self = shift;
+    return sub {
+        my $internal = $self->input_decoder->($_);
+        return $self->output_encoder->($internal);
+    };
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -63,7 +61,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 

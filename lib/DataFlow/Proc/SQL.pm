@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that generates SQL clauses
 
-our $VERSION = '1.111762'; # VERSION
+our $VERSION = '1.111810'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -26,22 +26,20 @@ has 'table' => (
     'required' => 1
 );
 
-has '+p' => (
-    'default' => sub {
-        my $self = shift;
-        my $sql  = $self->_sql;
+sub _build_p {
+    my $self = shift;
+    my $sql  = $self->_sql;
 
-        return sub {
-            my $data = $_;
+    return sub {
+        my $data = $_;
 
-            my ( $insert, @bind ) = $sql->insert( $self->table, $data );
+        my ( $insert, @bind ) = $sql->insert( $self->table, $data );
 
-            # TODO: regex ?
-            map { $insert =~ s/\?/'$_'/; } @bind;
-            print $insert . "\n";
-          }
-    }
-);
+        # TODO: regex ?
+        map { $insert =~ s/\?/'$_'/; } @bind;
+        print $insert . "\n";
+      }
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -59,7 +57,7 @@ DataFlow::Proc::SQL - A processor that generates SQL clauses
 
 =head1 VERSION
 
-version 1.111762
+version 1.111810
 
 =head1 SEE ALSO
 
