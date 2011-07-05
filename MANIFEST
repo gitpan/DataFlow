@@ -32,6 +32,7 @@ lib/DataFlow/Proc/SQL.pm
 lib/DataFlow/Proc/SimpleFileInput.pm
 lib/DataFlow/Proc/SimpleFileOutput.pm
 lib/DataFlow/Proc/UC.pm
+lib/DataFlow/QuickStart.pod
 lib/DataFlow/Role/Dumper.pm
 lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/ProcPolicy.pm

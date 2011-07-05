@@ -1,8 +1,32 @@
 Revision History for DataFlow
 =============================
 
-1.111810
+1.111860
 --------
+
+commit 82ef0db195ce073fc2b0a959433cd072bb2e08fa
+Merge: a46946a 4223b75
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'rc/1.111860'
+
+commit 4223b758eb6bab728243e5a0b20572cff60bc9f9
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    using builder instead of default in class DataFlow
+
+commit e09a1c5a3b62e18d3d81b3c6172c9c02b113adf5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    added the Quick Start Guide
+
+commit 95de2dc689b54c210b1b82094b4a095fff9b7dd5
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    removed t/00-load.t, using bundle v0.012
+
+v1.111810 2011-06-29
+--------------------
 
 commit a46946a29b50a2892b84ba1437a67568b1ff4ad3
 Merge: 9b68a67 f85599e

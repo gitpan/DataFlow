@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111810'; # VERSION
+our $VERSION = '1.111860'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -42,6 +42,7 @@ has 'procs' => (
     'isa'      => 'ProcessorList',
     'required' => 1,
     'coerce'   => 1,
+    'builder'  => '_build_procs',
 );
 
 has '_queues' => (
@@ -81,6 +82,10 @@ has 'dump_output' => (
     'default'       => 0,
     'documentation' => 'Prints a dump of the output load to STDERR',
 );
+
+sub _build_procs {
+    return;
+}
 
 # functions
 sub _count_queued_items {
@@ -176,7 +181,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111810
+version 1.111860
 
 =head1 SYNOPSIS
 

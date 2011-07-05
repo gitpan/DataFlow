@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that defines how to use proc-handlers
 
-our $VERSION = '1.111810'; # VERSION
+our $VERSION = '1.111860'; # VERSION
 
 use Moose::Role;
 
@@ -113,11 +113,11 @@ DataFlow::Role::ProcPolicy - A role that defines how to use proc-handlers
 
 =head1 VERSION
 
-version 1.111810
+version 1.111860
 
 =head2 apply P ITEM
 
-Applies the policy using function P and input data ITEM.
+Applies this policy to the data ITEM using function P.
 
 =head1 SEE ALSO
 

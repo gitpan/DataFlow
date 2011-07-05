@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Upper-case processor: output data is input passed through uc()
 
-our $VERSION = '1.111810'; # VERSION
+our $VERSION = '1.111860'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -32,7 +32,7 @@ DataFlow::Proc::UC - Upper-case processor: output data is input passed through u
 
 =head1 VERSION
 
-version 1.111810
+version 1.111860
 
 =head1 SYNOPSIS
 
