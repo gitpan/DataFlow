@@ -51,6 +51,7 @@ t/01-dataflow.t
 t/02-dataflow-init-sub.t
 t/02-dataflow-init.t
 t/02-dataflow-many.t
+t/02-dataflow-procby.t
 t/03-proc.t
 t/04-proc-init.t
 t/10-deref.t

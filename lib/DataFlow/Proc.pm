@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111860'; # VERSION
+our $VERSION = '1.111910'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -20,12 +20,6 @@ use Moose::Util::TypeConstraints 1.01;
 with 'MooseX::OneArgNew' => { 'type' => 'CodeRef', 'init_arg' => 'p', };
 
 ################################################################################
-
-has 'name' => (
-    'is'        => 'ro',
-    'isa'       => 'Str',
-    'predicate' => 'has_name',
-);
 
 has 'allows_undef_input' => (
     'is'      => 'ro',
@@ -133,7 +127,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111860
+version 1.111910
 
 =head1 SYNOPSIS
 

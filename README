@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111860
+    version 1.111910
 
 SYNOPSIS
             use DataFlow;
@@ -30,8 +30,8 @@ SYNOPSIS
             my $output = $flow->output( <some other input> );
 
             # other ways to invoke the constructor
-            my $flow = DataFlow( sub { .. do something } );   # pass a sub
-            my $flow = DataFlow( [                            # pass an array
+            my $flow = DataFlow->new( sub { .. do something } );   # pass a sub
+            my $flow = DataFlow->new( [                            # pass an array
                     sub { ... do this },
                     'UC',
                     [
@@ -41,7 +41,7 @@ SYNOPSIS
                       )
                     ]
             ] );
-            my $flow = DataFlow( $another_flow );   # pass another DataFlow or Proc
+            my $flow = DataFlow->new( $another_flow ); # pass another DataFlow or Proc
 
             # other way to pass the data through
             my $output = $flow->process( qw/long list of data/ );
@@ -61,9 +61,9 @@ ATTRIBUTES
     attempt to automatically process queued data. (DEFAULT: true)
 
   procs
-    (ArrayRef[DataFlow::Proc]) The list of processors that make this
-    DataFlow. Optionally, you may pass CodeRefs that will be automatically
-    converted to DataFlow::Proc objects. (REQUIRED)
+    (ArrayRef[DataFlow::Role::Processor]) The list of processors that make
+    this DataFlow. Optionally, you may pass CodeRefs that will be
+    automatically converted to DataFlow::Proc objects. (REQUIRED)
 
     The "procs" parameter will accept some variations in its value. Any
     "ArrayRef" passed will be parsed, and additionaly to plain
@@ -124,6 +124,15 @@ METHODS
     Immediately processes a bunch of data, without touching the object
     queues. It will process all the provided data and return the complete
     result set for it.
+
+  proc_by_index
+    Expects an index (Num) as parameter. Returns the index-th processor in
+    this data flow, or "undef" otherwise.
+
+  proc_by_name
+    Expects a name (Str) as parameter. Returns the first processor in this
+    data flow, for which the "name" attribute has the same value of the
+    "name" parameter, or "undef" otherwise.
 
 HISTORY
     This is a framework for data flow processing. It started as a spinoff

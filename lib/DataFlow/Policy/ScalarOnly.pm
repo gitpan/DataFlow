@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats all items as scalars
 
-our $VERSION = '1.111860'; # VERSION
+our $VERSION = '1.111910'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -32,7 +32,7 @@ DataFlow::Policy::ScalarOnly - A ProcPolicy that treats all items as scalars
 
 =head1 VERSION
 
-version 1.111860
+version 1.111910
 
 =head1 SEE ALSO
 

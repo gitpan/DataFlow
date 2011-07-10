@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that reads that from a file
 
-our $VERSION = '1.111860'; # VERSION
+our $VERSION = '1.111910'; # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -90,7 +90,7 @@ DataFlow::Proc::SimpleFileInput - A processor that reads that from a file
 
 =head1 VERSION
 
-version 1.111860
+version 1.111910
 
 =head1 SEE ALSO
 

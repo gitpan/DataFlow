@@ -4,7 +4,7 @@
       "Alexei Znamensky <russoz@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Dist::Zilla version 4.200009, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -63,6 +63,6 @@
          "web" : "http://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111860"
+   "version" : "1.111910"
 }
 
