@@ -1,8 +1,32 @@
 Revision History for DataFlow
 =============================
 
-1.111910
+1.111980
 --------
+
+commit f26cfbfe8a699911915884a06dce3d979e4c2999
+Merge: 69a73b8 8fcff30
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Merge branch 'rc/1.111980'
+
+commit 8fcff30312669b64876a954e44170ca4b70f2e10
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    using builder rather than default in Encoding
+
+commit 0cff8556e601eea2ea1d4a7399f40c08a60de126
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    Fixed bug when loading named procs
+
+commit 088d8290bfe348f1fc48c82e69d224180e7595bc
+Author: Alexei Znamensky <russoz@cpan.org>
+
+    improved tidy script
+
+v1.111910 2011-07-10
+--------------------
 
 commit 69a73b8ca1e14d19e1700ffe2227519ff182cd5d
 Merge: 82ef0db 3b05645

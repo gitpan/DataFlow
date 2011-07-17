@@ -2,7 +2,7 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111910
+    version 1.111980
 
 SYNOPSIS
             use DataFlow;
@@ -243,9 +243,9 @@ SUPPORT
     contribute patches, please send me a diff or prod me to pull from your
     repository :)
 
-    <http://github.com/russoz/DataFlow>
+    <https://github.com/russoz/DataFlow>
 
-      git clone http://github.com/russoz/DataFlow
+      git clone https://github.com/russoz/DataFlow
 
 AUTHOR
     Alexei Znamensky <russoz@cpan.org>

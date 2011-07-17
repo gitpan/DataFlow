@@ -50,10 +50,11 @@ t/000-report-versions-tiny.t
 t/01-dataflow.t
 t/02-dataflow-init-sub.t
 t/02-dataflow-init.t
+t/02-dataflow-inlinedproc.t
 t/02-dataflow-many.t
 t/02-dataflow-procby.t
-t/03-proc.t
-t/04-proc-init.t
+t/05-proc-init.t
+t/05-proc.t
 t/10-deref.t
 t/15-policy-nop.t
 t/15-policy-process-into.t

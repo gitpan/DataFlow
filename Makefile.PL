@@ -46,7 +46,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111910',
+  'VERSION' => '1.111980',
   'test' => {
     'TESTS' => 't/*.t'
   }

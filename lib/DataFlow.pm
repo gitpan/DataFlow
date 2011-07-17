@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.111910'; # VERSION
+our $VERSION = '1.111980'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -185,7 +185,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.111910
+version 1.111980
 
 =head1 SYNOPSIS
 
@@ -461,9 +461,9 @@ The code is open to the world, and available for you to hack on. Please feel fre
 with it, or whatever. If you want to contribute patches, please send me a diff or prod me to pull
 from your repository :)
 
-L<http://github.com/russoz/DataFlow>
+L<https://github.com/russoz/DataFlow>
 
-  git clone http://github.com/russoz/DataFlow
+  git clone https://github.com/russoz/DataFlow
 
 =head1 AUTHOR
 
