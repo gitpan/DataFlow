@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that returns undef to any type
 
-our $VERSION = '1.111980'; # VERSION
+our $VERSION = '1.111990'; # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -32,7 +32,7 @@ DataFlow::Policy::Null - A ProcPolicy that returns undef to any type
 
 =head1 VERSION
 
-version 1.111980
+version 1.111990
 
 =head1 SEE ALSO
 

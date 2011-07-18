@@ -2,10 +2,10 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111980
+    version 1.111990
 
 SYNOPSIS
-            use DataFlow;
+    use DataFlow;
 
             my $flow = DataFlow->new(
                     procs => [
