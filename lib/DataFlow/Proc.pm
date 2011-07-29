@@ -5,12 +5,13 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
 with 'DataFlow::Role::Dumper';
 
+use Moose::Autobox;
 use DataFlow::Types qw(ProcessorSub ProcPolicy);
 
 use namespace::autoclean;
@@ -33,22 +34,6 @@ has 'deref' => (
     'isa'     => 'Bool',
     'lazy'    => 1,
     'default' => 0,
-);
-
-has 'dump_input' => (
-    'is'            => 'ro',
-    'isa'           => 'Bool',
-    'lazy'          => 1,
-    'default'       => 0,
-    'documentation' => 'Prints a dump of the input load to STDERR',
-);
-
-has 'dump_output' => (
-    'is'            => 'ro',
-    'isa'           => 'Bool',
-    'lazy'          => 1,
-    'default'       => 0,
-    'documentation' => 'Prints a dump of the output load to STDERR',
 );
 
 has 'policy' => (
@@ -102,7 +87,7 @@ sub process {
 
     my @result =
       $self->deref
-      ? map { _deref($_) } ( $self->_process_one($item) )
+      ? @{ [ $self->_process_one($item) ]->map( sub { _deref($_) } ) }
       : $self->_process_one($item);
 
     $self->prefix_dumper( $self->has_name ? $self->name . ' >>' : '>>',
@@ -127,7 +112,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SYNOPSIS
 
@@ -286,5 +271,4 @@ DAMAGES.
 
 
 __END__
-
 

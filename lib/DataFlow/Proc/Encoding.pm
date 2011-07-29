@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A encoding conversion processor
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -53,7 +53,6 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
 __END__
 =pod
 
@@ -65,7 +64,7 @@ DataFlow::Proc::Encoding - A encoding conversion processor
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SEE ALSO
 

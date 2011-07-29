@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that treats scalars items and pass other types as-is.
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -13,7 +13,6 @@ with 'DataFlow::Role::ProcPolicy';
 use namespace::autoclean;
 
 sub _build_handlers {
-    my $self         = shift;
     my $type_handler = {
         'SCALAR' => \&_nop_handle,
         'ARRAY'  => \&_nop_handle,
@@ -43,7 +42,7 @@ DataFlow::Policy::Scalar - A ProcPolicy that treats scalars items and pass other
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SEE ALSO
 
@@ -102,4 +101,3 @@ DAMAGES.
 
 
 __END__
-

@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A CSV converting processor
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc::Converter';
@@ -98,7 +98,6 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
 __END__
 =pod
 
@@ -110,7 +109,7 @@ DataFlow::Proc::CSV - A CSV converting processor
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SEE ALSO
 

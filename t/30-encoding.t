@@ -27,4 +27,3 @@ my $e = DataFlow::Proc::Encoding->new(
 );
 ok($e);
 is( ( $e->process("\x{e9}") )[0], "é", 'converts characters properly' );
-

@@ -5,10 +5,10 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use MooseX::Types -declare => [
-    qw(Processor ProcessorList ProcessorSub ProcPolicy),
+    qw(Processor ProcessorList WrappedProcList ProcessorSub ProcPolicy),
     qw(ConversionSubs ConversionDirection),
     qw(Encoder Decoder),
     qw(HTMLFilterTypes),
@@ -19,6 +19,7 @@ use namespace::autoclean;
 use MooseX::Types::Moose qw/Str CodeRef ArrayRef HashRef/;
 class_type 'DataFlow';
 class_type 'DataFlow::Proc';
+class_type 'DataFlow::ProcWrapper';
 role_type 'DataFlow::Role::Processor';
 role_type 'DataFlow::Role::ProcPolicy';
 
@@ -78,10 +79,10 @@ sub _is_processor {
 sub _any_to_proc {
     my $elem = shift;
     my $ref  = ref($elem);
-    if ( $ref eq '' ) {    # String?
+    if ( $ref eq '' ) {    # Str?
         return _str_to_proc($elem);
     }
-    elsif ( $ref eq 'ARRAY' ) {
+    elsif ( $ref eq 'ARRAY' ) {    # [ Str, <options> ]
         return _str_to_proc( @{$elem} );
     }
     elsif ( $ref eq 'CODE' ) {
@@ -89,6 +90,13 @@ sub _any_to_proc {
         return DataFlow::Proc->new( p => $elem );
     }
     return $elem;
+}
+
+sub _wrap_proc {
+    my $proc = shift;
+    return $proc if ref($proc) eq 'DataFlow::ProcWrapper';
+    eval 'use DataFlow::ProcWrapper';    ## no critic
+    return DataFlow::ProcWrapper->new( wraps => $proc );
 }
 
 # subtypes CORE
@@ -109,6 +117,20 @@ coerce 'ProcessorList' => from 'ArrayRef' => via {
   from
   'CodeRef'                        => via { [ _any_to_proc($_) ] },
   from 'DataFlow::Role::Processor' => via { [$_] };
+
+subtype 'WrappedProcList' => as 'ArrayRef[DataFlow::ProcWrapper]' =>
+  where { scalar @{$_} > 0 } =>
+  message { 'DataFlow must have at least one processor' };
+coerce 'WrappedProcList' => from 'ArrayRef' => via {
+    my @list = @{$_};
+    my @res = map { _wrap_proc( _any_to_proc($_) ) } @list;
+    return [@res];
+},
+  from
+  'Str' => via { [ _wrap_proc( _str_to_proc($_) ) ] },
+  from
+  'CodeRef' => via { [ _wrap_proc( _any_to_proc($_) ) ] },
+  from 'DataFlow::Role::Processor' => via { [ _wrap_proc($_) ] };
 
 subtype 'ProcessorSub' => as 'CodeRef';
 coerce 'ProcessorSub' => from 'DataFlow::Role::Processor' => via {
@@ -132,6 +154,10 @@ sub _make_policy {
 # subtypes for DataFlow::Proc::Converter ######################
 
 enum 'ConversionDirection' => [ 'CONVERT_TO', 'CONVERT_FROM' ];
+coerce 'ConversionDirection' => from 'Str' => via {
+    return 'CONVERT_TO'   if m/to_/i;
+    return 'CONVERT_FROM' if m/from_/i;
+};
 
 subtype 'ConversionSubs' => as 'HashRef[CodeRef]' => where {
     scalar( keys %{$_} ) == 2
@@ -156,7 +182,6 @@ coerce 'Encoder' => from 'Str' => via {
 1;
 
 
-
 __END__
 =pod
 
@@ -168,7 +193,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SYNOPSIS
 
@@ -224,14 +249,14 @@ processor object will be created wrapping it:
 
 =head2 ProcessorList
 
-An ArrayRef of L<DataFlow::Proc> objects, with at least one element.
+An ArrayRef of L<DataFlow::Role::Processor> objects, with at least one element.
 
 =head3 Coercions
 
 =head4 from ArrayRef
 
-Attempts to make DataFlow::Proc objects out of different things provided in
-an ArrayRef. It currently works for:
+Attempts to make C<DataFlow::Role::Processor> objects out of different things
+provided in an ArrayRef. It currently works for:
 
 =over 4
 
@@ -270,6 +295,59 @@ coercion section of the C<Processor> subtype above.
 
 An ArrayRef will be created wrapping the processor, as described in the
 coercion section of the C<Processor> subtype above.
+
+=head2 WrappedProcList
+
+An ArrayRef of L<DataFlow::ProcWrapper> objects, with at least one element.
+
+=head3 Coercions
+
+=head4 from ArrayRef
+
+Attempts to make C<DataFlow::ProcWrapper> objects out of different things
+provided in an ArrayRef. It currently works for:
+
+=over 4
+
+=item *
+
+Str
+
+=item *
+
+ArrayRef
+
+=item *
+
+CodeRef
+
+=item *
+
+DataFlow::Role::Processor
+
+=back
+
+using the same rules as in the subtype C<Processor> described above and
+wrapping the resulting C<Processor> in a C<DataFlow::ProcWrapper> object.
+Anything else will trigger an error.
+
+=head4 from Str
+
+An ArrayRef will be created wrapping a named processor, as described in the
+coercion section of the C<Processor> subtype above and
+wrapping the resulting C<Processor> in a C<DataFlow::ProcWrapper> object.
+
+=head4 from CodeRef
+
+An ArrayRef will be created wrapping a processor, as described in the
+coercion section of the C<Processor> subtype above and
+wrapping the resulting C<Processor> in a C<DataFlow::ProcWrapper> object.
+
+=head4 from DataFlow::Role::Processor
+
+An ArrayRef will be created wrapping the processor, as described in the
+coercion section of the C<Processor> subtype above and
+wrapping the resulting C<Processor> in a C<DataFlow::ProcWrapper> object.
 
 =head2 ProcessorSub
 

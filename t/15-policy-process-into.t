@@ -51,4 +51,3 @@ is( $cres->{c}->{c2}->[0],         'C2AA' );
 is( $cres->{c}->{c2}->[1]->{c2bb}, 'C2BB11' );
 is( $cres->{c}->{c2}->[1]->{c2cc}, 'C2CC11' );
 is_deeply( $cres->{c}->{c2}->[1]->{c2dd}, [qw/C2DD OMG THIS IS DEEP/] );
-

@@ -2,10 +2,10 @@ NAME
     DataFlow - A framework for dataflow processing
 
 VERSION
-    version 1.111990
+    version 1.112100
 
 SYNOPSIS
-    use DataFlow;
+            use DataFlow;
 
             my $flow = DataFlow->new(
                     procs => [
@@ -55,6 +55,10 @@ ATTRIBUTES
   name
     (Str) A descriptive name for the dataflow. (OPTIONAL)
 
+  default_channel
+    (Str) The name of the default communication channel. (DEFAULT:
+    'default')
+
   auto_process
     (Bool) If there is data available in the output queue, and one calls the
     "output()" method, this attribute will flag whether the dataflow should
@@ -103,15 +107,28 @@ METHODS
     process the items inside an array reference, and the values (not the
     keys) inside a hash reference.
 
+  channel_input
+    Accepts input data into a specific channel for the data flow:
+
+            $flow->channel_input( 'mydatachannel', qw/all the simple things/ );
+
   process_input
     Processes items in the array of queues and place at least one item in
     the output (last) queue. One will typically call this to flush out some
     unwanted data and/or if "auto_process" has been disabled.
 
+  output_items
+    Fetches items, more specifically objects of the type DataFlow::Item,
+    from the data flow. If called in scalar context it will return one
+    processed item from the flow. If called in list context it will return
+    all the items from the last queue.
+
   output
-    Fetches data from the data flow. If called in scalar context it will
-    return one processed item from the flow. If called in list context it
-    will return all the elements in the last queue.
+    Fetches data from the data flow. It accepts a parameter that points from
+    which data channel the data must be fetched. If no channel is specified,
+    it will default to the 'default' channel. If called in scalar context it
+    will return one processed item from the flow. If called in list context
+    it will return all the elements in the last queue.
 
   reset
     Clears all data in the dataflow and makes it ready for a new run.
@@ -134,8 +151,20 @@ METHODS
     data flow, for which the "name" attribute has the same value of the
     "name" parameter, or "undef" otherwise.
 
+FUNCTIONS
+  dataflow
+    Syntax sugar function that can be used to instantiate a new flow. It can
+    be used like this:
+
+            my $flow = dataflow
+                    [ 'Proc' => p => sub { ... } ],
+                    ...
+                    [ 'CSV' => direction => 'CONVERT_TO' ];
+
+            $flow->process('bananas');
+
 HISTORY
-    This is a framework for data flow processing. It started as a spinoff
+    This is a framework for data flow processing. It started as a spin-off
     project from the OpenData-BR <http://www.opendatabr.org/> initiative.
 
     As of now (Mar, 2011) it is still a 'work in progress', and there is a

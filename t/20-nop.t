@@ -26,4 +26,3 @@ nop(
     ],
     q{a more complex structure}
 );
-

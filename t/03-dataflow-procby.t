@@ -2,7 +2,7 @@ use Test::More tests => 10;
 
 use DataFlow;
 
-$f = DataFlow->new(
+my $f = DataFlow->new(
     [ sub { uc }, sub { scalar reverse }, sub { lc }, sub { scalar reverse }, ]
 );
 ok($f);
@@ -48,4 +48,3 @@ is( $f->process('abc'), 'abc' );
 is( ( $f->proc_by_name('third')->process('ABC') )[0],  'abc' );
 is( ( $f->proc_by_name('fourth')->process('ABC') )[0], 'CBA' );
 ok( !defined( $f->proc_by_name('no ecziste') ) );
-

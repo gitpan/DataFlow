@@ -4,7 +4,7 @@
       "Alexei Znamensky <russoz@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200011, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Dist::Zilla version 4.200012, CPAN::Meta::Converter version 2.110930001",
    "license" : [
       "perl_5"
    ],
@@ -26,9 +26,12 @@
             "DateTime" : "0.51",
             "Encode" : 0,
             "Moose" : 0,
+            "Moose::Autobox" : 0,
+            "Moose::Exporter" : 0,
             "Moose::Role" : 0,
             "Moose::Util::TypeConstraints" : "1.01",
             "MooseX::Aliases" : 0,
+            "MooseX::ChainedAccessors" : 0,
             "MooseX::OneArgNew" : 0,
             "MooseX::Types" : 0,
             "MooseX::Types::IO" : 0,
@@ -63,6 +66,6 @@
          "web" : "https://github.com/russoz/DataFlow"
       }
    },
-   "version" : "1.111990"
+   "version" : "1.112100"
 }
 

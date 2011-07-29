@@ -57,4 +57,3 @@ is( $res2[0]->[1], q{inserting some leading and trailing spaces} );
 is( $res2[0]->[2], q{to make sure it works} );
 
 is_deeply( \@res1, \@res2, q{Both results are the same} );
-

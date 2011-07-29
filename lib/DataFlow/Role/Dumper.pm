@@ -5,9 +5,10 @@ use warnings;
 
 # ABSTRACT: A role that provides a facility for dumping data to STDERR
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose::Role;
+use Moose::Autobox;
 
 has '_dumper' => (
     'is'      => 'ro',
@@ -17,7 +18,7 @@ has '_dumper' => (
         use Data::Dumper;
         return sub {
             $Data::Dumper::Terse = 1;
-            return join qq{\n}, map { Dumper($_) } @_;
+            return @_->map( sub { Dumper($_) } )->join(qq{\n});
         };
     },
     'handles' => {
@@ -34,6 +35,22 @@ has '_dumper' => (
     },
 );
 
+has 'dump_input' => (
+    'is'            => 'ro',
+    'isa'           => 'Bool',
+    'lazy'          => 1,
+    'default'       => 0,
+    'documentation' => 'Prints a dump of the input load to STDERR',
+);
+
+has 'dump_output' => (
+    'is'            => 'ro',
+    'isa'           => 'Bool',
+    'lazy'          => 1,
+    'default'       => 0,
+    'documentation' => 'Prints a dump of the output load to STDERR',
+);
+
 1;
 
 
@@ -48,7 +65,7 @@ DataFlow::Role::Dumper - A role that provides a facility for dumping data to STD
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SEE ALSO
 

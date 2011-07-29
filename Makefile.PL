@@ -32,9 +32,12 @@ my %WriteMakefileArgs = (
     'DateTime' => '0.51',
     'Encode' => '0',
     'Moose' => '0',
+    'Moose::Autobox' => '0',
+    'Moose::Exporter' => '0',
     'Moose::Role' => '0',
     'Moose::Util::TypeConstraints' => '1.01',
     'MooseX::Aliases' => '0',
+    'MooseX::ChainedAccessors' => '0',
     'MooseX::OneArgNew' => '0',
     'MooseX::Types' => '0',
     'MooseX::Types::IO' => '0',
@@ -46,7 +49,7 @@ my %WriteMakefileArgs = (
     'autodie' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.111990',
+  'VERSION' => '1.112100',
   'test' => {
     'TESTS' => 't/*.t'
   }

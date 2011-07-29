@@ -5,11 +5,12 @@ use warnings;
 
 # ABSTRACT: A processor that generates SQL clauses
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
 
+use Moose::Autobox;
 use namespace::autoclean;
 use SQL::Abstract;
 
@@ -36,7 +37,7 @@ sub _build_p {
         my ( $insert, @bind ) = $sql->insert( $self->table, $data );
 
         # TODO: regex ?
-        map { $insert =~ s/\?/'$_'/; } @bind;
+        @bind->map( sub { $insert =~ s/\?/'$_'/; } );
         print $insert . "\n";
       }
 }
@@ -44,7 +45,6 @@ sub _build_p {
 __PACKAGE__->meta->make_immutable;
 
 1;
-
 
 __END__
 =pod
@@ -57,7 +57,7 @@ DataFlow::Proc::SQL - A processor that generates SQL clauses
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SEE ALSO
 

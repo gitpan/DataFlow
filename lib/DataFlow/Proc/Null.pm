@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A 'null' processor, will discard any input and return undef in the output
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -35,7 +35,7 @@ DataFlow::Proc::Null - A 'null' processor, will discard any input and return und
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head1 SYNOPSIS
 

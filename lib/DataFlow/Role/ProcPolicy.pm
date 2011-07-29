@@ -5,9 +5,10 @@ use warnings;
 
 # ABSTRACT: A role that defines how to use proc-handlers
 
-our $VERSION = '1.111990'; # VERSION
+our $VERSION = '1.112100';    # VERSION
 
 use Moose::Role;
+use Moose::Autobox;
 
 use namespace::autoclean;
 use Scalar::Util 'reftype';
@@ -81,16 +82,12 @@ sub _handle_scalar_ref {
 
 sub _handle_array_ref {
     my ( $p, $item ) = @_;
-
-    #use Data::Dumper; warn 'handle_array_ref :: item = ' . Dumper($item);
-    my @r = map { _run_p( $p, $_ ) } @{$item};
-    return [@r];
+    return $item->map( sub { _run_p( $p, $_ ) } );
 }
 
 sub _handle_hash_ref {
     my ( $p, $item ) = @_;
-    my %r = map { $_ => _run_p( $p, $item->{$_} ) } keys %{$item};
-    return {%r};
+    return { @{ $item->keys->map( sub { $_ => _run_p( $p, $item->{$_} ) } ) } };
 }
 
 sub _handle_code_ref {
@@ -99,7 +96,6 @@ sub _handle_code_ref {
 }
 
 1;
-
 
 
 __END__
@@ -113,7 +109,7 @@ DataFlow::Role::ProcPolicy - A role that defines how to use proc-handlers
 
 =head1 VERSION
 
-version 1.111990
+version 1.112100
 
 =head2 apply P ITEM
 

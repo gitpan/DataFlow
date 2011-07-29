@@ -62,4 +62,3 @@ my @mix = ( $nested, $flow, $proc, 'UC', sub { lc }, $ucfirst );
 # mix
 test_ucf_with( procs => [@mix] );
 test_ucf_with( [@mix] );
-
