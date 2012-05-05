@@ -2,7 +2,7 @@ package DataFlow::QuickStart;
 
 # ABSTRACT: DataFlow Quick Start Guide
 
-our $VERSION = '1.112100'; # VERSION
+our $VERSION = '1.121260'; # VERSION
 
 1;
 
@@ -18,7 +18,7 @@ DataFlow::QuickStart - DataFlow Quick Start Guide
 
 =head1 VERSION
 
-version 1.112100
+version 1.121260
 
 A guide for quick jumping into the DataFlow bandwagon, programming-wise. That
 means that, despite our long term goals of making a framework that can be used
@@ -213,10 +213,8 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 

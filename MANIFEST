@@ -74,10 +74,10 @@ t/50-simplefileinput.t
 t/50-simplefileoutput.t
 t/60-multipageurlgenerator.t
 t/author-critic.t
+t/author-test-eol.t
 t/bug-anonsub-with-array.t
 t/release-dist-manifest.t
 t/release-distmeta.t
-t/release-eol.t
 t/release-kwalitee.t
 t/release-meta-json.t
 t/release-minimum-version.t

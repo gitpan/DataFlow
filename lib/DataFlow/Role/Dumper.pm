@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that provides a facility for dumping data to STDERR
 
-our $VERSION = '1.112100';    # VERSION
+our $VERSION = '1.121260';    # VERSION
 
 use Moose::Role;
 use Moose::Autobox;
@@ -65,7 +65,7 @@ DataFlow::Role::Dumper - A role that provides a facility for dumping data to STD
 
 =head1 VERSION
 
-version 1.112100
+version 1.121260
 
 =head1 SEE ALSO
 
@@ -92,10 +92,8 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 

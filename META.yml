@@ -3,16 +3,14 @@ abstract: 'A framework for dataflow processing'
 author:
   - 'Alexei Znamensky <russoz@cpan.org>'
 build_requires:
-  English: 0
   File::Find: 0
   File::Temp: 0
   Test::More: 0.88
   Test::UseAllModules: 0
-  perl: 5.006
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200012, CPAN::Meta::Converter version 2.110930001'
+generated_by: 'Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -29,7 +27,7 @@ requires:
   Moose::Role: 0
   Moose::Util::TypeConstraints: 1.01
   MooseX::Aliases: 0
-  MooseX::ChainedAccessors: 0
+  MooseX::Attribute::Chained: 0
   MooseX::OneArgNew: 0
   MooseX::Types: 0
   MooseX::Types::IO: 0
@@ -41,7 +39,9 @@ requires:
   autodie: 0
   namespace::autoclean: 0
   perl: 5.008
+  strict: 0
+  warnings: 0
 resources:
   homepage: https://github.com/russoz/DataFlow
-  repository: https://github.com/russoz/DataFlow
-version: 1.112100
+  repository: https://github.com/russoz/DataFlow.git
+version: 1.121260

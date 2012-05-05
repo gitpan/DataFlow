@@ -52,7 +52,6 @@ eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Data::Dumper','any version') };
 eval { $v .= pmver('DateTime','0.51') };
 eval { $v .= pmver('Encode','any version') };
-eval { $v .= pmver('English','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Find','any version') };
 eval { $v .= pmver('File::Temp','any version') };
@@ -62,7 +61,7 @@ eval { $v .= pmver('Moose::Exporter','any version') };
 eval { $v .= pmver('Moose::Role','any version') };
 eval { $v .= pmver('Moose::Util::TypeConstraints','1.01') };
 eval { $v .= pmver('MooseX::Aliases','any version') };
-eval { $v .= pmver('MooseX::ChainedAccessors','any version') };
+eval { $v .= pmver('MooseX::Attribute::Chained','any version') };
 eval { $v .= pmver('MooseX::OneArgNew','any version') };
 eval { $v .= pmver('MooseX::Types','any version') };
 eval { $v .= pmver('MooseX::Types::IO','any version') };
@@ -75,6 +74,8 @@ eval { $v .= pmver('Test::UseAllModules','any version') };
 eval { $v .= pmver('Text::CSV::Encoded','any version') };
 eval { $v .= pmver('autodie','any version') };
 eval { $v .= pmver('namespace::autoclean','any version') };
+eval { $v .= pmver('strict','any version') };
+eval { $v .= pmver('warnings','any version') };
 
 
 

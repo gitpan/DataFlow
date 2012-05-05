@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.112100';    # VERSION
+our $VERSION = '1.121260';    # VERSION
 
 use Moose;
 use Moose::Exporter;
@@ -43,12 +43,13 @@ has 'auto_process' => (
     'default' => 1,
 );
 
-has 'procs' => (
+has '_procs' => (
     'is'       => 'ro',
     'isa'      => 'WrappedProcList',
     'required' => 1,
     'coerce'   => 1,
     'builder'  => '_build_procs',
+    'init_arg' => 'procs',
 );
 
 has '_queues' => (
@@ -61,7 +62,7 @@ has '_queues' => (
         'has_queued_data' =>
           sub { return _count_queued_items( shift->_queues ) },
         '_make_queues' => sub {
-            shift->procs->map( sub { Queue::Base->new() } );
+            shift->_procs->map( sub { Queue::Base->new() } );
         },
     },
 );
@@ -77,6 +78,10 @@ has '_lastq' => (
 
 sub _build_procs {
     return;
+}
+
+sub procs {
+    return @{ [ shift->_procs ]->map( sub { $_->on_proc } ) };
 }
 
 # functions
@@ -108,7 +113,7 @@ sub _reduce {
 # methods
 sub clone {
     my $self = shift;
-    return DataFlow->new( procs => $self->procs );
+    return DataFlow->new( procs => $self->_procs );
 }
 
 sub channel_input {
@@ -130,7 +135,7 @@ sub input {
 sub process_input {
     my $self = shift;
     my @q = ( @{ $self->_queues }, $self->_lastq );
-    _reduce( $self->procs, @q );
+    _reduce( $self->_procs, @q );
     return;
 }
 
@@ -188,16 +193,14 @@ sub process {
 
 sub proc_by_index {
     my ( $self, $index ) = @_;
-    return unless $self->procs->[$index];
-    return $self->procs->[$index]->on_proc;
+    return unless $self->_procs->[$index];
+    return $self->_procs->[$index]->on_proc;
 }
 
 sub proc_by_name {
     my ( $self, $name ) = @_;
-    return $self->procs->map( sub { $_->on_proc } )
+    return $self->_procs->map( sub { $_->on_proc } )
       ->grep( sub { $_->name eq $name } )->[0];
-
-    #return $procs[0];
 }
 
 sub dataflow (@) {    ## no critic
@@ -221,7 +224,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.112100
+version 1.121260
 
 =head1 SYNOPSIS
 
@@ -422,7 +425,7 @@ since version 0.950000 the programming interface has been changed violently.
 
 Any doubts, feel free to get in touch.
 
-=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
 =head1 SUPPORT
 
@@ -451,7 +454,7 @@ L<http://search.cpan.org/dist/DataFlow>
 
 AnnoCPAN
 
-The AnnoCPAN is a website that allows community annonations of Perl module documentation.
+The AnnoCPAN is a website that allows community annotations of Perl module documentation.
 
 L<http://annocpan.org/dist/DataFlow>
 
@@ -491,7 +494,7 @@ L<http://www.cpantesters.org/distro/D/DataFlow>
 
 CPAN Testers Matrix
 
-The CPAN Testers Matrix is a website that provides a visual way to determine what Perls/platforms PASSed for a distribution.
+The CPAN Testers Matrix is a website that provides a visual overview of the test results for a distribution on various Perls/platforms.
 
 L<http://matrix.cpantesters.org/?dist=DataFlow>
 
@@ -532,7 +535,7 @@ from your repository :)
 
 L<https://github.com/russoz/DataFlow>
 
-  git clone https://github.com/russoz/DataFlow
+  git clone https://github.com/russoz/DataFlow.git
 
 =head1 AUTHOR
 
@@ -547,10 +550,8 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<http://rt.cpan.org>.
 
 =head1 DISCLAIMER OF WARRANTY
 
