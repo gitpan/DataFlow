@@ -55,6 +55,7 @@ eval { $v .= pmver('Encode','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Find','any version') };
 eval { $v .= pmver('File::Temp','any version') };
+eval { $v .= pmver('LWP::UserAgent','any version') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Moose::Autobox','any version') };
 eval { $v .= pmver('Moose::Exporter','any version') };

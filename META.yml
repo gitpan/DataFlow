@@ -21,6 +21,7 @@ requires:
   Data::Dumper: 0
   DateTime: 0.51
   Encode: 0
+  LWP::UserAgent: 0
   Moose: 0
   Moose::Autobox: 0
   Moose::Exporter: 0
@@ -44,4 +45,4 @@ requires:
 resources:
   homepage: https://github.com/russoz/DataFlow
   repository: https://github.com/russoz/DataFlow.git
-version: 1.121260
+version: 1.121280

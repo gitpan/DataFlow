@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that accepts only array-references
 
-our $VERSION = '1.121260';    # VERSION
+our $VERSION = '1.121280';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -36,7 +36,7 @@ DataFlow::Policy::ArrayRef - A ProcPolicy that accepts only array-references
 
 =head1 VERSION
 
-version 1.121260
+version 1.121280
 
 =head1 SEE ALSO
 

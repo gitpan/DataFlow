@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Wrapper around a processor
 
-our $VERSION = '1.121260';    # VERSION
+our $VERSION = '1.121280';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -83,7 +83,7 @@ DataFlow::ProcWrapper - Wrapper around a processor
 
 =head1 VERSION
 
-version 1.121260
+version 1.121280
 
 =head1 SYNOPSIS
 

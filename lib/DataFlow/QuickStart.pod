@@ -2,7 +2,7 @@ package DataFlow::QuickStart;
 
 # ABSTRACT: DataFlow Quick Start Guide
 
-our $VERSION = '1.121260'; # VERSION
+our $VERSION = '1.121280'; # VERSION
 
 1;
 
@@ -18,7 +18,7 @@ DataFlow::QuickStart - DataFlow Quick Start Guide
 
 =head1 VERSION
 
-version 1.121260
+version 1.121280
 
 A guide for quick jumping into the DataFlow bandwagon, programming-wise. That
 means that, despite our long term goals of making a framework that can be used
