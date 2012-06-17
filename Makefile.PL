@@ -29,7 +29,6 @@ my %WriteMakefileArgs = (
     "Data::Dumper" => 0,
     "DateTime" => "0.51",
     "Encode" => 0,
-    "LWP::UserAgent" => 0,
     "Moose" => 0,
     "Moose::Autobox" => 0,
     "Moose::Exporter" => 0,
@@ -50,7 +49,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.121280",
+  "VERSION" => "1.121690",
   "test" => {
     "TESTS" => "t/*.t"
   }

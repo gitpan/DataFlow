@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A data processor class
 
-our $VERSION = '1.121280';    # VERSION
+our $VERSION = '1.121690';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::Processor';
@@ -113,7 +113,7 @@ DataFlow::Proc - A data processor class
 
 =head1 VERSION
 
-version 1.121280
+version 1.121690
 
 =head1 SYNOPSIS
 

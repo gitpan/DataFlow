@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that provides a facility for dumping data to STDERR
 
-our $VERSION = '1.121280';    # VERSION
+our $VERSION = '1.121690';    # VERSION
 
 use Moose::Role;
 use Moose::Autobox;
@@ -65,7 +65,7 @@ DataFlow::Role::Dumper - A role that provides a facility for dumping data to STD
 
 =head1 VERSION
 
-version 1.121280
+version 1.121690
 
 =head1 SEE ALSO
 

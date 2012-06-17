@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A wrapper around the regular data processed by DataFlow
 
-our $VERSION = '1.121280';    # VERSION
+our $VERSION = '1.121690';    # VERSION
 
 use Moose;
 use Moose::Autobox;
@@ -84,7 +84,7 @@ DataFlow::Item - A wrapper around the regular data processed by DataFlow
 
 =head1 VERSION
 
-version 1.121280
+version 1.121690
 
 =head1 SYNOPSIS
 

@@ -39,12 +39,7 @@ lib/DataFlow/Role/File.pm
 lib/DataFlow/Role/ProcPolicy.pm
 lib/DataFlow/Role/Processor.pm
 lib/DataFlow/Types.pm
-scripts/encoding.pl
-scripts/portaltransparencia/ceis.pl
 scripts/release
-scripts/simple-deref.pl
-scripts/simple-noref.pl
-scripts/simple.pl
 scripts/tidy
 t/00-compile.t
 t/00-load.t
