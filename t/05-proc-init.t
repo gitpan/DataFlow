@@ -18,3 +18,4 @@ use DataFlow;
 test_uc_with( p => DataFlow->new( [ DataFlow::Proc->new( p => $uc ) ] ) );
 test_uc_with( p => DataFlow->new( [$uc] ) );
 test_uc_with($uc);
+

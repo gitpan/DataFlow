@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A generic processor for format-conversion
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -47,6 +47,7 @@ sub _build_p {
 
 1;
 
+
 __END__
 =pod
 
@@ -58,7 +59,7 @@ DataFlow::Proc::Converter - A generic processor for format-conversion
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SEE ALSO
 

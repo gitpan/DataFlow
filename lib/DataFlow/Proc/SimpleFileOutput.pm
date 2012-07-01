@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A processor that writes data to a file
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use Moose;
 extends 'DataFlow::Proc';
@@ -37,6 +37,7 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
+
 __END__
 =pod
 
@@ -48,7 +49,7 @@ DataFlow::Proc::SimpleFileOutput - A processor that writes data to a file
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SEE ALSO
 

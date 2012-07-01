@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A framework for dataflow processing
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use Moose;
 use Moose::Exporter;
@@ -213,6 +213,7 @@ __PACKAGE__->meta->make_immutable;
 1;
 
 
+
 __END__
 =pod
 
@@ -224,7 +225,7 @@ DataFlow - A framework for dataflow processing
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SYNOPSIS
 

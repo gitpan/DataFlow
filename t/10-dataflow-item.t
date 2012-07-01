@@ -61,3 +61,4 @@ isa_ok( $ized, 'DataFlow::Item' );
 is_deeply( $ized->channel_list, ['teste1'] );
 is_deeply( $ized->channels, { 'teste1' => 567, } );
 is_deeply( $ized->metadata, {}, 'metadata is empty' );
+

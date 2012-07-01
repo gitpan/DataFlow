@@ -16,3 +16,4 @@ isnt( $aref_procd,      $aref, 'preserves non-strings' );
 isnt( $aref_procd->[2], 'cc',  q{preserves references' properties} );
 isnt( $aref_procd->[2], 'CC',
     q{does not applies processor in nested data structures} );
+

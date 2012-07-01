@@ -16,3 +16,4 @@ ok( !defined( $uc->process() ), 'returns nothing for nothing' );
 is( ( $uc->process('aaa') )[0], 'AAA', 'works as it should' );
 isnt( ( $uc->process('bbb') )[0], 'bbb', 'indeed works as it should' );
 is( ( $uc->process(1) )[0], 1, );
+

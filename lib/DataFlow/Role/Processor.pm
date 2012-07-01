@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A role that defines anything that processes something
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use Moose::Role;
 
@@ -19,6 +19,7 @@ requires 'process';
 
 1;
 
+
 __END__
 =pod
 
@@ -30,7 +31,7 @@ DataFlow::Role::Processor - A role that defines anything that processes somethin
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SEE ALSO
 

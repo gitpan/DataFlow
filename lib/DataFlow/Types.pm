@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: Type definitions for DataFlow
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use MooseX::Types -declare => [
     qw(Processor ProcessorList WrappedProcList ProcessorSub ProcPolicy),
@@ -182,6 +182,7 @@ coerce 'Encoder' => from 'Str' => via {
 1;
 
 
+
 __END__
 =pod
 
@@ -193,7 +194,7 @@ DataFlow::Types - Type definitions for DataFlow
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SYNOPSIS
 

@@ -18,7 +18,7 @@ DataFlow::QuickStart - DataFlow Quick Start Guide
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 A guide for quick jumping into the DataFlow bandwagon, programming-wise. That
 means that, despite our long term goals of making a framework that can be used

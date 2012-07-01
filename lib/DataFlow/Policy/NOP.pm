@@ -5,7 +5,7 @@ use warnings;
 
 # ABSTRACT: A ProcPolicy that returns the very item passed
 
-our $VERSION = '1.121690';    # VERSION
+our $VERSION = '1.121830';    # VERSION
 
 use Moose;
 with 'DataFlow::Role::ProcPolicy';
@@ -30,7 +30,7 @@ DataFlow::Policy::NOP - A ProcPolicy that returns the very item passed
 
 =head1 VERSION
 
-version 1.121690
+version 1.121830
 
 =head1 SEE ALSO
 
@@ -87,3 +87,4 @@ DAMAGES.
 
 
 __END__
+

@@ -14,3 +14,4 @@ $flow->input('kartoshky');
 $flow->input(@ARGV) if @ARGV;
 $, = "\n";
 say $flow->flush;
+

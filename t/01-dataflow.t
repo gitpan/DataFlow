@@ -53,3 +53,4 @@ $f->output;
 is( $f->has_queued_data, 3 );
 $f->flush;
 is( $f->has_queued_data, 0 );
+

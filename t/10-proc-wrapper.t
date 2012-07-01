@@ -50,3 +50,4 @@ is( scalar @res, 3 );
 is( $res[0]->get_data('default'), 35 );
 is( $res[1]->get_data('default'), 68 );
 is( $res[2]->get_data('default'), sqrt(34) );
+

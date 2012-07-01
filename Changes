@@ -196,69 +196,6 @@ Author: Alexei Znamensky <russoz@cpan.org>
 
     removed t/00-load.t, using bundle v0.012
 
-v1.111810 2011-06-29
---------------------
-
-commit a46946a29b50a2892b84ba1437a67568b1ff4ad3
-Merge: 9b68a67 f85599e
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    Merge branch 'rc/1.111810'
-
-commit f85599efb4fdc9a41c6b8c1465f8620f3c90fc00
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    using builder + laziness
-
-commit 9b68a678e283a880f1177871ff8a9df2a7cc68a6
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    small details
-
-v1.111762 2011-06-25
---------------------
-
-commit 9e5fa369895c623f14623ab55e3709db7acb5850
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    refactored DataFlow::Proc::HTMLFilter out of core
-
-v1.111750 2011-06-24
---------------------
-
-commit fc8f68043bcf3a0d0a5f161d6f28c2f86853a9d3
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    Refactoring some modules out of the core
-
-commit b5772eed5c594c9a8b5a624583b421d2c047ef9f
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    removed extraneous deps
-
-v1.111720 2011-06-20
---------------------
-
-commit 0a84b7f264f0423ff6c4028becf87b7a38537a8e
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    GithubMeta has been added to bundle @Author::RUSSOZ
-
-commit 8cd3700e37f7db65100cebd014aff3c037b35ff9
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    Refactored MessagePack processor out of DataFlow
-
-commit e89801a59efb9afd7be559bf8bbdbe7738f27182
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    improved POD for DataFlow
-
-commit 59fbe4d4ea264daf73e409849beeb1eb050d5986
-Author: Alexei Znamensky <russoz@cpan.org>
-
-    added OneArgNew feat to DataFlow::Proc
-
 ===================================
 End of changes in the last 365 days
 ===================================
